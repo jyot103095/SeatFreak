@@ -43,6 +43,8 @@
   },
   "homepage": "https://github.com/jyot103095/SeatFreak#readme",
   "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-google": "^0.9.1",
     "webpack-cli": "^3.0.8"
   }
 }
