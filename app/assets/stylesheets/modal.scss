@@ -1,0 +1,118 @@
+.modal-background {
+ position: fixed;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ left: 0;
+ background: rgba(0, 0, 0, 0.7);
+ z-index: 10;
+}
+
+.modal-child {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background-color: white;
+ box-sizing: border-box;
+ width: 410px;
+ height: 480px;
+ border-radius: 5px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+}
+
+.close-x {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  font-size: 32px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-box input {
+  height: 37px;
+  box-sizing: border-box;
+  margin: 5px 0;
+  line-height: 1.25em;
+  padding: 0 5px;
+}
+
+.regular-inputs input {
+  width: 312px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  height: 48px;
+}
+
+.extra-inputs input {
+  width: 156px;
+  -webkit-appearance: none;
+  height: 48px;
+}
+
+.l-name-input {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-left: 0.5px solid #ccc;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.f-name-input {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 0.5px solid #ccc;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.session-submit {
+  border: 1px solid #1467cf;
+  border-radius: 3px;
+  color: white;
+  background-color: #1673e6;
+  width: 312px;
+  box-sizing: border-box;
+}
+
+.session-submit:hover {
+  cursor: pointer;
+}
+
+.other-form {
+  color: #9f9c9c;
+  font-size: inherit;
+  margin-top: 30px;
+}
+
+.other-form button {
+  background-color: white;
+  color: #1673e6;
+}
