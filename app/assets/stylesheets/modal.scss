@@ -38,7 +38,11 @@
   font-size: 32px;
 }
 
-h2 {
+.close-x:hover {
+  cursor: pointer;
+}
+
+.modal-child h2 {
   margin: 0;
   font-size: 23px;
 }
@@ -59,6 +63,14 @@ button:hover {
   margin: 5px 0;
   line-height: 1.25em;
   padding: 0 5px;
+}
+
+.login-form-box input:focus::-webkit-input-placeholder {
+  color: #1673e6;
+}
+
+.login-form-box input:focus {
+  border-color: #1673e6;
 }
 
 .regular-inputs input {

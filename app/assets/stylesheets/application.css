@@ -15,5 +15,95 @@
  */
 
 #root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+.app-header {
+  background: linear-gradient(135deg,#1673e6 50%,#01a1e7);
+  height: 315px;
+}
+
+.app-header nav {
+  width: 968px;
+  header: 60px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header a {
+  text-decoration: none;
+}
+
+.app-header a:hover {
+  opacity: 0.8;
+}
+
+.app-header h1 {
+  color: white;
+  font-size: 30px;
+}
+
+.app-header button {
+  width: 80px;
+  height: 40px;
+  margin: 10px 0 10px 12px;
+  border-radius: 0.5em;
+}
+
+.app-header button:first-of-type {
+  background-color: hsla(0,0%,6%,.1);
+  color: white;
+  padding: 5px;
+}
+
+.app-header button {
+  background-color: inherit;
+  color: white;
+  padding: 5px;
+  transition: background-color 0.25s, colo 0.25s;
+}
+
+.app-header button:hover {
+  background-color: white;
+  color: #1673e6;
+}
+
+.header-name {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.user-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.logo-categories {
+  display: flex;
+  align-items: center;
+}
+
+.logo-categories h1 {
+  font-weight: 800;
+}
+
+.categories {
+  display: flex;
+  margin-left: 20px;
+  list-style: none;
+  align-items: center;
+}
+
+.categories > li {
+  padding: 21.5px 13px;
+  color: white;
+  font-size: 16px;
+}
+
+.categories > li:hover {
+  background-color: white;
+  color: black;
 }
