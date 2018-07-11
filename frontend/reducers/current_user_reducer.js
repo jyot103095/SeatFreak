@@ -1,5 +1,6 @@
 import {
-  RECEIVE_USER
+  RECEIVE_USER,
+  LOGOUT
 } from '../actions/session_actions';
 
 const CurrentUserReducer = (state = {}, action) => {
@@ -8,6 +9,8 @@ const CurrentUserReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
       return action.user;
+    case LOGOUT:
+      return {};
     default:
       return state;
   }
