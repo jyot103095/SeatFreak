@@ -11,6 +11,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  price      :integer          not null
+#  on_sale    :boolean          default(FALSE)
 #
 
 require 'test_helper'

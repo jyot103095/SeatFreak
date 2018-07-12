@@ -11,10 +11,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  price      :integer          not null
+#  on_sale    :boolean          default(FALSE)
 #
 
 class Ticket < ApplicationRecord
   validates :user_id, :event_id, :section, :price, presence: true
+  validates :on_sale, inclusion: { in: [true, false] }
 
   belongs_to :user
 

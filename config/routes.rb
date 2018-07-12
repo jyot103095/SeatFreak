@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :update]
     resource :session, only: [:create, :destroy]
-    resources :tickets, only: [:create, :update]
+    resources :tickets, only: [:update]
     resources :performers, only: [:show]
     resources :events, only: [:show]
   end
+
+  patch '/api/tickets/:id/buy', to: 'api/tickets#buy'
+  patch '/api/tickets/:id/sell', to: 'api/tickets#sell'
 end
