@@ -1,8 +1,6 @@
 json.performers do
-  json.set! @performer.id do
-    json.extract! @performer, :id, :name, :classification, :category, :description
-    json.eventsIds @performer.event_ids
-  end
+  json.extract! @performer, :id, :name, :classification, :category, :description
+  json.eventsIds @performer.event_ids
 end
 
 json.events do
