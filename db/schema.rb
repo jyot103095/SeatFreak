@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_174813) do
+ActiveRecord::Schema.define(version: 2018_07_12_161205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_performers", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "performer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_performers_on_event_id"
+    t.index ["performer_id"], name: "index_event_performers_on_performer_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.date "date", null: false
+    t.time "time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+  end
+
+  create_table "performers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", null: false
+    t.string "category", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.integer "section", null: false
+    t.integer "row"
+    t.integer "seat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price", null: false
+    t.index ["event_id"], name: "index_tickets_on_event_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
