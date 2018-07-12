@@ -36,7 +36,7 @@
   text-decoration: none;
 }
 
-.app-header a:hover {
+.header-link:hover {
   opacity: 0.8;
 }
 
@@ -45,27 +45,27 @@
   font-size: 30px;
 }
 
-.app-header button {
+.session-buttons button {
   width: 80px;
   height: 40px;
   margin: 10px 0 10px 12px;
   border-radius: 0.5em;
 }
 
-.app-header button:first-of-type {
+.session-buttons button:first-of-type {
   background-color: hsla(0,0%,6%,.1);
   color: white;
   padding: 5px;
 }
 
-.app-header button {
+.session-buttons button {
   background-color: inherit;
   color: white;
   padding: 5px;
-  transition: background-color 0.25s, colo 0.25s;
+  transition: background-color 0.25s, color 0.25s;
 }
 
-.app-header button:hover {
+.session-buttons button:hover {
   background-color: white;
   color: #1673e6;
 }
@@ -106,4 +106,58 @@
 .categories > li:hover {
   background-color: white;
   color: black;
+}
+
+.user-dropdown {
+  position: relative;
+  color: white;
+}
+
+.user-dropdown:hover {
+  background-color: white;
+  color: #1673e6;
+  transition: background-color .25s ease-in-out;
+}
+
+.user-dropdown a {
+  color: inherit;
+}
+
+.user-name {
+  color: inherit;
+  width: 151px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-links {
+  width: 151px;
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition-timing-function: ease-in-out;
+}
+
+.user-links > li {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.user-links > li > span {
+  line-height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-links > li:hover {
+  background-color: #1673e6;
+  color: white;
+  cursor: pointer;
 }

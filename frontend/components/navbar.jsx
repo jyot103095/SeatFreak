@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/session_actions';
 import { openModal } from '../actions/modal_actions';
+import UserDropdown from './user_dropdown';
 
 const navBar = ({ currentUser, logout, openModal }) => {
 
@@ -34,12 +35,7 @@ const navBar = ({ currentUser, logout, openModal }) => {
   const userShow = () => (
     <nav className="header-group">
       { logoAndCategories() }
-      <div className="user-buttons">
-        <Link to="/" >
-          <h2 className="header-name">{currentUser.fName}</h2>
-        </Link>
-        <button onClick={logout}>Log Out</button>
-      </div>
+      <UserDropdown currentUser={currentUser} logout={logout}/>
     </nav>
   );
 
@@ -48,6 +44,7 @@ const navBar = ({ currentUser, logout, openModal }) => {
     userShow(currentUser, logout) :
     sessionLinks()
   );
+
 };
 
 const mapStateToProps = ({ entities }) => ({
