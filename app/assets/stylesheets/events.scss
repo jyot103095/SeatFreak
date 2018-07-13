@@ -1,3 +1,68 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.event-tickets-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.event-tickets-header h4 {
+  font-weight: bold;
+  font-size: 1.0625em;
+}
+
+.event-tickets-container {
+  padding: 0 20px;
+  margin: 0 auto;
+  width: 430px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.ticket-listing-container {
+  box-sizing: border-box;
+  height: 77px;
+  border-bottom: 1px solid lightgray;
+  align-items: center;
+  padding: 18px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-listing-container:hover {
+  background-color: #c9e5ff;
+}
+
+.ticket-listing {
+  width: 335px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-link {
+  height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.checkout-link a {
+  text-decoration: none;
+  background-color: #0b62cd;
+  padding: 0.70rem;
+  margin-left: 1.25rem;
+  color: white;
+  border-radius: 3px;
+  line-height: 1.375em;
+  border-radius: 0.625rem;
+  font-weight: bold;
+}
+
+.checkout-link a:hover {
+  filter: brightness(90%);
+}
+
+.per-each {
+  color: #c9e5ff;
+}

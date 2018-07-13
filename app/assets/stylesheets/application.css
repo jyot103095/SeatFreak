@@ -13,8 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-#root {
+ #root {
   font-family: "Montserrat", sans-serif;
 }
 
@@ -23,7 +22,11 @@
   height: 315px;
 }
 
-.app-header nav {
+.navbar-container {
+  background: #1673e6;
+}
+
+.navbar {
   width: 968px;
   header: 60px;
   margin: 0 auto;
@@ -32,17 +35,23 @@
   align-items: center;
 }
 
-.app-header a {
+.logo-categories-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
   text-decoration: none;
 }
 
-.header-link:hover {
+.logo:hover {
   opacity: 0.8;
 }
 
-.app-header h1 {
+.logo h1 {
   color: white;
   font-size: 30px;
+  font-weight: bold;
 }
 
 .session-buttons button {
@@ -81,15 +90,6 @@
   align-items: center;
 }
 
-.logo-categories {
-  display: flex;
-  align-items: center;
-}
-
-.logo-categories h1 {
-  font-weight: 800;
-}
-
 .categories {
   display: flex;
   margin-left: 20px;
@@ -108,6 +108,30 @@
   color: black;
 }
 
+.event-info-container {
+  color: white;
+  margin-left: 10px;
+}
+
+.event-info-container h3 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.event-info-container h5 {
+  font-size: 14px;
+  color: hsla(0,0%,100%,.7);
+  transition: 0.25s;
+}
+
+.event-info-container:hover {
+  cursor: pointer;
+}
+
+.event-info-container:hover h5 {
+  color: white;
+}
+
 .user-dropdown {
   position: relative;
   color: white;
@@ -120,6 +144,7 @@
 }
 
 .user-dropdown a {
+  text-decoration: none;
   color: inherit;
 }
 
@@ -140,7 +165,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: opacity 0.25s;
   transition-timing-function: ease-in-out;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
 }
 
 .user-links > li {
@@ -148,6 +176,7 @@
   height: 40px;
   text-align: center;
   box-sizing: border-box;
+  transition: 0.25s;
 }
 
 .user-links > li > span {
