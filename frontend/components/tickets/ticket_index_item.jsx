@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { showSingleTicket } from '../../actions/event_tickets_actions';
+import { connect } from 'react-redux';
 
-const TicketIndexItem = ({ ticket }) => {
+const TicketIndexItem = ({ ticket, showTicket }) => {
   return (
-    <div className="ticket-listing-container">
+    <div className="ticket-listing-container" onClick={() => showTicket(ticket.id)}>
       <div className="ticket-listing">
         <div className="ticket-info">
           <span>Section {ticket.section} Row {ticket.row} </span>
@@ -16,4 +18,8 @@ const TicketIndexItem = ({ ticket }) => {
   );
 };
 
-export default TicketIndexItem;
+const mDP = dispatch => ({
+  showTicket: ticketId => dispatch(showSingleTicket(ticketId))
+});
+
+export default connect(null, mDP)(TicketIndexItem);

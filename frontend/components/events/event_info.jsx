@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestEvent } from '../actions/event_actions';
+import { requestEvent } from '../../actions/event_actions';
 
 class EventInfo extends React.Component {
   componentDidMount() {

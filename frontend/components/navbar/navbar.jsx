@@ -2,12 +2,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser } from '../actions/session_actions';
-import { openModal } from '../actions/modal_actions';
+import { logoutUser } from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 import { Route, withRouter } from 'react-router-dom';
 import NavBarCategories from './navbar_categories';
 import UserDropdown from './user_dropdown';
-import EventInfo from './event_info';
+import EventInfo from '../events/event_info';
 
 const navBar = ({ currentUser, logout, openModal, location }) => {
   const logo = () => (
