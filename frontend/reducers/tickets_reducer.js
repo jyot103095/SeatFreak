@@ -11,7 +11,7 @@ const TicketsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_EVENT:
-      return merge({}, state, action.tickets);
+      return action.tickets;
     case RECEIVE_TICKET:
       return merge({}, state, { [action.ticket.id]: action.ticket} );
     default:
