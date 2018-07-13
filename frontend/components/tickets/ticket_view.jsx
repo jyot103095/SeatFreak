@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const TicketView = ({ticket, showAllTickets}) => {
   return (
     <div className="ticket-view-container">
-      <div className="ticket-view-header">
-        <button onClick={showAllTickets}><h4>Back to all deals</h4></button>
+      <div className="ticket-view-header" onClick={showAllTickets}>
+        <h4>Back to all deals</h4>
       </div>
       <div className="ticket-seat-info">
         <h4>Section {ticket.section} Row {ticket.row}</h4>

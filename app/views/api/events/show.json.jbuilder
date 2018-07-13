@@ -6,7 +6,7 @@ end
 
 json.tickets({})
 json.tickets do
-  @event.tickets.each do |ticket|
+  @event.tickets.where(on_sale: true).each do |ticket|
     json.set! ticket.id do
       json.extract! ticket, :id, :section, :row, :seat, :price
     end

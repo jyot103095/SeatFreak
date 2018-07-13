@@ -84,8 +84,9 @@
   height: 60px;
 }
 
-.ticket-view-header button {
-  background-color: transparent;
+.ticket-view-header:hover {
+  color: #1673E6;
+  cursor: pointer;
 }
 
 .ticket-seat-info {
@@ -107,7 +108,7 @@
 
 .ticket-price-info {
   font-size: 1.625rem;
-  color: green;
+  color: #49af07;
 }
 
 .ticket-price-per-each {
