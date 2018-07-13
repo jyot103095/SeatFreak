@@ -35,5 +35,5 @@ drakeMigos = Event.create(title: "Drake with Migos", event_on: Time.parse("Sat S
 drakeMigos.performers = [drake, migos]
 drakeMigos = Event.create(title: "Drake with Migos", event_on: Time.parse("Fri Aug 24 19:00:00 EST"))
 drakeMigos.performers = [drake, migos]
-cityUnited = Event.create(title: "Manchester United vs Manhchester City", event_on: Time.parse("Fri Jul 13 18:00:00 EST"))
+cityUnited = Event.create(title: "Manchester United vs Manchester City", event_on: Time.parse("Fri Jul 13 18:00:00 EST"))
 cityUnited.performers = [united, city]

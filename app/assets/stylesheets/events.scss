@@ -1,22 +1,25 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.event-tickets-header {
+.event-tickets-header, .ticket-view-header {
   height: 60px;
   display: flex;
   align-items: center;
 }
 
-.event-tickets-header h4 {
+.event-tickets-header h4, .ticket-view-container h4 {
   font-weight: bold;
   font-size: 1.0625em;
 }
 
-.event-tickets-container {
+.event-tickets-container, .ticket-view-container {
   padding: 0 20px;
   margin: 0 auto;
   width: 430px;
   height: 100vh;
+}
+
+.event-tickets-container {
   overflow-y: scroll;
 }
 
@@ -32,13 +35,18 @@
 
 .ticket-listing-container:hover {
   background-color: #c9e5ff;
+  cursor: pointer;
 }
 
 .ticket-listing {
-  width: 335px;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.ticket-info {
+  font-weight: 500;
 }
 
 .checkout-link {
@@ -49,7 +57,7 @@
 
 .checkout-link a {
   text-decoration: none;
-  background-color: #0b62cd;
+  background-color: #1673E6;
   padding: 0.70rem;
   margin-left: 1.25rem;
   color: white;
@@ -65,4 +73,55 @@
 
 .per-each {
   color: #c9e5ff;
+}
+
+.ticket-view-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-view-header {
+  height: 60px;
+}
+
+.ticket-view-header button {
+  background-color: transparent;
+}
+
+.ticket-seat-info {
+  border-top: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.ticket-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #EFEFEF;
+  padding: 1.375rem 0;
+}
+
+.ticket-price-info {
+  font-size: 1.625rem;
+  color: green;
+}
+
+.ticket-price-per-each {
+  font-size: 0.9375rem;
+}
+
+.bigger-checkout-link a {
+  text-decoration: none;
+  background-color: #1673E6;
+  padding: 0.80rem 1.25rem;
+  margin-left: 1.25rem;
+  color: white;
+  border-radius: 3px;
+  line-height: 1.375em;
+  border-radius: 0.625rem;
+  font-weight: bold;
 }
