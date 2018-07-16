@@ -57,3 +57,5 @@ icc1.performers = [city, united]
 
 icc2 = Event.create(title: "Arsenal vs Liverpool", event_on: Time.parse("Sat Sep 29 16:00:00 EST"))
 icc2.performers = [arsenal, liverpool]
+
+User.create(email: "hunter2@gmail.com", password: "hunter2", f_name: "Hunter", l_name: "Hunter")

@@ -2,14 +2,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser } from '../../actions/session_actions';
+import { loginUser, logoutUser } from '../../actions/session_actions';
 import { openModal } from '../../actions/modal_actions';
 import { Route, withRouter } from 'react-router-dom';
 import NavBarCategories from './navbar_categories';
 import UserDropdown from './user_dropdown';
 import EventInfo from '../events/event_info';
 
-const navBar = ({ currentUser, openModal}) => {
+const navBar = ({ currentUser, openModal, demoLogin }) => {
   const logo = () => (
     <div className="logo">
       <Link to="/">
@@ -23,6 +23,8 @@ const navBar = ({ currentUser, openModal}) => {
       <button onClick={() => openModal('signup')}>Sign Up</button>
         &nbsp;
       <button onClick={() => openModal('login')}>Log In</button>
+        &nbsp;
+      <button onClick={() => demoLogin({ email: "hunter2@gmail.com", password: "hunter2" })}>Demo</button>
     </div>
   );
 
@@ -31,7 +33,7 @@ const navBar = ({ currentUser, openModal}) => {
       <UserDropdown />
     </div>
   );
-  
+
   return (
     <nav className="navbar">
       <div className="logo-categories-container">
@@ -49,7 +51,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openModal: modal => dispatch(openModal(modal))
+  openModal: modal => dispatch(openModal(modal)),
+  demoLogin: user => dispatch(loginUser(user))
 });
 
 export default withRouter(connect(
