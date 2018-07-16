@@ -1,6 +1,7 @@
 import * as EventApiUtil from '../util/event_api_util';
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
+export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 
 export const receiveEvent = payload => {
@@ -8,6 +9,14 @@ export const receiveEvent = payload => {
     type: RECEIVE_EVENT,
     event: payload.event,
     tickets: payload.tickets
+  };
+};
+
+export const receiveEvents = payload => {
+  return {
+    type: RECEIVE_EVENTS,
+    events: payload.events,
+    performers: payload.performers
   };
 };
 
@@ -21,6 +30,14 @@ export const receiveEventErrors = errors => {
 export const requestEvent = eventId => dispatch => {
   return EventApiUtil.fetchEvent(eventId).then(
     payload => dispatch(receiveEvent(payload)),
+    errors => dispatch(receiveEventErrors(errors.responseJSON))
+  );
+};
+
+export const requestEvents = () => dispatch => {
+  debugger
+  return EventApiUtil.fetchEvents().then(
+    payload => dispatch(receiveEvents(payload)),
     errors => dispatch(receiveEventErrors(errors.responseJSON))
   );
 };
