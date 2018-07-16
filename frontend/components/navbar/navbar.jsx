@@ -9,7 +9,7 @@ import NavBarCategories from './navbar_categories';
 import UserDropdown from './user_dropdown';
 import EventInfo from '../events/event_info';
 
-const navBar = ({ currentUser, logout, openModal, location }) => {
+const navBar = ({ currentUser, openModal}) => {
   const logo = () => (
     <div className="logo">
       <Link to="/">
@@ -28,9 +28,10 @@ const navBar = ({ currentUser, logout, openModal, location }) => {
 
   const userShow = () => (
     <div className="user-dropdown-container">
-      <UserDropdown currentUser={currentUser} logout={logout}/>
+      <UserDropdown />
     </div>
   );
+  
   return (
     <nav className="navbar">
       <div className="logo-categories-container">
@@ -48,7 +49,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logoutUser()),
   openModal: modal => dispatch(openModal(modal))
 });
 

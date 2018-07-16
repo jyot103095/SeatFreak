@@ -21,3 +21,13 @@ export const updatePrice = (ticket) => {
     }
   });
 };
+
+export const fetchTickets = (userId) => {
+  return $.ajax({
+    method: "GET",
+    url: '/api/tickets',
+    data: {
+      user_id: userId
+    }
+  });
+};

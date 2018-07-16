@@ -1,7 +1,6 @@
 import React from 'react';
 import { requestEvent } from '../../actions/event_actions';
 import { connect } from 'react-redux';
-import { showSingleTicket, showAllTickets } from '../../actions/event_tickets_actions';
 import TicketIndexItem from './ticket_index_item';
 import TicketView from './ticket_view';
 
@@ -35,15 +34,12 @@ class EventTicketsIndex extends React.Component {
 
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
+  const tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
   return {
     event,
-    tickets: Object.values(state.entities.tickets),
+    tickets,
     content: state.ui.showingTicket
   };
 };
 
-const mDP = dispatch => ({
-  showingSingleTicket: ticketId => dispatch(showSingleTicket(ticketId))
-});
-
-export default connect(mSP, mDP)(EventTicketsIndex);
+export default connect(mSP)(EventTicketsIndex);

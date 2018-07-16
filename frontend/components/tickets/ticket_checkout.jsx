@@ -1,16 +1,29 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { buyTicket } from '../../actions/ticket_actions';
 
-const TicketCheckout = ({ticket, event, buyTicket}) => {
-  return (
-    <div>
-      <h1>{event.title}</h1>
-      <h2>{event.eventOn}</h2>
-      <h1>Section {ticket.section} Row {ticket.row}</h1>
-      <button onClick={() => buyTicket(ticket.id)}>Buy Ticket</button>
-    </div>
-  );
+class TicketCheckout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleBuy = this.handleBuy.bind(this);
+  }
+
+  handleBuy() {
+    this.props.buyTicket(this.props.ticket.id);
+    this.props.history.push("/account");
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.props.event.title}</h1>
+        <h2>{this.props.event.eventOn}</h2>
+        <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
+        <button onClick={this.handleBuy}>Buy Ticket</button>
+      </div>
+    );
+  }
 };
 
 const mSP = state => {
