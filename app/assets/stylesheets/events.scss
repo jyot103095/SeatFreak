@@ -1,6 +1,71 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.events-list a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.events-list a:hover h1 {
+  color: #2873e7;
+}
+
+.events-list {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 980px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+  width: 230px;
+  height: 212px;
+}
+
+.event-card-info h1 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25rem;
+  transition: 0.25s;
+  margin-top: 0.75rem;
+}
+
+.event-card-info h3 {
+  color: #6A6A6A;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.1875rem;
+}
+
+.event-card-artwork {
+  height: 10rem;
+  border: 1px solid #6A6A6A;
+  border-radius: 0.375rem;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.event-card-price {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 0.25rem;
+  padding: 2px 5px;
+}
+
 .event-tickets-header, .ticket-view-header {
   height: 60px;
   display: flex;

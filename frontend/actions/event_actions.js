@@ -35,7 +35,6 @@ export const requestEvent = eventId => dispatch => {
 };
 
 export const requestEvents = () => dispatch => {
-  debugger
   return EventApiUtil.fetchEvents().then(
     payload => dispatch(receiveEvents(payload)),
     errors => dispatch(receiveEventErrors(errors.responseJSON))

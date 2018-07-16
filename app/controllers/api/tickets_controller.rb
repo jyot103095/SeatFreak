@@ -2,7 +2,6 @@ class Api::TicketsController < ApplicationController
   before_action :ensure_logged_in, only: [:buy, :update]
 
   def buy
-    debugger
     @ticket = Ticket.find(params[:id])
 
     @ticket.user_id = current_user.id

@@ -11,9 +11,9 @@ class EventIndex extends React.Component {
   render() {
     const eventItems = this.props.events.map(event => <EventIndexItem key={event.id} event={event} />);
     return (
-      <ul>
+      <div className="events-list">
         {eventItems}
-      </ul>
+      </div>
     );
   }
 }

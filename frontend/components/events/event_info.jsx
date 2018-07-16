@@ -4,9 +4,7 @@ import { requestEvent } from '../../actions/event_actions';
 
 class EventInfo extends React.Component {
   componentDidMount() {
-    if (!this.props.event) {
-      this.props.requestEvent(this.props.match.params.eventId);
-    }
+    this.props.requestEvent(this.props.match.params.eventId);
   }
 
   componentDidUpdate(prevProps) {
