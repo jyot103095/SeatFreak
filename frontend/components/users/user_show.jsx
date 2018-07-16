@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import UserTicketsIndex from './user_tickets_index';
 
 class UserShow extends React.Component {
@@ -8,12 +9,7 @@ class UserShow extends React.Component {
     return (
       <div className="user-show-container" >
         <h1>{this.props.currentUser.fName} {this.props.currentUser.lName}</h1>
-        <div className="user-tickets-tab">
-          <h2>Tickets</h2>
-          <div className="user-tickets-list" >
-            <UserTicketsIndex userId={this.props.currentUser.id}/>
-          </div>
-        </div>
+        <Route path="/account/tickets" component={UserTicketsIndex} />
       </div>
     );
   }

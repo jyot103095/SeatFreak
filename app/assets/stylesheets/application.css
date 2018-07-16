@@ -28,11 +28,23 @@
 
 .navbar {
   width: 968px;
-  header: 60px;
+  height: 60px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.wider-navbar {
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wider-navbar .logo {
+  padding-left: 14px;
 }
 
 .logo-categories-container {
@@ -76,6 +88,10 @@
   transition: background-color 0.25s, color 0.25s;
 }
 
+.session-buttons button:last-of-type {
+  margin-right: 5px;
+}
+
 .session-buttons button:hover {
   background-color: white;
   color: #1673e6;
@@ -99,6 +115,11 @@
   align-items: center;
 }
 
+.categories a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .categories > li {
   padding: 20.5px 13px;
   color: white;
@@ -116,12 +137,12 @@
 }
 
 .event-info-container h3 {
-  font-weight: bold;
+  font-weight: 600px;
   font-size: 16px;
 }
 
 .event-info-container h5 {
-  font-size: 14px;
+  font-size: 12px;
   color: hsla(0,0%,100%,.7);
   transition: 0.25s;
 }

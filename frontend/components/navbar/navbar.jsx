@@ -9,7 +9,7 @@ import NavBarCategories from './navbar_categories';
 import UserDropdown from './user_dropdown';
 import EventInfo from '../events/event_info';
 
-const navBar = ({ currentUser, openModal, demoLogin }) => {
+const navBar = ({ currentUser, openModal, demoLogin, location }) => {
   const logo = () => (
     <div className="logo">
       <Link to="/">
