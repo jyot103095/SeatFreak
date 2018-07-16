@@ -11,7 +11,9 @@ const TicketIndexItem = ({ ticket, showTicket }) => {
           <span>Section {ticket.section} Row {ticket.row} </span>
         </div>
         <div className="checkout-link">
-          <Link to="/checkout" ticket={ticket} ><span>${ticket.price}<span className="per-each">/ea</span></span></Link>
+          <Link to="/checkout" ticket={ticket} >
+            <span>${ticket.price}<span className="per-each">/ea</span></span>
+          </Link>
         </div>
       </div>
     </div>

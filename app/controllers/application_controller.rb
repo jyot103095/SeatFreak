@@ -17,4 +17,10 @@ class ApplicationController < ActionController::Base
     current_user.reset_session_token!
     session[:session_token] = nil
   end
+
+  def ensure_logged_in
+    if !logged_in
+      render json: ["Must be signed in"], status: 422
+    end
+  end
 end

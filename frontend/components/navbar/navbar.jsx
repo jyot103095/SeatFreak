@@ -18,8 +18,6 @@ const navBar = ({ currentUser, logout, openModal, location }) => {
     </div>
   );
 
-  const loc = location.pathname.split("/");
-
   const sessionLinks = () => (
     <div className="session-buttons">
       <button onClick={() => openModal('signup')}>Sign Up</button>
