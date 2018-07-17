@@ -13,13 +13,8 @@
  *= require_tree .
  *= require_self
  */
- #root {
+#root {
   font-family: "Montserrat", sans-serif;
-}
-
-.app-header {
-  background: linear-gradient(135deg,#1673e6 50%,#01a1e7);
-  height: 315px;
 }
 
 .navbar-container {
@@ -113,22 +108,53 @@
   margin-left: 20px;
   list-style: none;
   align-items: center;
+  box-sizing: border-box;
 }
 
-.categories a {
+.sell-link {
   text-decoration: none;
   color: inherit;
+  display: block;
+  padding: 0 13px;
+  height: 60px;
+  line-height: 61px;
 }
 
 .categories > li {
-  padding: 20.5px 13px;
   color: white;
   font-size: 16px;
 }
 
 .categories > li:hover {
+  color: #1673e6;
+  border-bottom: 1px solid lightgray;
   background-color: white;
-  color: black;
+}
+
+.sports-dropdown-container, .music-dropdown-container {
+  padding: 0 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  position: relative;
+}
+
+.categories-list  {
+  background-color: white;
+  z-index: 100;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  border-radius: 0 0 4px 4px;
+}
+
+.categories-list a {
+  text-decoration: none;
+  color: inherit;
+  line-height: 40px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .event-info-container {
@@ -182,20 +208,18 @@
   justify-content: center;
 }
 
-.user-links {
+.user-links, .categories-list {
   width: 151px;
   position: absolute;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: opacity 0.25s;
-  transition-timing-function: ease-in-out;
   border-radius: 0 0 3px 3px;
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
 }
 
-.user-links > li {
+.user-links > li, .categories-list > li {
   width: 100%;
   height: 40px;
   text-align: center;
@@ -209,7 +233,7 @@
   vertical-align: middle;
 }
 
-.user-links > li:hover {
+.user-links > li:hover, .categories-list > li:hover {
   background-color: #1673e6;
   color: white;
   cursor: pointer;
@@ -218,6 +242,5 @@
 .main-content-container {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   align-items: center;
 }
