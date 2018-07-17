@@ -3,4 +3,10 @@ class Api::PerformersController < ApplicationController
     @performer = Performer.find(params[:id])
     render '/api/performers/show.json.jbuilder'
   end
+
+  def show_category
+    @performers = Performer.where(category: params[:category]).includes(:events)
+
+    render '/api/performers/index.json.jbuilder'
+  end
 end
