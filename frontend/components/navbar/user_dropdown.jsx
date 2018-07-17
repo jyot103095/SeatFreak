@@ -31,6 +31,9 @@ class UserDropdown extends React.Component {
     if (this.state.isOpen) {
       dropdown = () => (
         <ul className="user-links">
+          <li><Link to="/account/tickets"><span>Tickets</span></Link></li>
+          <li><Link to="/account/tracker"><span>Tracker</span></Link></li>
+          <li><Link to="/account/settings"><span>Account Settings</span></Link></li>
           <li onClick={this.handleLogout}><span>Logout</span></li>
         </ul>
       );
@@ -40,7 +43,7 @@ class UserDropdown extends React.Component {
 
     return (
       <div className="user-dropdown" onMouseEnter={this.handleOpen} onMouseLeave={this.handleClose}>
-        <Link to='/account' >
+        <Link to='/account/settings' >
           <div className="user-name">
             <h2>{this.props.currentUser.fName}</h2>
           </div>

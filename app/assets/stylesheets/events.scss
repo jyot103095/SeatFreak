@@ -84,7 +84,8 @@
 }
 
 .event-tickets-container {
-  overflow-y: scroll;
+  height: 779px;
+  overflow-y: auto;
 }
 
 .ticket-listing-container {
@@ -129,6 +130,9 @@
   line-height: 1.375em;
   border-radius: 0.625rem;
   font-weight: bold;
+  display: block;
+  width: 65px;
+  text-align: center;
 }
 
 .checkout-link a:hover {

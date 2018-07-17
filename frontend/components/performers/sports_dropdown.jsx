@@ -32,7 +32,7 @@ class SportsDropdown extends React.Component {
     ];
 
     const catLis = categories.map((cat, id) => {
-      return (<li key={id}><Link to={`/${cat}`} >{cat}</Link></li>);
+      return (<li key={id}><Link to={`/categories/${cat}`} >{cat}</Link></li>);
     });
 
     let dropdown;

@@ -7,6 +7,7 @@ import EventIndex from './events/event_index';
 import UserShow from './users/user_show';
 import TicketSell from './tickets/tickets_sell';
 import PerformersIndex from './performers/performers_index';
+import PerformerEventsIndex from './events/performer_events_index';
 import { Route, Link } from 'react-router-dom';
 
 const App = () => {
@@ -20,9 +21,10 @@ const App = () => {
         <Route exact path='/' component={EventIndex} />
         <Route path='/events/:eventId' component={EventTicketsIndex} />
         <Route path='/checkout' component={TicketCheckout} />
-        <Route path='/account' component={UserShow} />
+        <Route path='/account/settings' component={UserShow} />
         <Route path='/sell' component={TicketSell} />
-        <Route exact path='/:category' component={PerformersIndex} />
+        <Route exact path='/categories/:category' component={PerformersIndex} />
+        <Route path='/performers/:performerId' component={PerformerEventsIndex} />
       </div>
     </div>
   );

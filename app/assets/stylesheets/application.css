@@ -227,10 +227,9 @@
   transition: 0.25s;
 }
 
-.user-links > li > span {
+.user-links > li span {
   line-height: 40px;
   display: inline-block;
-  vertical-align: middle;
 }
 
 .user-links > li:hover, .categories-list > li:hover {
@@ -251,30 +250,36 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  height: 240px;
+  height: 200px;
   padding: 20px 0;
 }
 
 .main-content-splash-name {
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   font-weight: 700;
-  line-height: 51px;
+  line-height: 41px;
   width: 970px;
 }
 
 .main-content-route-info {
-  color: white;
+  color: rgba(255,255,255,0.7);
   width: 970px;
 }
 
 .main-content-route-info a {
   text-decoration: none;
   color: inherit;
+  transition: 0.25s;
+}
+
+.main-content-route-info a:hover {
+  color: white;
 }
 
 .main-content-splash-info {
-  height: 100px;
+  height: 75px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

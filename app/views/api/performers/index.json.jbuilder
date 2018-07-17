@@ -14,6 +14,7 @@ json.events do
       json.set! event.id do
         json.extract! event, :id, :title
         json.eventOn event.event_on.localtime.strftime("%a %b %e at %l:%M %p")
+        json.performers event.performer_ids
       end
     end
   end
