@@ -29,7 +29,9 @@ class MusicDropdown extends React.Component {
       "Alternative"
     ];
 
-    const catLis = categories.map((cat, id) => <li key={id}><Link to={`/${cat}`} >{cat}</Link></li>);
+    const catLis = categories.map((cat, id) => {
+      return (<li key={id}><Link to={`/${cat}`} >{cat}</Link></li>);
+    });
 
     let dropdown;
 

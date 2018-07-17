@@ -6,6 +6,7 @@ import TicketCheckout from './tickets/ticket_checkout';
 import EventIndex from './events/event_index';
 import UserShow from './users/user_show';
 import TicketSell from './tickets/tickets_sell';
+import PerformersIndex from './performers/performers_index';
 import { Route, Link } from 'react-router-dom';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/checkout' component={TicketCheckout} />
         <Route path='/account' component={UserShow} />
         <Route path='/sell' component={TicketSell} />
+        <Route exact path='/:category' component={PerformersIndex} />
       </div>
     </div>
   );

@@ -1,3 +1,50 @@
 // Place all the styles related to the Performers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.performers-index-container {
+  width: 100%;
+}
+
+.performer-category-title {
+  padding: 30px 0;
+  font-size: 20px;
+  line-height: 21px;
+  border-bottom: 1px solid #e5e5e5;
+  color: black;
+  font-weight: 400;
+}
+
+.category-performers-list {
+  width: 970px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.category-performers-list td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.category-performers-list tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+td.performer-list-id {
+  text-align: center;
+  width: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 0;
+  border-left: none;
+}
+
+.category-performer-item {
+  padding: 4px 0 4px 15px;
+  border-left: 1px solid #e6e6e6;
+}
+
+.category-performer-item a {
+  text-decoration: none;
+  color: #1673e6;
+}

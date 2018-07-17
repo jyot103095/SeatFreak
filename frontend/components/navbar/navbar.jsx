@@ -34,11 +34,18 @@ const navBar = ({ currentUser, openModal, demoLogin, location }) => {
     </div>
   );
 
+  let navbarDropdowns;
+  if (!location.pathname.includes("/events")) {
+    navbarDropdowns = () => (<NavBarCategories />);
+  } else {
+    navbarDropdowns = () => null;
+  }
+
   return (
     <nav className="navbar">
       <div className="logo-categories-container">
         { logo() }
-        { <Route exact path="/" component={NavBarCategories} /> }
+        { navbarDropdowns() }
         { <Route path='/events/:eventId' component={EventInfo} /> }
       </div>
       { currentUser.id ? userShow() : sessionLinks() }

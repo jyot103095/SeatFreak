@@ -23,7 +23,7 @@ beyonce = Performer.create(name: "Beyonce", classification: "Music", category: "
 maroon = Performer.create(name: "Maroon 5", classification: "Music", category: "Pop")
 onerep = Performer.create(name: "OneRepublic", classification: "Music", category: "Pop")
 hardwell = Performer.create(name: "Hardwell", classification: "Music", category: "Electronic")
-aoki = Performer.create(name: "aoki", classification: "Music", category: "Electronic")
+aoki = Performer.create(name: "Steve Aoki", classification: "Music", category: "Electronic")
 united = Performer.create(name: "Manchester United", classification: "Sports", category: "Soccer")
 city = Performer.create(name: "Manchester City", classification: "Sports", category: "Soccer")
 liverpool = Performer.create(name: "Liverpool", classification: "Sports", category: "Soccer")
@@ -52,7 +52,7 @@ concert2.performers = [maroon]
 concert3 = Event.create(title: "OneRepublic", event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night))
 concert3.performers = [onerep]
 
-concert4 = Event.create(title: "Jay-z with Beyonce", event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night))
+concert4 = Event.create(title: "Jay-Z with Beyonce", event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night))
 concert4.performers = [jayz, beyonce]
 
 nba1 = Event.create(title: "Thunder at Knicks", event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night))

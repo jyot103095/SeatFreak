@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import { requestEvent } from './actions/event_actions';
-import * as PerformerApiUtil from './util/performer_api_util';
+import { requestPerformer, requestPerformers } from './actions/performer_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -22,8 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  window.fetchPerformer = PerformerApiUtil.fetchPerformer;
-  window.fetchPerformers = PerformerApiUtil.fetchPerformers;
+  window.requestPerformer = requestPerformer;
+  window.requestPerformers = requestPerformers;
+  window.dispatch = store.dispatch;
 
   // window.dispatch = store.dispatch;
   // window.requestEvent = requestEvent;

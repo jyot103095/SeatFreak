@@ -27,11 +27,13 @@ class SportsDropdown extends React.Component {
       "Football",
       "Tennis",
       "NCAA Football",
-      "NCAA Basteball",
+      "NCAA Basketball",
       "NHL"
     ];
 
-    const catLis = categories.map((cat, id) => <li key={id}><Link to={`/${cat}`} >{cat}</Link></li>);
+    const catLis = categories.map((cat, id) => {
+      return (<li key={id}><Link to={`/${cat}`} >{cat}</Link></li>);
+    });
 
     let dropdown;
 
