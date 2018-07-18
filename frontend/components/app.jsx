@@ -4,7 +4,8 @@ import NavBar from './navbar/navbar';
 import EventTicketsIndex from './tickets/event_tickets_index';
 import TicketCheckout from './tickets/ticket_checkout';
 import EventIndex from './events/event_index';
-import UserShow from './users/user_show';
+import UserAccountSettings from './users/user_account_settings';
+import UserTicketsIndex from './users/user_tickets';
 import TicketSell from './tickets/tickets_sell';
 import PerformersIndex from './performers/performers_index';
 import PerformerEventsIndex from './events/performer_events_index';
@@ -21,7 +22,8 @@ const App = () => {
         <Route exact path='/' component={EventIndex} />
         <Route path='/events/:eventId' component={EventTicketsIndex} />
         <Route path='/checkout' component={TicketCheckout} />
-        <Route path='/account/settings' component={UserShow} />
+        <Route path='/account/settings' component={UserAccountSettings} />
+        <Route path='/account/tickets' component={UserTicketsIndex} />
         <Route path='/sell' component={TicketSell} />
         <Route exact path='/categories/:category' component={PerformersIndex} />
         <Route path='/performers/:performerId' component={PerformerEventsIndex} />

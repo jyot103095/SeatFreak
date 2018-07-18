@@ -13,7 +13,7 @@ json.events do
     performer.events.each do |event|
       json.set! event.id do
         json.extract! event, :id, :title
-        json.eventOn event.event_on.localtime.strftime("%a %b %e at %l:%M %p")
+        json.eventOn event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
         json.performers event.performer_ids
       end
     end

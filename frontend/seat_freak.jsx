@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import { requestPerformer, requestPerformers } from './actions/performer_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -21,12 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  window.requestPerformer = requestPerformer;
-  window.requestPerformers = requestPerformers;
-  window.dispatch = store.dispatch;
-
-  // window.dispatch = store.dispatch;
-  // window.requestEvent = requestEvent;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
 });

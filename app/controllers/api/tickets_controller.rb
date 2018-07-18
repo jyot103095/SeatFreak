@@ -2,8 +2,7 @@ class Api::TicketsController < ApplicationController
   before_action :ensure_logged_in, only: [:buy, :update]
 
   def index
-    @tickets = Ticket.where(user_id: params[:user_id]).includes(:event)
-
+    @tickets = Ticket.where(user_id: current_user.id).includes(event: :performers)
     render '/api/tickets/index.json.jbuilder'
   end
 

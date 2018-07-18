@@ -252,6 +252,7 @@
   justify-content: flex-end;
   height: 200px;
   padding: 20px 0;
+  box-sizing: border-box; 
 }
 
 .main-content-splash-name {
@@ -288,4 +289,9 @@
 .main-content-content {
   margin: 0 auto;
   width: 970px;
+}
+
+.active-tab {
+  border-bottom: 2px solid #191919;
+  color: black;
 }

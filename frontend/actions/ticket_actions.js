@@ -47,8 +47,8 @@ export const updatePrice = ticket => dispatch => {
   );
 };
 
-export const requestTickets = userId => dispatch => {
-  return TicketApiUtil.fetchTickets(userId).then(
+export const requestTickets = () => dispatch => {
+  return TicketApiUtil.fetchTickets().then(
     payload => dispatch(receiveTickets(payload)),
     errors => dispatch(receiveTicketErrors(errors.responseJSON))
   )

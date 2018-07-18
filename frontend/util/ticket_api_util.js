@@ -22,12 +22,9 @@ export const updatePrice = (ticket) => {
   });
 };
 
-export const fetchTickets = (userId) => {
+export const fetchTickets = () => {
   return $.ajax({
     method: "GET",
-    url: '/api/tickets',
-    data: {
-      user_id: userId
-    }
+    url: '/api/tickets'
   });
 };
