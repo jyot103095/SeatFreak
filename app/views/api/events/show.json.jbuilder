@@ -2,6 +2,7 @@ json.event do
   json.extract! @event, :id, :title
   json.eventOn @event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
   json.ticketIds @event.ticket_ids
+  json.performerIds @event.performer_ids
   json.venueId @event.venue_id
 end
 

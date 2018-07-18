@@ -1,4 +1,5 @@
 json.extract! @venue, :id, :name, :city, :address
+json.events @venue.event_ids
 
 json.events ({})
 json.events do
