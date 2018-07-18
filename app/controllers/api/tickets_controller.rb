@@ -19,8 +19,9 @@ class Api::TicketsController < ApplicationController
   end
 
   def sell
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find(params[:ticket][:id])
     @ticket.on_sale = true
+    @ticket.price = params[:ticket][:price]
 
     if @ticket.save
       render '/api/tickets/show.json.jbuilder'
@@ -30,7 +31,7 @@ class Api::TicketsController < ApplicationController
   end
 
   def update
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find(params[:ticket][:id])
 
     if @ticket.update(ticket_params)
       render '/api/tickets/show.json.jbuilder'

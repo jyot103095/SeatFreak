@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { openTicketModal } from '../../actions/modal_actions';
 import { requestTickets, sellTicket } from '../../actions/ticket_actions';
 
 class UserTicketsIndex extends React.Component {
@@ -9,6 +10,7 @@ class UserTicketsIndex extends React.Component {
       selected: 1
     }
     this.handleSell = this.handleSell.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -16,11 +18,14 @@ class UserTicketsIndex extends React.Component {
   }
 
   handleSell(ticketId) {
-    this.props.sellTicket(ticketId);
+    this.props.openTicketModal('ticketSell', ticketId);
+  }
+
+  handleUpdate(ticketId) {
+    this.props.openTicketModal('updatePrice', ticketId);
   }
 
   render() {
-
     let ticketsOnSale = this.props.ticketsOnSale.map(ticket => {
       const eventTitle = this.props.events[ticket.eventId].title;
       const eventOn = this.props.events[ticket.eventId].eventOn.split(" ");
@@ -39,7 +44,8 @@ class UserTicketsIndex extends React.Component {
             <p className="user-seat-info" >Section {ticket.section} Row {ticket.row}</p>
           </div>
           <div className="user-ticket-sell-button">
-            <button className="event-show-button" >Update Price</button>
+            <button onClick={() => this.handleUpdate(ticket.id)}
+              className="event-show-button" >Update Price</button>
           </div>
         </div>
       );
@@ -63,7 +69,8 @@ class UserTicketsIndex extends React.Component {
             <p className="user-seat-info" >Section {ticket.section} Row {ticket.row}</p>
           </div>
           <div className="user-ticket-sell-button">
-            <button onClick={() => this.handleSell(ticket.id)} className="event-show-button">Sell</button>
+            <button onClick={() => this.handleSell(ticket.id)}
+              className="event-show-button">Sell</button>
           </div>
         </div>
       );
@@ -140,7 +147,7 @@ const mSP = state => {
 const mDP = dispatch => {
   return {
     requestTickets: userId => dispatch(requestTickets(userId)),
-    sellTicket: ticketId => dispatch(sellTicket(ticketId))
+    openTicketModal: (modal, ticket) => dispatch(openTicketModal(modal, ticket))
   };
 };
 

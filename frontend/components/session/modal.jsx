@@ -3,8 +3,10 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
+import TicketSellContainer from '../tickets/ticket_sell_container';
+import TicketUpdateContainer from '../tickets/ticket_update_container';
 
-function Modal({modal, closeModal}) {
+function Modal({modal, ticket, closeModal}) {
   if (!modal) {
     return null;
   }
@@ -15,6 +17,12 @@ function Modal({modal, closeModal}) {
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'ticketSell':
+      component = <TicketSellContainer />;
+      break;
+    case 'updatePrice':
+      component = <TicketUpdateContainer />;
       break;
     default:
       return null;
@@ -31,7 +39,7 @@ function Modal({modal, closeModal}) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
   };
 };
 

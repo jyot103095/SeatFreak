@@ -5,10 +5,14 @@ export const buy = (ticketId) => {
   });
 };
 
-export const sell = (ticketId) => {
+export const sell = (ticket) => {
+  debugger
   return $.ajax({
     method: "PATCH",
-    url: `/api/tickets/${ticketId}/sell`
+    url: `/api/tickets/${ticket.id}/sell`,
+    data: {
+      ticket
+    }
   });
 };
 

@@ -103,7 +103,9 @@
 }
 
 .ticket-listing-container:hover {
-  background-color: #c9e5ff;
+  border-radius: 0.75rem;
+  background-color: #ecf3fd;
+  box-shadow: 0 8px 16px 0 rgba(15,15,15,0.12);
   cursor: pointer;
 }
 

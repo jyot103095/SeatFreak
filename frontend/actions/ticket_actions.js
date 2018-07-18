@@ -33,8 +33,9 @@ export const buyTicket = ticketId => dispatch => {
   );
 };
 
-export const sellTicket = ticketId => dispatch => {
-  return TicketApiUtil.sell(ticketId).then(
+export const sellTicket = ticket => dispatch => {
+  debugger
+  return TicketApiUtil.sell(ticket).then(
     ticket => dispatch(receiveTicket(ticket)),
     errors => dispatch(receiveTicketErrors(errors.responseJSON))
   );
@@ -50,6 +51,6 @@ export const updatePrice = ticket => dispatch => {
 export const requestTickets = () => dispatch => {
   return TicketApiUtil.fetchTickets().then(
     payload => dispatch(receiveTickets(payload)),
-    errors => dispatch(receiveTicketErrors(errors.responseJSON))
+    errors => dispatch(receiveTicketErrors(errors.responseJSON)),
   )
 }
