@@ -7,6 +7,7 @@
 #  updated_at :datetime         not null
 #  title      :string           not null
 #  event_on   :datetime         not null
+#  venue_id   :integer          not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

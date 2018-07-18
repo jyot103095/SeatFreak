@@ -7,10 +7,13 @@
 #  updated_at :datetime         not null
 #  title      :string           not null
 #  event_on   :datetime         not null
+#  venue_id   :integer          not null
 #
 
 class Event < ApplicationRecord
-  validates :title, :event_on, presence: true
+  validates :title, :venue_id, :event_on, presence: true
+
+  belongs_to :venue
 
   has_many :tickets
 

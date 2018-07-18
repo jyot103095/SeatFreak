@@ -6,7 +6,7 @@ class Api::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.includes(:performers, :tickets)
+    @events = Event.all.includes(:performers, :tickets, :venues)
 
     render '/api/events/index.json.jbuilder'
   end

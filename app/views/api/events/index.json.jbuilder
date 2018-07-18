@@ -4,6 +4,15 @@ json.events do
       json.extract! event, :id, :title
       json.eventOn event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
       json.performers event.performer_ids
+      json.venueId event.venue.id
+    end
+  end
+end
+
+json.venues do
+  @events.each do |event|
+    json.set! event.venue.id do
+      json.extract! event.venue, :id, :name, :city, :address
     end
   end
 end

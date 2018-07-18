@@ -15,8 +15,18 @@ json.events do
   @tickets.each do |ticket|
     json.set! ticket.event.id do
       json.extract! ticket.event, :id, :title
+      json.venueId ticket.venue.id
       json.eventOn ticket.event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
       json.performers ticket.event.performer_ids
+    end
+  end
+end
+
+json.venues ({})
+json.venues do
+  @tickets.each do |ticket|
+    json.set! ticket.event.venue.id do
+      json.extract! ticket.event.venue, :id, :name, :city, :address
     end
   end
 end
