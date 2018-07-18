@@ -4,7 +4,7 @@ import {
   requestPerformer
 } from '../../actions/performer_actions';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-import PerformerEventsIndexItem from './performer_events_index_item';
+import EventsListItem from './events_list_item';
 
 class PerformerEventsIndex extends React.Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ class PerformerEventsIndex extends React.Component {
       return (
         <li className="performer-event-list-item" key={event.id}>
           <Link to={`/events/${event.id}`} >
-            <PerformerEventsIndexItem event={event} />
+            <EventsListItem event={event} />
           </Link>
         </li>
       );

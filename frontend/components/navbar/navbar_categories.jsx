@@ -8,6 +8,7 @@ const NavBarCategories = () => (
   <ul className="categories">
     <li><SportsDropdown /></li>
     <li><MusicDropdown /></li>
+    <li><Link className="sell-link" to="/venues">Venues</Link></li>
     <li><Link className="sell-link" to="/sell">Sell</Link></li>
   </ul>
 );

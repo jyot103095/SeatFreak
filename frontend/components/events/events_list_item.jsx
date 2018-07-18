@@ -1,14 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class PerformerEventsIndexItem extends React.Component {
+class EventsListItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    this.props.history.push(`/events/${this.props.event.id}`)
+    this.props.history.push(`/events/${this.props.event.id}`);
   }
 
   render() {
@@ -34,4 +34,4 @@ class PerformerEventsIndexItem extends React.Component {
   }
 };
 
-export default withRouter(PerformerEventsIndexItem);
+export default withRouter(EventsListItem);

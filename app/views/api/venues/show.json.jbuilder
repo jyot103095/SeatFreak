@@ -1,5 +1,7 @@
-json.extract! @venue, :id, :name, :city, :address
-json.events @venue.event_ids
+json.venue do
+  json.extract! @venue, :id, :name, :city, :address
+  json.events @venue.event_ids
+end
 
 json.events ({})
 json.events do
@@ -8,6 +10,7 @@ json.events do
       json.extract! event, :id, :title
       json.eventOn event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
       json.ticketIds event.ticket_ids
+      json.performers event.performer_ids
       json.venueId event.venue_id
     end
   end

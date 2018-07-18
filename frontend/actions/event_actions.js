@@ -25,7 +25,7 @@ export const receiveEventErrors = errors => {
     type: RECEIVE_EVENT_ERRORS,
     errors
   };
-}
+};
 
 export const requestEvent = eventId => dispatch => {
   return EventApiUtil.fetchEvent(eventId).then(

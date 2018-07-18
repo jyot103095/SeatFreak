@@ -4,3 +4,10 @@ export const fetchVenue = venueId => {
     url: `/api/venues/${venueId}`
   });
 };
+
+export const fetchVenues = () => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/venues`
+  });
+};

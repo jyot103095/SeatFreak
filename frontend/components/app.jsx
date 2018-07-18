@@ -9,6 +9,8 @@ import UserTicketsIndex from './users/user_tickets';
 import TicketSell from './tickets/tickets_sell';
 import PerformersIndex from './performers/performers_index';
 import PerformerEventsIndex from './events/performer_events_index';
+import VenuesIndex from './venues/venues_index';
+import VenueEventsIndex from './events/venue_events_index';
 import { Route, Link } from 'react-router-dom';
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
         <Route path='/sell' component={TicketSell} />
         <Route exact path='/categories/:category' component={PerformersIndex} />
         <Route path='/performers/:performerId' component={PerformerEventsIndex} />
+        <Route exact path='/venues' component={VenuesIndex} />
+        <Route path='/venues/:venueId' component={VenueEventsIndex} />
       </div>
     </div>
   );

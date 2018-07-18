@@ -1,0 +1,70 @@
+.venues-index-container {
+  width: 100%;
+}
+
+.venue-category-title {
+  padding: 30px 0;
+  font-size: 20px;
+  line-height: 21px;
+  border-bottom: 1px solid #e5e5e5;
+  color: black;
+  font-weight: 400;
+}
+
+.venue-event-list-item {
+  padding: 0 20px;
+  border-radius: 0.75rem;
+}
+
+.venue-event-list-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(15,15,15,0.12);
+  cursor: pointer;
+}
+
+.venue-event-list-item:hover .venue-event-date,
+.venue-event-list-item:hover .venue-event-info {
+  color: #1673E6;
+}
+
+.venues-index-title {
+  padding: 30px 0;
+  font-size: 20px;
+  line-height: 21px;
+  border-bottom: 1px solid #e5e5e5;
+  color: black;
+  font-weight: 400;
+}
+
+.venues-list {
+  width: 970px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.venues-list td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.venues-list tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+td.venue-list-id {
+  text-align: center;
+  width: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  padding-right: 0;
+  border-left: none;
+}
+
+.venue-list-item {
+  padding: 4px 0 4px 15px;
+  border-left: 1px solid #e6e6e6;
+}
+
+.venue-list-item a {
+  text-decoration: none;
+  color: #1673e6;
+}

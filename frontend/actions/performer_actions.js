@@ -12,11 +12,10 @@ export const receivePerformer = payload => {
   }
 }
 
-export const receivePerformers = payload => {
+export const receivePerformers = performers => {
   return {
     type: RECEIVE_PERFORMERS,
-    performers: payload.performers,
-    events: payload.events
+    performers
   };
 };
 
@@ -29,7 +28,7 @@ export const requestPerformer = performerId => dispatch => {
 
 export const requestPerformers = category => dispatch =>  {
   return PerformerApiUtil.fetchPerformers(category).then(
-    payload => dispatch(receivePerformers(payload)),
+    performers => dispatch(receivePerformers(performers)),
     errors => dispatch(receivePerformerErrors(errors.responseJSON))
   );
 };
