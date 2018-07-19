@@ -134,6 +134,14 @@ User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Na
 User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
 User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
 User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
 
 2000.times do |n|
   user_id = User.ids.sample

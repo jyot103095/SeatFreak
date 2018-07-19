@@ -71,6 +71,24 @@ td.performer-list-id {
   padding: 16px 0;
 }
 
+.performer-event-item-event-on, .performer-event-info, .performer-event-button {
+  width: 33%;
+  display: flex;
+}
+
+.performer-event-info {
+  justify-content: center;
+}
+
+.performer-event-item-event-on {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.performer-event-button {
+  justify-content: flex-end;
+}
+
 .performer-event-date, .performer-event-info {
   font-weight: 500;
 }

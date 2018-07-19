@@ -8,6 +8,7 @@ import { Route, withRouter } from 'react-router-dom';
 import NavBarCategories from './navbar_categories';
 import UserDropdown from './user_dropdown';
 import EventInfo from '../events/event_info';
+import NavbarSearchBox from './navbar_search';
 
 const navBar = ({ currentUser, openModal, demoLogin, location }) => {
   const logo = () => (
@@ -41,14 +42,24 @@ const navBar = ({ currentUser, openModal, demoLogin, location }) => {
     navbarDropdowns = () => null;
   }
 
+  let navbarSearch;
+  if (location.pathname !== "/") {
+    navbarSearch = () => (<NavbarSearchBox />);
+  } else {
+    navbarSearch = () => null;
+  }
+
   return (
     <nav className="navbar">
-      <div className="logo-categories-container">
+      <div className="navbar-left">
         { logo() }
         { navbarDropdowns() }
         { <Route path='/events/:eventId' component={EventInfo} /> }
+        { navbarSearch() }
       </div>
-      { currentUser.id ? userShow() : sessionLinks() }
+      <div className="navbar-right">
+        { currentUser.id ? userShow() : sessionLinks() }
+      </div>
     </nav>
   );
 };

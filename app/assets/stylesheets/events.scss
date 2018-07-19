@@ -23,9 +23,9 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  overflow-x: scroll;
+  overflow: hidden;
   width: 980px;
-  padding: 15px;
+  padding: 15px 10px;
 }
 
 .item-card {
@@ -201,4 +201,46 @@
   line-height: 1.375em;
   border-radius: 0.625rem;
   font-weight: bold;
+}
+
+.search-box-container-main-page {
+  height: 60px;
+  width: 970px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 11px;
+}
+
+.search-box-container-main-page input {
+  display: block;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-box-container-main-page input[type="text"] {
+  line-height: 21px;
+  font-size: 20px;
+  padding: 10px;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: none;
+  width: 600px;
+  background-color: transparent;
+}
+
+.search-box-container-main-page input[type="submit"] {
+  border: 1px solid #1673e6;
+  background: #0670e9;
+  color: white;
+  height: 38px;
+  width: 105px;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 600;
 }

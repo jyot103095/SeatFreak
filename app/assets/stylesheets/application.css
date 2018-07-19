@@ -15,10 +15,11 @@
  */
 #root {
   font-family: "Montserrat", sans-serif;
+  position: relative;
 }
 
 .navbar-container {
-  background: #1673e6;
+  background: transparent;
 }
 
 .navbar {
@@ -28,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
 }
 
 .wider-navbar {
@@ -42,11 +44,18 @@
   padding-left: 14px;
 }
 
-.logo-categories-container {
+.navbar-left, .navbar-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 60px;
+}
+
+.navbar-left {
+  justify-content: flex-start;
+}
+
+.navbar-right {
+  justify-content: center;
 }
 
 .logo a {
@@ -66,7 +75,7 @@
 .session-buttons button {
   width: 80px;
   height: 40px;
-  margin: 10px 0 10px 12px;
+  margin: 10px 0 10px 5px;
   border-radius: 0.5em;
 }
 
@@ -81,10 +90,6 @@
   color: white;
   padding: 5px;
   transition: background-color 0.25s, color 0.25s;
-}
-
-.session-buttons button:last-of-type {
-  margin-right: 5px;
 }
 
 .session-buttons button:hover {
@@ -105,10 +110,11 @@
 
 .categories {
   display: flex;
-  margin-left: 20px;
+  margin-left: 5px;
   list-style: none;
   align-items: center;
   box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 .sell-link {
@@ -122,7 +128,8 @@
 
 .categories > li {
   color: white;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .categories > li:hover {
@@ -152,6 +159,7 @@
 .categories-list a {
   text-decoration: none;
   color: inherit;
+  font-weight: 400;
   line-height: 40px;
   display: inline-block;
   vertical-align: middle;
@@ -189,8 +197,8 @@
 
 .user-dropdown:hover {
   background-color: white;
-  color: #1673e6;
   transition: background-color .25s ease-in-out;
+  color: #1673e6;
 }
 
 .user-dropdown a {
@@ -219,6 +227,10 @@
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
 }
 
+.categories-list {
+  border: 1px solid #e5e5e5;
+}
+
 .user-links > li, .categories-list > li {
   width: 100%;
   height: 40px;
@@ -239,20 +251,35 @@
 }
 
 .main-content-container {
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  z-index: -1;
 }
 
 .main-content-splash {
-  background-image: linear-gradient(135deg,#1673e6 30%,#01a1e7);
+  background-image: linear-gradient(135deg,#1673e6 50%,#01a1e7);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   height: 200px;
-  padding: 20px 0;
-  box-sizing: border-box; 
+  padding-top: 60px;
+}
+
+header.main-page {
+  justify-content: center;
+  box-sizing: border-box;
+  height: 375px;
+}
+
+header.main-page h1 {
+  text-align: center;
+  color: #ecf3f7;
+  font-weight: 800;
 }
 
 .main-content-splash-name {
@@ -261,11 +288,13 @@
   font-weight: 700;
   line-height: 41px;
   width: 970px;
+  padding-bottom: 15px;
 }
 
 .main-content-route-info {
   color: rgba(255,255,255,0.7);
   width: 970px;
+  margin-bottom: 10px;
 }
 
 .main-content-route-info a {
@@ -279,11 +308,11 @@
 }
 
 .main-content-splash-info {
-  height: 75px;
+  height: 100px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .main-content-content {
@@ -294,4 +323,46 @@
 .active-tab {
   border-bottom: 2px solid #191919;
   color: black;
+}
+
+.search-box-container-navbar {
+  width: 200px;
+  background-color: inherit;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.search-box-container-navbar:hover input {
+  background-color: white;
+  outline: none;
+}
+
+.search-box-container-navbar input {
+  display: block;
+  font-family: inherit;
+  background-color: hsla(0,0%,6%,.1);
+  transition-timing-function: ease;
+  transition: .25s ease;
+}
+
+.search-box-container-navbar input::placeholder {
+  color: #fff;
+  transition: .25s;
+}
+
+.search-box-container-navbar:hover input::placeholder {
+  color: gray;
+}
+
+.search-box-container-navbar input[type="text"] {
+  line-height: 17px;
+  font-size: 14px;
+  padding: 10px;
+  color: #333;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: none;
+  width: 250px;
+  border-radius: 5px;
+  /* background-color: transparent; */
 }

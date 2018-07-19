@@ -16,10 +16,16 @@ class EventIndex extends React.Component {
     const venueItems = this.props.venues.map(venue => <VenueCard key={venue.id} venue={venue} />);
     return (
       <div className="events-index-container">
-        <header className="main-content-splash">
+        <header className="main-content-splash main-page">
           <div className="main-content-splash-info">
-            <h1 className="main-content-splash-name">Should be a Search Bar</h1>
+            <h1 className="main-content-splash-name">Thousands of Tickets in One Place.</h1>
           </div>
+          <form className="search-form-main-page">
+            <div className="search-box-container-main-page">
+              <input type="text" placeholder="Search by team, artist, event, or venue"></input>
+              <input type="submit" value="Search"></input>
+            </div>
+          </form>
         </header>
         <div className="main-content-content">
           <div className="events-list" >
