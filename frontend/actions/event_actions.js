@@ -16,7 +16,8 @@ export const receiveEvents = payload => {
   return {
     type: RECEIVE_EVENTS,
     events: payload.events,
-    performers: payload.performers
+    performers: payload.performers,
+    venues: payload.venues
   };
 };
 

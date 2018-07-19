@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const EventIndexItem = ({event}) => {
+const EventCard = ({event}) => {
   let title;
   if (event.title.length > 26) {
     title = event.title.slice(0, 26) + "...";
@@ -11,13 +11,13 @@ const EventIndexItem = ({event}) => {
 
   return (
     <Link to={`/events/${event.id}`}>
-      <div className="event-card" >
-        <div className="event-card-artwork" >
-          <div className="event-card-price">
+      <div className="item-card" >
+        <div className="item-card-artwork" >
+          <div className="item-card-price">
             $105+
           </div>
         </div>
-        <div className="event-card-info" >
+        <div className="item-card-info" >
           <h1>{title}</h1>
           <h3>{event.eventOn}</h3>
         </div>
@@ -26,4 +26,4 @@ const EventIndexItem = ({event}) => {
   );
 };
 
-export default EventIndexItem;
+export default EventCard;
