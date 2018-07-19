@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :performers, only: [:show]
     resources :venues, only: [:index, :show]
     resources :events, only: [:index, :show]
+    resources :search, only: [:index]
   end
 
   patch '/api/tickets/:id/buy', to: 'api/tickets#buy'

@@ -22,9 +22,7 @@ const navBar = ({ currentUser, openModal, demoLogin, location }) => {
   const sessionLinks = () => (
     <div className="session-buttons">
       <button onClick={() => openModal('signup')}>Sign Up</button>
-        &nbsp;
       <button onClick={() => openModal('login')}>Log In</button>
-        &nbsp;
       <button onClick={() => demoLogin({ email: "hunter2@gmail.com", password: "hunter2" })}>Demo</button>
     </div>
   );
@@ -53,9 +51,9 @@ const navBar = ({ currentUser, openModal, demoLogin, location }) => {
     <nav className="navbar">
       <div className="navbar-left">
         { logo() }
+        { navbarSearch() }
         { navbarDropdowns() }
         { <Route path='/events/:eventId' component={EventInfo} /> }
-        { navbarSearch() }
       </div>
       <div className="navbar-right">
         { currentUser.id ? userShow() : sessionLinks() }

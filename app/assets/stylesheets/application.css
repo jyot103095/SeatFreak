@@ -23,7 +23,7 @@
 }
 
 .navbar {
-  width: 968px;
+  width: 1000px;
   height: 60px;
   margin: 0 auto;
   display: flex;
@@ -326,10 +326,11 @@ header.main-page h1 {
 }
 
 .search-box-container-navbar {
-  width: 200px;
+  width: 275px;
   background-color: inherit;
   border-radius: 6px;
   padding: 5px;
+  margin-left: 10px;
 }
 
 .search-box-container-navbar:hover input {
@@ -356,13 +357,14 @@ header.main-page h1 {
 
 .search-box-container-navbar input[type="text"] {
   line-height: 17px;
-  font-size: 14px;
+  font-size: 12px;
   padding: 10px;
   color: #333;
   text-overflow: ellipsis;
   overflow: hidden;
   border: none;
-  width: 250px;
+  width: 275px;
   border-radius: 5px;
+  box-sizing: border-box;
   /* background-color: transparent; */
 }

@@ -12,6 +12,8 @@
 
 class Event < ApplicationRecord
   validates :title, :venue_id, :event_on, presence: true
+  include PgSearch
+  multisearchable :against => [:title]
 
   belongs_to :venue
 

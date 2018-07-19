@@ -14,6 +14,8 @@
 class Performer < ApplicationRecord
   validates :name, :classification, :category, presence: true
   validates :classification, inclusion: { in: %w(Sports Music) }
+  include PgSearch
+  multisearchable :against => [:name]
 
   has_many :event_performers
 

@@ -15,6 +15,9 @@
 
 class Venue < ApplicationRecord
   validates :name, :city, :address, presence: true
+  include PgSearch
+  multisearchable :against => [:name]
+
 
   has_many :events
 

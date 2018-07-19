@@ -5,7 +5,7 @@ class Api::PerformersController < ApplicationController
   end
 
   def show_category
-    @performers = Performer.where(category: params[:category])
+    @performers = Performer.where(category: params[:category]).includes(:events)
     render '/api/performers/index.json.jbuilder'
   end
 end

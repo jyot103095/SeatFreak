@@ -33,7 +33,7 @@ arsenal = Performer.create(name: "Arsenal", classification: "Sports", category: 
 chelsea = Performer.create(name: "Chelsea", classification: "Sports", category: "Soccer")
 tottenham = Performer.create(name: "Tottenham Hotspur", classification: "Sports", category: "Soccer")
 madrid = Performer.create(name: "Real Madrid", classification: "Sports", category: "Soccer")
-barca = Performer.create(name: "Barca", classification: "Sports", category: "Soccer")
+barca = Performer.create(name: "Barcelona", classification: "Sports", category: "Soccer")
 
 lakers = Performer.create(name: "Los Angeles Lakers", classification: "Sports", category: "Basketball")
 thunder = Performer.create(name: "Oklahoma City Thunder", classification: "Sports", category: "Basketball")
