@@ -23,12 +23,7 @@ class SportsDropdown extends React.Component {
     const categories = [
       "Basketball",
       "Soccer",
-      "Baseball",
-      "Football",
-      "Tennis",
-      "NCAA Football",
-      "NCAA Basketball",
-      "NHL"
+      "Football"
     ];
 
     const catLis = categories.map((cat, id) => {

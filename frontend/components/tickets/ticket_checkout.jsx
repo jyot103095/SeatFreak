@@ -15,11 +15,14 @@ class TicketCheckout extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.event.title}</h1>
-        <h2>{this.props.event.eventOn}</h2>
-        <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
-        <button onClick={this.handleBuy}>Buy Ticket</button>
+      <div className="event-tickets-wrapper">
+        <div className="navbar-compensator"></div>
+        <div className="checkout-container">
+          <h1>{this.props.event.title}</h1>
+          <h2>{this.props.event.eventOn}</h2>
+          <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
+          <button onClick={this.handleBuy}>Buy Ticket</button>
+        </div>
       </div>
     );
   }

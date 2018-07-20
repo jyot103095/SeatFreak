@@ -83,22 +83,34 @@ class UserTicketsIndex extends React.Component {
           <h1>Upcoming Tickets</h1>
           <div className="user-tickets-list-not-onsale">
             <h2>Events You're Going To</h2>
-            <div className="user-tickets-list" >
-              {ticketsNotOnSale}
-            </div>
+            { ticketsNotOnSale.length > 0 ?
+              <div className="user-tickets-list" >
+                {ticketsNotOnSale}
+              </div> :
+              <div className="empty-tickets-container">
+                <h2>No tickets to display</h2>
+              </div>
+            }
           </div>
           <div className="user-tickets-list-onsale">
             <h2>Tickets on Sale </h2>
-            <div className="user-tickets-list" >
-              {ticketsOnSale}
-            </div>
+            { ticketsOnSale.length > 0 ?
+              <div className="user-tickets-list" >
+                {ticketsOnSale}
+              </div> :
+              <div className="empty-tickets-container">
+                <h2>No tickets to display</h2>
+              </div>
+            }
           </div>
         </div>
-      );
+      )
     } else if (this.state.selected === 2) {
       tab = () => (
         <div className="expired-tickets-list selected-tab">
-
+          <div className="empty-tickets-container">
+            <h2>No tickets to display</h2>
+          </div>
         </div>
       );
     }

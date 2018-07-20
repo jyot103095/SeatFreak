@@ -14,7 +14,7 @@ const EventCard = ({event}) => {
       <div className="item-card" >
         <div className="item-card-artwork" >
           <div className="item-card-price">
-            $105+
+            See Tickets
           </div>
         </div>
         <div className="item-card-info" >

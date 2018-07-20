@@ -22,11 +22,8 @@ class MusicDropdown extends React.Component {
   render() {
     const categories = [
       "Hip-Hop",
-      "Rock",
       "Pop",
-      "Country",
-      "Electronic",
-      "Alternative"
+      "Electronic"
     ];
 
     const catLis = categories.map((cat, id) => {

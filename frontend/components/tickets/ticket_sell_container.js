@@ -4,8 +4,11 @@ import { closeModal } from '../../actions/modal_actions';
 import SellForm from './_sell_form';
 
 const mSP = state => {
+  const ticket = state.entities.tickets[state.ui.sellingTicket];
+  const event = state.entities.events[ticket.eventId];
   return {
-    ticket: state.entities.tickets[state.ui.sellingTicket],
+    ticket,
+    event,
     formType: "Sell"
   };
 };

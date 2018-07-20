@@ -57,9 +57,11 @@ const mSP = (state, ownProps) => {
   const performerId = Number(ownProps.match.params.performerId);
   const performer = state.entities.performers[performerId];
   const events = Object.values(state.entities.events).filter(event => event.performers.includes(performerId));
+  const venues = events.map(event => state.entities.venues[event.venueId]);
   return {
     performer,
-    events
+    events,
+    venues
   };
 };
 

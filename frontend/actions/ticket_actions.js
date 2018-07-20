@@ -34,7 +34,6 @@ export const buyTicket = ticketId => dispatch => {
 };
 
 export const sellTicket = ticket => dispatch => {
-  debugger
   return TicketApiUtil.sell(ticket).then(
     ticket => dispatch(receiveTicket(ticket)),
     errors => dispatch(receiveTicketErrors(errors.responseJSON))

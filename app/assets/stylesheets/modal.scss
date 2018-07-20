@@ -128,3 +128,97 @@ button:hover {
   background-color: white;
   color: #1673e6;
 }
+
+.sell-form {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sell-form-title {
+  text-align: center;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.sell-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  width: 300px;
+  padding: 10px;
+}
+
+.ticket-event-info {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 5px;
+}
+
+.ticket-event-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1673E6;
+}
+
+.ticket-event-eventon {
+  color: #515254;
+  font-size: 14px;
+}
+
+.sell-ticket-info {
+  font-size: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sell-price-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.sell-price-input-wrapper p {
+  font-weight: 600;
+  color: #515254;
+}
+
+.sell-price-input-wrapper input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  margin-left: 5px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  width: 65%;
+}
+
+.sell-form input[type="submit"] {
+  margin-top: 10px;
+  -webkit-appearance: none;
+  display: block;
+  padding: 10px 0;
+  background-color: #5caf0b;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+}
+
+.sell-form input[type="submit"]:hover {
+  cursor: pointer;
+}

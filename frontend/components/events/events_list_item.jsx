@@ -27,7 +27,7 @@ class EventsListItem extends React.Component {
           <p className="performer-event-title">{this.props.event.title}</p>
         </div>
         <div className="performer-event-button">
-          <button className="event-show-button" onClick={this.handleClick}>From $105</button>
+          <button className="event-show-button" onClick={this.handleClick}>See Tickets</button>
         </div>
       </div>
     );

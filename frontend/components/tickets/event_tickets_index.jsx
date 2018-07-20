@@ -17,13 +17,21 @@ class EventTicketsIndex extends React.Component {
       });
 
       return (
-        <div className="event-tickets-container">
-          <div className="event-tickets-header">
-            <h4>Amazing Deals</h4>
+        <div className="event-tickets-wrapper">
+          <div className="navbar-compensator"></div>
+          <div className="event-tickets-container">
+            <div className="event-tickets-header">
+              <h4>Amazing Deals</h4>
+            </div>
+            { ticketItems.length > 0 ?
+              <ul className="tickets-list">
+                {ticketItems}
+              </ul> :
+              <div className="empty-tickets-container">
+                <h2>No tickets currently on sale for this event</h2>
+              </div>
+            }
           </div>
-          <ul className="tickets-list">
-            {ticketItems}
-          </ul>
         </div>
       );
     } else {

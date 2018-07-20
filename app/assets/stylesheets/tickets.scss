@@ -42,3 +42,25 @@
   background: #0b62cd;
   border: 1px solid #0b62cd;
 }
+
+.checkout-container {
+  width: 970px;
+  margin: 0 auto;
+}
+
+.empty-tickets-container {
+  margin-top: 10px;
+  height: 75px;
+  width: 100%;
+  background-color: lightgray;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-tickets-container h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: darkgray;
+}

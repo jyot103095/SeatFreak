@@ -14,7 +14,7 @@ import VenueEventsIndex from './events/venue_events_index';
 import { ProtectedRoute } from '../util/route_util';
 import { Route, Link } from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
   return(
     <div className="app">
       <Modal />
