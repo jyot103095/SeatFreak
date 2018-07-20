@@ -211,9 +211,13 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.15);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
   padding: 11px;
+}
+
+.search-box-container-main-page i {
+  margin-left: 15px;
+  color: #2873e7;
 }
 
 .search-box-container-main-page input {
@@ -230,8 +234,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
   border: none;
-  width: 600px;
+  width: 750px;
   background-color: transparent;
+  margin: 0 15px;
 }
 
 .search-box-container-main-page input[type="submit"] {
@@ -243,4 +248,5 @@
   text-align: center;
   border-radius: 6px;
   font-weight: 600;
+  margin-left: 50px;
 }

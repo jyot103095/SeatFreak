@@ -1,7 +1,6 @@
 json.events ({})
 json.events do
-  @events.each do |pg_event|
-    event = pg_event.searchable
+  @events.each do |event|
     json.set! event.id do
       json.extract! event, :id, :title
       json.eventOn event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
@@ -11,20 +10,18 @@ end
 
 json.performers ({})
 json.performers do
-  @performers.each do |pg_performer|
-    performer = pg_performer.searchable
+  @performers.each do |performer|
     json.set! performer.id do
-      json.extract! performer, :id, :name
+      json.extract! performer, :id, :name, :category, :classification
     end
   end
 end
 
 json.venues ({})
 json.venues do
-  @venues.each do |pg_venue|
-    venue = pg_venue.searchable
+  @venues.each do |venue|
     json.set! venue.id do
-      json.extract! venue, :id, :name
+      json.extract! venue, :id, :name, :city, :address
     end
   end
 end

@@ -22,4 +22,6 @@ class Performer < ApplicationRecord
   has_many :events,
     through: :event_performers,
     source: :event
+
+  has_one_attached :photo
 end

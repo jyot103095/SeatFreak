@@ -326,22 +326,38 @@ header.main-page h1 {
 }
 
 .search-box-container-navbar {
-  width: 275px;
+  width: 300px;
   background-color: inherit;
   border-radius: 6px;
-  padding: 5px;
+  padding: 2px 5px;
   margin-left: 10px;
+  background-color: hsla(0,0%,6%,.1);
+  display: flex;
+  align-items: center;
+}
+
+.search-box-container-navbar i {
+  color: #fff;
+  margin-left: 5px;
+  transition: 0.25s;
+}
+
+.search-box-container-navbar:hover i {
+  color: #2873e7;
+}
+
+.search-box-container-navbar:hover {
+  background-color: white;
 }
 
 .search-box-container-navbar:hover input {
-  background-color: white;
   outline: none;
 }
 
 .search-box-container-navbar input {
   display: block;
+  background-color: transparent;
   font-family: inherit;
-  background-color: hsla(0,0%,6%,.1);
   transition-timing-function: ease;
   transition: .25s ease;
 }
@@ -357,13 +373,13 @@ header.main-page h1 {
 
 .search-box-container-navbar input[type="text"] {
   line-height: 17px;
-  font-size: 12px;
+  font-size: 14px;
   padding: 10px;
   color: #333;
   text-overflow: ellipsis;
   overflow: hidden;
   border: none;
-  width: 275px;
+  width: 300px;
   border-radius: 5px;
   box-sizing: border-box;
   /* background-color: transparent; */
