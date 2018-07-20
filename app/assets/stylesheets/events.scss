@@ -24,6 +24,13 @@
   color: #2873e7;
 }
 
+.list-title {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 20px 0 10px 0;
+  margin-top: 10px;
+}
+
 .events-list a:hover .item-card-artwork {
   box-shadow: 0 0.1875rem 0.5rem 0 rgba(0,0,0,0.3);
 }
@@ -32,7 +39,7 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: scroll;
   width: 980px;
   padding: 15px 10px;
 }

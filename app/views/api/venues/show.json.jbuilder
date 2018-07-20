@@ -1,6 +1,7 @@
 json.venue do
   json.extract! @venue, :id, :name, :city, :address
   json.events @venue.event_ids
+  json.photoUrl url_for(@venue.photo)
 end
 
 json.events ({})

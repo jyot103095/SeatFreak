@@ -30,9 +30,16 @@ class PerformerEventsIndex extends React.Component {
       );
     });
 
+    let styles = {
+      backgroundImage: `url(${this.props.performer.photoUrl})`,
+      backgroundSize: 'auto',
+      overflow: 'hidden',
+      backgroundPosition: 'center'
+    };
+
     return (
       <div className="performers-index-container" >
-        <header className="main-content-splash">
+        <header className="main-content-splash" style={styles}>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span>

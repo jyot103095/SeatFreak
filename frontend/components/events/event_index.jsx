@@ -12,9 +12,10 @@ class EventIndex extends React.Component {
   }
 
   render() {
-    const eventItems = this.props.events.map(event => <EventCard key={event.id} event={event} />);
+    const eventItems = this.props.events.map(event => <EventCard key={event.id} event={event}/>);
     const performerItems = this.props.performers.slice(0, 12).map(performer => <PerformerCard key={performer.id} performer={performer} />);
     const venueItems = this.props.venues.map(venue => <VenueCard key={venue.id} venue={venue} />);
+
     return (
       <div className="events-index-container">
         <header className="main-content-splash main-page">
@@ -24,12 +25,15 @@ class EventIndex extends React.Component {
           <MainPageSearchBox />
         </header>
         <div className="main-content-content">
+          <h1 className="list-title">Popular Events</h1>
           <div className="events-list" >
             {eventItems}
           </div>
+          <h1 className="list-title">Popular Performers</h1>
           <div className="events-list" >
             {performerItems}
           </div>
+          <h1 className="list-title">Popular Venues</h1>
           <div className="events-list" >
             {venueItems}
           </div>

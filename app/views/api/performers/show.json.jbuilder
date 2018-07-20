@@ -1,6 +1,7 @@
 json.performer do
   json.extract! @performer, :id, :name, :classification, :category, :description
   json.events @performer.event_ids
+  json.photoUrl url_for(@performer.photo)
 end
 
 json.events({})
@@ -21,6 +22,7 @@ json.venues do
   @performer.events.each do |event|
     json.set! event.venue.id do
       json.extract! event.venue, :id, :name, :city, :address
+      json.photoUrl url_for(event.venue.photo)
     end
   end
 end

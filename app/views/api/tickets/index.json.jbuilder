@@ -27,6 +27,7 @@ json.venues do
   @tickets.each do |ticket|
     json.set! ticket.event.venue.id do
       json.extract! ticket.event.venue, :id, :name, :city, :address
+      json.photoUrl url_for(ticket.event.venue.photo)
     end
   end
 end

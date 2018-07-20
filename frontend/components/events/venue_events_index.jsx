@@ -21,6 +21,13 @@ class VenueEventsIndex extends React.Component {
   render() {
     if (!this.props.venue) return null;
 
+    let styles = {
+      backgroundImage: `url(${this.props.venue.photoUrl})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      overflow: 'hidden'
+    };
+
     const eventLinks = this.props.events.map(event => {
       return (
         <li className="venue-event-list-item" key={event.id}>
@@ -33,7 +40,7 @@ class VenueEventsIndex extends React.Component {
 
     return (
       <div className="venues-index-container" >
-        <header className="main-content-splash">
+        <header className="main-content-splash" style={styles}>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span>
