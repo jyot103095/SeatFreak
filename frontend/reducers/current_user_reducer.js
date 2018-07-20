@@ -14,7 +14,7 @@ const CurrentUserReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return action.user;
     case RECEIVE_TICKET:
-      return merge({}, newState, { ticketIds: [action.ticket.id] });
+      return merge({}, state, { ticketIds: [action.ticket.id] });
     case LOGOUT:
       return {};
     default:
