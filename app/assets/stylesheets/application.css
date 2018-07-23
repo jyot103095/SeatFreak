@@ -283,10 +283,13 @@ header.main-page {
   height: 375px;
 }
 
-header.main-page h1 {
+header.main-page .main-content-splash-info {
   text-align: center;
   color: #ecf3f7;
   font-weight: 800;
+  justify-content: center;
+  height: 60px;
+  padding-bottom: 10px;
 }
 
 .main-content-splash-name {
