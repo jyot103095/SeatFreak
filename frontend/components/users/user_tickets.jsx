@@ -14,6 +14,7 @@ class UserTicketsIndex extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.requestTickets(this.props.userId);
   }
 
@@ -26,6 +27,8 @@ class UserTicketsIndex extends React.Component {
   }
 
   render() {
+    if (Object.values(this.props.events).includes(undefined)) return null;
+
     let ticketsOnSale = this.props.ticketsOnSale.map(ticket => {
       const eventTitle = this.props.events[ticket.eventId].title;
       const eventOn = this.props.events[ticket.eventId].eventOn.split(" ");
@@ -138,21 +141,30 @@ class UserTicketsIndex extends React.Component {
 const mSP = state => {
   const currentUserTickets = state.entities.currentUser.ticketIds;
   const tickets = currentUserTickets.map(ticketId => state.entities.tickets[ticketId]);
-
   if (tickets.includes(undefined)) {
     return {
       ticketsOnSale: [],
       ticketsNotOnSale: [],
+      events: []
     };
   }
 
   const ticketsOnSale = tickets.filter(ticket => ticket.onSale && !ticket.expired);
   const ticketsNotOnSale = tickets.filter(ticket => !ticket.onSale && !ticket.expired);
   const expiredTickets = tickets.filter(ticket => ticket.expired);
+  const eventIds = tickets.map(ticket => ticket.eventId);
+
+  const filteredEvents = eventIds.reduce((eventsObj, eventId) => {
+    eventsObj[eventId] = state.entities.events[eventId];
+    return eventsObj;
+  }, {});
+
+  debugger
+
   return {
     ticketsOnSale,
     ticketsNotOnSale,
-    events: state.entities.events
+    events: filteredEvents
   };
 };
 

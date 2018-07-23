@@ -10,7 +10,9 @@ class TicketCheckout extends React.Component {
   }
 
   handleBuy() {
-    this.props.buyTicket(this.props.ticket.id).then(this.props.history.push("/account/tickets"));
+    this.props.buyTicket(this.props.ticket.id).then(
+      () => this.props.history.push("/account/tickets")
+    );
   }
 
   render() {

@@ -6,7 +6,6 @@ export const buy = (ticketId) => {
 };
 
 export const sell = (ticket) => {
-  debugger
   return $.ajax({
     method: "PATCH",
     url: `/api/tickets/${ticket.id}/sell`,

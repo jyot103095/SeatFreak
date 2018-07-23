@@ -36,7 +36,6 @@ class MainPageSearchBox extends React.Component {
 }
 
 const mSP = state => {
-  debugger
   return {
     results: state.ui.search
   }

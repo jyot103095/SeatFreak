@@ -25,10 +25,12 @@
 }
 
 .list-title {
-  font-size: 24px;
+  font-size: 1.25em;
   font-weight: 600;
   padding: 20px 0 10px 0;
-  margin-top: 10px;
+  margin-top: 0.8em;
+  line-height: 1.4em;
+  letter-spacing: 0.0176em;
 }
 
 .events-list a:hover .item-card-artwork {
@@ -39,9 +41,9 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  overflow-x: scroll;
   width: 980px;
   padding: 15px 10px;
+  overflow: hidden;
 }
 
 .item-card {

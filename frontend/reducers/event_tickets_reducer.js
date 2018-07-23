@@ -6,6 +6,8 @@ const EventTicketsReducer = (state = null, action) => {
   switch (action.type) {
     case SHOW_SINGLE_TICKET:
       return action.ticketId;
+    case RECEIVE_TICKET:
+      return state;
     case SHOW_ALL_TICKETS:
     default:
       return null;

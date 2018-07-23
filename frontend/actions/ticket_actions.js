@@ -4,10 +4,11 @@ export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const RECIEVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
 
-export const receiveTicket = ticket => {
+export const receiveTicket = payload => {
   return {
     type: RECEIVE_TICKET,
-    ticket
+    ticket: payload.ticket,
+    event: payload.event
   }
 };
 
@@ -28,9 +29,9 @@ export const receiveTicketErrors = errors => {
 
 export const buyTicket = ticketId => dispatch => {
   return TicketApiUtil.buy(ticketId).then(
-    ticket => dispatch(receiveTicket(ticket)),
+    payload => dispatch(receiveTicket(payload)),
     errors => dispatch(receiveTicketErrors(errors.responseJSON))
-  );
+  )
 };
 
 export const sellTicket = ticket => dispatch => {

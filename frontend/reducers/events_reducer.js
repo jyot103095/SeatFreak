@@ -6,7 +6,8 @@ import {
   RECEIVE_PERFORMER,
 } from '../actions/performer_actions';
 import {
-  RECEIVE_TICKETS
+  RECEIVE_TICKETS,
+  RECEIVE_TICKET
 } from '../actions/ticket_actions';
 import {
   RECEIVE_VENUE
@@ -17,6 +18,7 @@ const EventsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_EVENT:
+    case RECEIVE_TICKET:
       return merge({}, state, { [action.event.id]: action.event });
     case RECEIVE_PERFORMER:
     case RECEIVE_TICKETS:
