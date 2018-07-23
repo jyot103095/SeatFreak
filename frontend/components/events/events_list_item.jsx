@@ -25,6 +25,7 @@ class EventsListItem extends React.Component {
         </div>
         <div className="performer-event-info">
           <p className="performer-event-title">{this.props.event.title}</p>
+          <p className="performer-event-venue">{this.props.venue.name}</p>
         </div>
         <div className="performer-event-button">
           <button className="event-show-button" onClick={this.handleClick}>See Tickets</button>

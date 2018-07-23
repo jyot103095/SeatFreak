@@ -19,9 +19,10 @@ const VenuesReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case RECEIVE_EVENTS:
-    case RECEIVE_TICKETS:
     case RECEIVE_PERFORMER:
+    case RECEIVE_TICKETS:
+      return action.venues;
+    case RECEIVE_EVENTS:
     case RECEIVE_EVENT:
     case RECEIVE_VENUES:
       return merge({}, state, action.venues);

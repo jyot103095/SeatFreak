@@ -20,9 +20,13 @@ class TicketCheckout extends React.Component {
       <div className="event-tickets-wrapper">
         <div className="navbar-compensator"></div>
         <div className="checkout-container">
-          <h1>{this.props.event.title}</h1>
-          <h2>{this.props.event.eventOn}</h2>
-          <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
+          <div className="checkout-info-container">
+            <h1>{this.props.event.title}</h1>
+            <h2>{this.props.event.eventOn}</h2>
+            <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
+          </div>
+          <div className="checkout-sidebar-container">
+          </div>
           <button onClick={this.handleBuy}>Buy Ticket</button>
         </div>
       </div>

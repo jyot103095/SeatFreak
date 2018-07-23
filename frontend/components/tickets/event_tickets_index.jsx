@@ -43,9 +43,16 @@ class EventTicketsIndex extends React.Component {
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
   const tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
+
+  let venue;
+  if (event !== undefined) {
+    venue = state.entities.venues[event.venueId];
+  }
+  
   return {
     event,
     tickets,
+    venue,
     content: state.ui.showingTicket
   };
 };

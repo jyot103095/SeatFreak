@@ -78,6 +78,8 @@ td.performer-list-id {
 
 .performer-event-info {
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .performer-event-item-event-on {
@@ -93,7 +95,7 @@ td.performer-list-id {
   font-weight: 500;
 }
 
-.performer-event-time {
+.performer-event-time, .performer-event-venue {
   color: #525252;
   font-size: 14px;
 }

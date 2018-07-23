@@ -18,7 +18,7 @@ class EventInfo extends React.Component {
     return (
       <div className="event-info-container">
         <h3>{this.props.event.title}</h3>
-        <h5>{this.props.event.eventOn}</h5>
+        <h5>{this.props.event.eventOn} - {this.props.venue.name}</h5>
       </div>
     );
   }
@@ -26,8 +26,15 @@ class EventInfo extends React.Component {
 
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
+
+  let venue;
+  if (event !== undefined) {
+    venue = state.entities.venues[event.venueId];
+  }
+
   return {
-    event
+    event,
+    venue
   };
 };
 

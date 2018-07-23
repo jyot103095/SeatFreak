@@ -20,9 +20,16 @@
   color: black;
 }
 
-.events-list a:hover h1, .performers-list a:hover h1,
-.venues-list a:hover h1 {
+.events-list a:hover, .performers-list a:hover, .venues-list a:hover {
+  cursor: inherit;
+}
+
+.item-card:hover h1 {
   color: #2873e7;
+}
+
+.item-card:hover {
+  cursor: pointer;
 }
 
 .list-title {
@@ -34,8 +41,7 @@
   letter-spacing: 0.0176em;
 }
 
-.events-list a:hover .item-card-artwork, .performers-list a:hover .item-card-artwork,
-.venues-list a:hover .item-card-artwork {
+.item-card:hover .item-card-artwork {
   box-shadow: 0 0.1875rem 0.5rem 0 rgba(0,0,0,0.3);
 }
 
@@ -79,7 +85,7 @@
 
 .item-card-info h3 {
   color: #6A6A6A;
-  font-size: 0.875rem;
+  font-size: 13px;
   line-height: 1.25rem;
   margin-top: 0.1875rem;
 }
@@ -153,7 +159,8 @@
 }
 
 .ticket-info {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .checkout-link {
@@ -165,6 +172,7 @@
 .checkout-link a {
   text-decoration: none;
   background-color: #1673E6;
+  font-size: 14px;
   padding: 0.70rem;
   margin-left: 1.25rem;
   color: white;
@@ -262,7 +270,7 @@
 
 .search-box-container-main-page input[type="text"] {
   line-height: 21px;
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px;
   color: #333;
   text-overflow: ellipsis;
@@ -271,6 +279,10 @@
   width: 750px;
   background-color: transparent;
   margin: 0 15px;
+}
+
+.search-box-container-main-page input[type="text"]::placeholder {
+  color: #6a6a6a;
 }
 
 .search-box-container-main-page input[type="submit"] {

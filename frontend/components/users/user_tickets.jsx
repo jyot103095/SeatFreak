@@ -14,7 +14,6 @@ class UserTicketsIndex extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.requestTickets(this.props.userId);
   }
 
@@ -30,11 +29,13 @@ class UserTicketsIndex extends React.Component {
     if (Object.values(this.props.events).includes(undefined)) return null;
 
     let ticketsOnSale = this.props.ticketsOnSale.map(ticket => {
-      const eventTitle = this.props.events[ticket.eventId].title;
-      const eventOn = this.props.events[ticket.eventId].eventOn.split(" ");
-      const day = eventOn[0];
-      const date = eventOn.slice(1, 3).join(" ");
-      const time = eventOn.slice(4, 6).join(" ");
+      let event = this.props.events[ticket.eventId];
+      let eventTitle = event.title;
+      let eventOn = event.eventOn.split(" ");
+      let day = eventOn[0];
+      let date = eventOn.slice(1, 3).join(" ");
+      let time = eventOn.slice(4, 6).join(" ");
+      let venueName = this.props.venues[event.venueId].name;
 
       return (
         <div key={ticket.id} className="user-ticket-info">
@@ -55,11 +56,13 @@ class UserTicketsIndex extends React.Component {
     });
 
     let ticketsNotOnSale = this.props.ticketsNotOnSale.map(ticket => {
-      const eventTitle = this.props.events[ticket.eventId].title;
-      const eventOn = this.props.events[ticket.eventId].eventOn.split(" ");
-      const day = eventOn[0];
-      const date = eventOn.slice(1, 3).join(" ");
-      const time = eventOn.slice(4, 6).join(" ");
+      let event = this.props.events[ticket.eventId];
+      let eventTitle = event.title;
+      let eventOn = event.eventOn.split(" ");
+      let day = eventOn[0];
+      let date = eventOn.slice(1, 3).join(" ");
+      let time = eventOn.slice(4, 6).join(" ");
+      let venueName = this.props.venues[event.venueId].name;
 
       return (
         <div key={ticket.id} className="user-ticket-info">
@@ -69,7 +72,7 @@ class UserTicketsIndex extends React.Component {
           </div>
           <div className="user-event-info">
             <p className="user-event-title">{eventTitle}</p>
-            <p className="user-seat-info" >Section {ticket.section} Row {ticket.row}</p>
+            <p className="user-seat-info" >Section {ticket.section} Row {ticket.row} - {venueName}</p>
           </div>
           <div className="user-ticket-sell-button">
             <button onClick={() => this.handleSell(ticket.id)}
@@ -159,12 +162,11 @@ const mSP = state => {
     return eventsObj;
   }, {});
 
-  debugger
-
   return {
     ticketsOnSale,
     ticketsNotOnSale,
-    events: filteredEvents
+    events: filteredEvents,
+    venues: state.entities.venues
   };
 };
 
