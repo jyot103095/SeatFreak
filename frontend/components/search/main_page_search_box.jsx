@@ -2,6 +2,7 @@ import React from 'react';
 import { search } from '../../actions/search_actions';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
+import SearchResults from './search_results';
 
 class MainPageSearchBox extends React.Component {
   constructor(props) {
@@ -21,16 +22,21 @@ class MainPageSearchBox extends React.Component {
 
   render() {
     return (
-      <form className="search-form-main-page">
-        <div className="search-box-container-main-page">
-          <i className="fas fa-search fa-lg"></i>
-          <DebounceInput
-            minLength={2}
-            debounceTimeout={500}
-            onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" />
-          <input type="submit" value="Search"></input>
+      <div className="search-container-main-page">
+        <form className="search-form-main-page">
+          <div className="search-box-container-main-page">
+            <i className="fas fa-search fa-lg"></i>
+            <DebounceInput
+              minLength={2}
+              debounceTimeout={500}
+              onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" />
+            <input type="submit" value="Search"></input>
+          </div>
+        </form>
+        <div className="search-results-container-main-page">
+          <SearchResults />
         </div>
-      </form>
+      </div>
     );
   }
 }
