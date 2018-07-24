@@ -335,7 +335,7 @@ header.main-page .main-content-splash-info {
   color: black;
 }
 
-.search-box-container-navbar {
+.search-form-navbar {
   width: 300px;
   background-color: inherit;
   border-radius: 6px;
@@ -346,42 +346,51 @@ header.main-page .main-content-splash-info {
   align-items: center;
 }
 
-.search-box-container-navbar i {
+.search-form-navbar i {
   color: #fff;
   margin-left: 5px;
   transition: 0.25s;
 }
 
-.search-box-container-navbar:hover i {
+.search-form-navbar:hover i {
   color: #2873e7;
 }
 
-.search-box-container-navbar:hover {
+.search-form-navbar:hover {
   background-color: white;
 }
 
-.search-box-container-navbar:hover input {
-  outline: none;
-}
-
-.search-box-container-navbar input {
+.search-form-navbar input {
   display: block;
   background-color: transparent;
   font-family: inherit;
   transition-timing-function: ease;
   transition: .25s ease;
+  outline: none;
 }
 
-.search-box-container-navbar input::placeholder {
+.search-form-navbar input::placeholder {
   color: #fff;
-  transition: .25s;
+  transition: .25s ease;
 }
 
-.search-box-container-navbar:hover input::placeholder {
+.search-form-navbar:hover input::placeholder {
   color: gray;
 }
 
-.search-box-container-navbar input[type="text"] {
+.search-form-navbar input:focus::placeholder {
+  color: gray;
+}
+
+.search-form-navbar:focus-within {
+  background-color: white;
+}
+
+.search-form-navbar:focus-within i {
+  color: #2873e7;
+}
+
+.search-form-navbar input[type="text"] {
   line-height: 17px;
   font-size: 14px;
   padding: 10px;

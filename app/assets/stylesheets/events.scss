@@ -323,3 +323,43 @@
   outline: none;
   color: white;
 }
+
+.search-container-main-page {
+  position: relative;
+}
+
+.main-page-search-results {
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 75px;
+  width: 624px;
+  padding: 5px 5px;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.1);
+  border-radius: 5px;
+}
+
+.main-page-search-results a {
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 15px;
+  line-height: 40px;
+  box-sizing: border-box;
+  height: 60px;
+}
+
+.main-page-search-results a:hover {
+  background-color: #2770e9;
+  color: white;
+  border-radius: 3px;
+}
+
+.main-page-search-results h3 {
+  color: gray;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px;
+}

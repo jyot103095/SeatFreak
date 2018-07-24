@@ -49,7 +49,7 @@ const navBar = ({ currentUser, openModal, demoLogin, location }) => {
 
 
   return (
-    <nav className="navbar">
+    <nav className={ location.pathname.includes("/events") ? "wider-navbar" : "navbar"}>
       <div className="navbar-left">
         { logo() }
         { navbarSearch() }

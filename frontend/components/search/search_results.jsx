@@ -39,8 +39,17 @@ const SearchResults = ({ results }) => {
 
   return (
     <ul className="main-page-search-results" >
-      {eventResultLis}
+      { performerResultLis.length > 0 ?
+        <h3>PERFORMERS</h3> : null
+      }
       {performerResultLis}
+      { eventResultLis.length > 0 ?
+        <h3>EVENTS</h3> : null
+      }
+      {eventResultLis}
+      { venueResultLis.length > 0 ?
+        <h3>VENUES</h3> : null
+      }
       {venueResultLis}
     </ul>
   )

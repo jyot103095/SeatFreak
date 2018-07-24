@@ -38,7 +38,7 @@ class VenuesIndex extends React.Component {
         </header>
         <div className="main-content-content" >
           <h1 className="venues-index-title">All Venues</h1>
-          <table className="venues-list" >
+          <table className="venues-table" >
             <tbody>
               {venueIndexItems}
             </tbody>

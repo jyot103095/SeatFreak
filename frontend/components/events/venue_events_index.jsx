@@ -32,7 +32,7 @@ class VenueEventsIndex extends React.Component {
       return (
         <li className="venue-event-list-item" key={event.id}>
           <Link to={`/events/${event.id}`} >
-            <EventsListItem event={event} />
+            <EventsListItem event={event} venue={this.props.venue}/>
           </Link>
         </li>
       );

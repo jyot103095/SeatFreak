@@ -34,7 +34,7 @@ class MainPageSearchBox extends React.Component {
           </div>
         </form>
         <div className="search-results-container-main-page">
-          <SearchResults />
+          { this.state.query.length >= 2 ? <SearchResults /> : null}
         </div>
       </div>
     );

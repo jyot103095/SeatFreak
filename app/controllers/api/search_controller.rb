@@ -14,5 +14,4 @@ class Api::SearchController < ApplicationController
 
     render '/api/search/index.json.jbuilder'
   end
-
 end

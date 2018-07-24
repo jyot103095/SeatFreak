@@ -71,9 +71,14 @@ td.performer-list-id {
   padding: 16px 0;
 }
 
-.performer-event-item-event-on, .performer-event-info, .performer-event-button {
-  width: 33%;
+.performer-event-item-event-on, .performer-event-button {
+  width: 25%;
   display: flex;
+}
+
+.performer-event-info {
+  display: flex;
+  width: 50%
 }
 
 .performer-event-info {
