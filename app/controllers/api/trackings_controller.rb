@@ -1,20 +1,25 @@
 class Api::TrackingsController < ApplicationController 
+	before_action :ensure_logged_in
+
 	def create
 		@tracking = Tracking.new(tracking_params)
 		@tracking.user_id = current_user.id
 
 		if @tracking.save
-			render "/api/users/show.json.jbuilder"
+			@trackings = current_user.trackings
+			render "/api/trackings/show.json.jbuilder"
 		else
 			render errors: @tracking.errors.full_messages, status: 422
 		end
 	end
 
 	def destroy
-		@tracking = Tracking.find(params[:id])
-		@tracking.destroy
+		tracking = Tracking.where(tracking_params).find_by(user_id: current_user.id)
+		tracking.destroy
 
-		render "/api/users/show.json.jbuilder"
+		@trackings = current_user.trackings
+
+		render "/api/trackings/show.json.jbuilder"
 	end
 
 	private
