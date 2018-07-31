@@ -18,6 +18,8 @@ class Performer < ApplicationRecord
   multisearchable :against => [:name]
 
   has_many :event_performers
+  
+  has_many :trackings, as: :trackable
 
   has_many :events,
     through: :event_performers,

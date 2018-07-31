@@ -21,6 +21,8 @@ class Event < ApplicationRecord
 
   has_many :event_performers
 
+  has_many :trackings, as: :trackable
+
   has_many :performers,
     through: :event_performers,
     source: :performer

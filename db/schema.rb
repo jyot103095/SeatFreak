@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_132457) do
+ActiveRecord::Schema.define(version: 2018_07_31_153725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 2018_07_24_132457) do
     t.boolean "on_sale", default: false
     t.index ["event_id"], name: "index_tickets_on_event_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
+  create_table "trackings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "trackable_type", null: false
+    t.integer "trackable_id", null: false
+    t.index ["trackable_type", "trackable_id"], name: "index_trackings_on_trackable_type_and_trackable_id"
+    t.index ["user_id"], name: "index_trackings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
