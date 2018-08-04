@@ -22,16 +22,25 @@ class EventIndex extends React.Component {
 
   render() {
 
-    const eventItems = this.props.events.map(event => <EventCard key={event.id} event={event}/>);
-    let trackedEventItems;
+    const eventItems = this.props.events.map(event => {
+      let tracked = false;
 
-    if (!this.props.trackedEvents.includes(undefined)) {
-      trackedEventItems = this.props.trackedEvents.map(event => <EventCard key={event.id} event={event} tracked={true} />);
-    }
+      if (this.props.trackedItems.trackedEvents.includes(event.id)) {
+        tracked = true;
+      }
+
+      return (<EventCard key={event.id} event={event} tracked={tracked}/>);
+    });
+    // let trackedEventItems;
+
+    // if (!this.props.trackedEvents.includes(undefined)) {
+    //   trackedEventItems = this.props.trackedEvents.map(event => <EventCard key={event.id} event={event} tracked={true} />);
+    // }
 
     let eventStyles = {
       transform: `translateX(${this.state.events}px)`
     };
+
     let eventButtons;
     if (this.state.events === 0) {
       eventButtons = () => (
@@ -58,7 +67,16 @@ class EventIndex extends React.Component {
       );
     }
 
-    const performerItems = this.props.performers.slice(0, 12).map(performer => <PerformerCard key={performer.id} performer={performer} />);
+    const performerItems = this.props.performers.slice(0, 12).map(performer => {
+      let tracked = false;
+
+      if (this.props.trackedItems.trackedPerformers.includes(performer.id)) {
+        tracked = true;
+      }
+
+      return (<PerformerCard key={performer.id} performer={performer} tracked={tracked}/>);
+    });
+
     const performerStyles = {
       transform: `translateX(${this.state.performers}px)`
     };
@@ -88,10 +106,20 @@ class EventIndex extends React.Component {
       );
     }
 
-    const venueItems = this.props.venues.map(venue => <VenueCard key={venue.id} venue={venue} />);
+    const venueItems = this.props.venues.slice(0, 12).map(venue => {
+      let tracked = false;
+
+      if (this.props.trackedItems.trackedVenues.includes(venue.id)) {
+        tracked = true;
+      }
+
+      return (<VenueCard key={venue.id} venue={venue} tracked={tracked}/>);
+    });
+
     const venueStyles = {
       transform: `translateX(${this.state.venues}px)`
     };
+
     let venueButtons;
     if (this.state.venues === 0) {
       venueButtons = () => (
@@ -127,16 +155,6 @@ class EventIndex extends React.Component {
           <MainPageSearchBox />
         </header>
         <div className="main-content-content">
-          { this.props.trackedEvents.length > 0 ? <h1 className="list-title">Tracked Events</h1> : null }
-          { this.props.trackedEvents.length > 0 ? 
-            <div className="events-list-wrapper" >
-              <div className="horizontal-list-wrapper">
-                <div className="events-list" style={eventStyles}>
-                  {trackedEventItems}
-                </div>
-              </div>
-            </div> : null
-          }
           <h1 className="list-title">Popular Events</h1>
           <div className="events-list-wrapper" >
             { eventButtons() }
@@ -171,23 +189,13 @@ class EventIndex extends React.Component {
 }
 
 const mSP = state => {
-  let trackedEvents = [];
-  let trackedPerformers = [];
-  let trackedVenues = [];
   let trackedItems = state.entities.currentUser.trackedItems;
-  if (trackedItems) {
-    trackedEvents = trackedItems.trackedEvents.map(eventId => state.entities.events[eventId]);
-    trackedPerformers = trackedItems.trackedPerformers.map(performerId => state.entities.performers[performerId]);
-    trackedVenues = trackedItems.trackedVenues.map(venueId => state.entities.venues[venueId]);
-  }
 
   return {
     events: Object.values(state.entities.events),
     performers: Object.values(state.entities.performers),
     venues: Object.values(state.entities.venues),
-    trackedEvents,
-    trackedVenues,
-    trackedPerformers
+    trackedItems
   };
 };
 

@@ -14,12 +14,6 @@
   background-color: #1673e6;
 }
 
-.events-list a {
-  display: block;
-  text-decoration: none;
-  color: black;
-}
-
 .events-list a:hover, .performers-list a:hover, .venues-list a:hover {
   cursor: inherit;
 }
@@ -55,11 +49,9 @@
 
 .events-list, .venues-list, .performers-list {
   display: flex;
-  justify-content: space-between;
   box-sizing: border-box;
   width: 980px;
   padding: 15px 10px;
-  will-change: transform;
   transition: transform 0.2s ease-out;
 }
 
@@ -68,8 +60,6 @@
 }
 
 .item-card {
-  display: flex;
-  flex-direction: column;
   margin-right: 10px;
   width: 230px;
   height: 212px;
@@ -91,12 +81,30 @@
 }
 
 .item-card-artwork {
+  width: 230px;
   height: 10rem;
   height: 160px;
   border-radius: 0.375rem;
   background-size: cover;
   background-position: center center;
   position: relative;
+}
+
+.trackButton {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: white;
+  text-shadow: 2px 2px 3px black;
+}
+
+.trackButton i {
+  transition: 0.25s ease-in-out;
+  transition-timing-function: linear;
+}
+
+.tracked {
+  color: red;
 }
 
 .item-card-price {

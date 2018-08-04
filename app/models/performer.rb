@@ -14,6 +14,7 @@
 class Performer < ApplicationRecord
   validates :name, :classification, :category, presence: true
   validates :classification, inclusion: { in: %w(Sports Music) }
+  # scope :with_eager_loaded_image, -> { eager_load(image_attachment: :blob) }
   include PgSearch
   multisearchable :against => [:name]
 

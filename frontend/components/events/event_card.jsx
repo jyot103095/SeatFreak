@@ -1,40 +1,56 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { track, untrack } from '../../actions/tracking_actions';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const EventCard = ({event, performers, tracked, track, untrack}) => {
-  function handleClick (e) {
-    e.stopPropagation();
-    if (tracked) {
-      dispatch(untrack({ trackable_type: "Event", trackable_id: event.id }));
+class EventCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tracked: props.tracked
+    };
+    this.handleTracking = this.handleTracking.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+
+  handleTracking (e) {
+    if (this.state.tracked) {
+      this.props.untrack({ trackable_type: "Event", trackable_id: this.props.event.id });
     } else {
-      dispatch(track({ trackable_type: "Event", trackable_id: event.id }));
+      this.props.track({ trackable_type: "Event", trackable_id: this.props.event.id });
     }
 
+    e.stopPropagation();
+    this.setState({ tracked: !this.state.tracked })
   }
 
-  let title;
-  if (event.title.length > 26) {
-    title = event.title.slice(0, 26) + "...";
-  } else {
-    title = event.title;
+  handleClick () {
+    this.props.history.push(`/events/${this.props.event.id}`);
   }
 
-  // const performer = performers.sample;
+  render () {
 
-  // let styles = {
-  //   backgroundImage: `url(${performer.photoUrl})`,
-  //   backgroundSize: 'cover',
-  //   overflow: 'hidden'
-  // };
+    let title;
+    if (this.props.event.title.length > 26) {
+      title = this.props.event.title.slice(0, 26) + "...";
+    } else {
+      title = this.props.event.title;
+    }
 
-  return (
-    <Link to={`/events/${event.id}`}>
-      <div className="item-card" >
+    // const performer = performers.sample;
+
+    // let styles = {
+    //   backgroundImage: `url(${performer.photoUrl})`,
+    //   backgroundSize: 'cover',
+    //   overflow: 'hidden'
+    // };
+
+    return (
+      <div className="item-card" onClick={this.handleClick}>
         <div className="item-card-artwork">
-          <div className="trackButton" onClick={handleClick}>
-            { tracked ? "Untrack" : "Track"}
+          <div className="trackButton" onClick={this.handleTracking}>
+            <i className={`fa-heart ${ this.state.tracked ? "fas tracked" : "far"}`}></i>
           </div>
           <div className="item-card-price">
             See Tickets
@@ -42,12 +58,12 @@ const EventCard = ({event, performers, tracked, track, untrack}) => {
         </div>
         <div className="item-card-info" >
           <h1>{title}</h1>
-          <h3>{event.eventOn}</h3>
+          <h3>{this.props.event.eventOn}</h3>
         </div>
       </div>
-    </Link>
-  );
-};
+    );
+  } 
+}
 
 const mDP = dispatch => {
   return {
@@ -56,4 +72,4 @@ const mDP = dispatch => {
   };
 };
 
-export default connect(null, mDP)(EventCard);
+export default withRouter(connect(null, mDP)(EventCard));
