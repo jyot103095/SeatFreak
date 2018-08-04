@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { track, untrack } from '../../actions/tracking_actions';
 import { Link } from 'react-router-dom';
 
 const EventCard = ({event, performers}) => {
@@ -34,4 +36,11 @@ const EventCard = ({event, performers}) => {
   );
 };
 
-export default EventCard;
+const mDP = dispatch => {
+  return {
+    track: item => dispatch(track(item)),
+    untrack: item => dispatch(untrack(item))
+  };
+};
+
+export default connect(null, mDP)(EventCard);

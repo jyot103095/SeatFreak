@@ -155,16 +155,29 @@ class EventIndex extends React.Component {
 }
 
 const mSP = state => {
+  let trackedEvents = [];
+  let trackedPerformers = [];
+  let trackedVenues = [];
+  let trackedItems = state.entities.currentUser.trackedItems;
+  if (trackedItems) {
+    trackedEvents = trackedItems.trackedEvents.map(eventId => state.entities.events[eventId]);
+    trackedPerformers = trackedItems.trackedPerformers.map(performerId => state.entities.performers[performerId]);
+    trackedVenues = trackedItems.trackedVenues.map(venueId => state.entities.venues[venueId]);
+  }
+
   return {
     events: Object.values(state.entities.events),
     performers: Object.values(state.entities.performers),
-    venues: Object.values(state.entities.venues)
+    venues: Object.values(state.entities.venues),
+    trackedEvents,
+    trackedVenues,
+    trackedPerformers
   };
 };
 
 const mDP = dispatch => {
   return {
-    requestEvents: () => dispatch(requestEvents())
+    requestEvents: () => dispatch(requestEvents()),
   }
 }
 

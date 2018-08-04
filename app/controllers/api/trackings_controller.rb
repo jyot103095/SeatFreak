@@ -6,7 +6,6 @@ class Api::TrackingsController < ApplicationController
 		@tracking.user_id = current_user.id
 
 		if @tracking.save
-			@trackings = current_user.trackings
 			render "/api/trackings/show.json.jbuilder"
 		else
 			render json: @tracking.errors.full_messages, status: 422
@@ -14,10 +13,8 @@ class Api::TrackingsController < ApplicationController
 	end
 
 	def destroy
-		tracking = Tracking.where(tracking_params).find_by(user_id: current_user.id)
-		tracking.destroy
-
-		@trackings = current_user.trackings
+		@tracking = Tracking.where(tracking_params).find_by(user_id: current_user.id)
+		@tracking.destroy
 
 		render "/api/trackings/show.json.jbuilder"
 	end

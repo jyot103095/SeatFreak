@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       @trackings = @user.trackings
       render '/api/users/show.json.jbuilder'
+      debugger
     else
       render json: @user.errors.full_messages, status: 422
     end

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import * as TrackingUtil from './util/tracking_api_util';
+import { track, untrack } from './actions/tracking_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -22,8 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  window.track = TrackingUtil.trackItem;
-  window.untrack = TrackingUtil.untrackItem;
+  window.dispatch = store.dispatch;
+  window.track = track;
+  window.untrack = untrack;
+
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
