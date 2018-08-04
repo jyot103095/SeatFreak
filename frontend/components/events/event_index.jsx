@@ -23,6 +23,12 @@ class EventIndex extends React.Component {
   render() {
 
     const eventItems = this.props.events.map(event => <EventCard key={event.id} event={event}/>);
+    let trackedEventItems;
+
+    if (!this.props.trackedEvents.includes(undefined)) {
+      trackedEventItems = this.props.trackedEvents.map(event => <EventCard key={event.id} event={event} tracked={true} />);
+    }
+
     let eventStyles = {
       transform: `translateX(${this.state.events}px)`
     };
@@ -121,6 +127,16 @@ class EventIndex extends React.Component {
           <MainPageSearchBox />
         </header>
         <div className="main-content-content">
+          { this.props.trackedEvents.length > 0 ? <h1 className="list-title">Tracked Events</h1> : null }
+          { this.props.trackedEvents.length > 0 ? 
+            <div className="events-list-wrapper" >
+              <div className="horizontal-list-wrapper">
+                <div className="events-list" style={eventStyles}>
+                  {trackedEventItems}
+                </div>
+              </div>
+            </div> : null
+          }
           <h1 className="list-title">Popular Events</h1>
           <div className="events-list-wrapper" >
             { eventButtons() }

@@ -3,7 +3,17 @@ import { connect } from 'react-redux';
 import { track, untrack } from '../../actions/tracking_actions';
 import { Link } from 'react-router-dom';
 
-const EventCard = ({event, performers}) => {
+const EventCard = ({event, performers, tracked, track, untrack}) => {
+  function handleClick (e) {
+    e.stopPropagation();
+    if (tracked) {
+      dispatch(untrack({ trackable_type: "Event", trackable_id: event.id }));
+    } else {
+      dispatch(track({ trackable_type: "Event", trackable_id: event.id }));
+    }
+
+  }
+
   let title;
   if (event.title.length > 26) {
     title = event.title.slice(0, 26) + "...";
@@ -23,6 +33,9 @@ const EventCard = ({event, performers}) => {
     <Link to={`/events/${event.id}`}>
       <div className="item-card" >
         <div className="item-card-artwork">
+          <div className="trackButton" onClick={handleClick}>
+            { tracked ? "Untrack" : "Track"}
+          </div>
           <div className="item-card-price">
             See Tickets
           </div>
