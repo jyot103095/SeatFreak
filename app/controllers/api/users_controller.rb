@@ -4,6 +4,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login!(@user)
+      @trackings = @user.trackings
       render '/api/users/show.json.jbuilder'
     else
       render json: @user.errors.full_messages, status: 422
@@ -14,6 +15,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
+      @trackings = @user.trackings
       render '/api/users/show.json.jbuilder'
     else
       render json: @user.errors.full_messages, status: 422

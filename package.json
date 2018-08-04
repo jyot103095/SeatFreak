@@ -44,9 +44,11 @@
   },
   "homepage": "https://github.com/jyot103095/SeatFreak#readme",
   "devDependencies": {
+    "babel-eslint": "^8.2.6",
     "eslint": "^5.1.0",
     "eslint-config-google": "^0.9.1",
-    "webpack-cli": "^3.0.8",
-    "redux-logger": "^3.0.6"
+    "eslint-plugin-react": "^7.10.0",
+    "redux-logger": "^3.0.6",
+    "webpack-cli": "^3.0.8"
   }
 }

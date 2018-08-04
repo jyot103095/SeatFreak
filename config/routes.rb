@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :trackings, only: [:create]
   end
 
-  delete '/api/trackings', to 'api/trackings#destroy'
+  delete '/api/trackings', to: 'api/trackings#destroy'
   patch '/api/tickets/:id/buy', to: 'api/tickets#buy'
   patch '/api/tickets/:id/sell', to: 'api/tickets#sell'
   get '/api/performers/:category/events', to: 'api/performers#show_category'

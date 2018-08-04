@@ -9,7 +9,7 @@ class Api::TrackingsController < ApplicationController
 			@trackings = current_user.trackings
 			render "/api/trackings/show.json.jbuilder"
 		else
-			render errors: @tracking.errors.full_messages, status: 422
+			render json: @tracking.errors.full_messages, status: 422
 		end
 	end
 
