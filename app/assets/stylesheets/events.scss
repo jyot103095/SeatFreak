@@ -99,7 +99,7 @@
 }
 
 .trackButton i {
-  transition: 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   transition-timing-function: linear;
 }
 
@@ -314,8 +314,9 @@
   background-color: #fff;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
   border-radius: 100px;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.25s ease-in-out;
   color: #1673E6;
+  transition-timing-function: linear;
 }
 
 [class$="-list-navigator-right"] button {

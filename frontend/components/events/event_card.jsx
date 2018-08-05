@@ -2,27 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { track, untrack } from '../../actions/tracking_actions';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 class EventCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tracked: props.tracked
-    };
+    this.tracked = false;
     this.handleTracking = this.handleTracking.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
 
   handleTracking (e) {
-    if (this.state.tracked) {
-      this.props.untrack({ trackable_type: "Event", trackable_id: this.props.event.id });
-    } else {
-      this.props.track({ trackable_type: "Event", trackable_id: this.props.event.id });
-    }
+    if (this.props.loggedIn) {
+      if (this.tracked) {
+        this.props.untrack({ trackable_type: "Event", trackable_id: this.props.event.id });
+      } else {
+        this.props.track({ trackable_type: "Event", trackable_id: this.props.event.id });
+      }
 
-    e.stopPropagation();
-    this.setState({ tracked: !this.state.tracked })
+      e.stopPropagation();
+      this.tracked = !this.tracked;
+    } else {
+      e.stopPropagation();
+      this.props.openLoginModal();
+    }
   }
 
   handleClick () {
@@ -30,6 +34,7 @@ class EventCard extends React.Component {
   }
 
   render () {
+    this.tracked = this.props.trackedEvents.includes(this.props.event.id);
 
     let title;
     if (this.props.event.title.length > 26) {
@@ -50,7 +55,7 @@ class EventCard extends React.Component {
       <div className="item-card" onClick={this.handleClick}>
         <div className="item-card-artwork">
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.state.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
           </div>
           <div className="item-card-price">
             See Tickets
@@ -65,11 +70,25 @@ class EventCard extends React.Component {
   } 
 }
 
-const mDP = dispatch => {
+const mSP = state => {
+  let trackedEvents = [];
+
+  if (state.entities.currentUser.trackedItems) {
+    trackedEvents = state.entities.currentUser.trackedItems.trackedEvents;
+  }
+
   return {
-    track: item => dispatch(track(item)),
-    untrack: item => dispatch(untrack(item))
+    loggedIn: Boolean(state.entities.currentUser.id),
+    trackedEvents
   };
 };
 
-export default withRouter(connect(null, mDP)(EventCard));
+const mDP = dispatch => {
+  return {
+    track: item => dispatch(track(item)),
+    untrack: item => dispatch(untrack(item)),
+    openLoginModal: () => dispatch(openModal("login"))
+  };
+};
+
+export default withRouter(connect(mSP, mDP)(EventCard));

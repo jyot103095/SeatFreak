@@ -25,17 +25,12 @@ class EventIndex extends React.Component {
     const eventItems = this.props.events.map(event => {
       let tracked = false;
 
-      if (this.props.trackedItems.trackedEvents.includes(event.id)) {
-        tracked = true;
-      }
+      // if (this.props.trackedItems.trackedEvents.includes(event.id)) {
+      //   tracked = true;
+      // }
 
-      return (<EventCard key={event.id} event={event} tracked={tracked}/>);
+      return (<EventCard key={event.id} event={event} />);
     });
-    // let trackedEventItems;
-
-    // if (!this.props.trackedEvents.includes(undefined)) {
-    //   trackedEventItems = this.props.trackedEvents.map(event => <EventCard key={event.id} event={event} tracked={true} />);
-    // }
 
     let eventStyles = {
       transform: `translateX(${this.state.events}px)`
@@ -70,9 +65,9 @@ class EventIndex extends React.Component {
     const performerItems = this.props.performers.slice(0, 12).map(performer => {
       let tracked = false;
 
-      if (this.props.trackedItems.trackedPerformers.includes(performer.id)) {
-        tracked = true;
-      }
+      // if (this.props.trackedItems.trackedPerformers.includes(performer.id)) {
+      //   tracked = true;
+      // }
 
       return (<PerformerCard key={performer.id} performer={performer} tracked={tracked}/>);
     });
@@ -109,9 +104,9 @@ class EventIndex extends React.Component {
     const venueItems = this.props.venues.slice(0, 12).map(venue => {
       let tracked = false;
 
-      if (this.props.trackedItems.trackedVenues.includes(venue.id)) {
-        tracked = true;
-      }
+      // if (this.props.trackedItems.trackedVenues.includes(venue.id)) {
+      //   tracked = true;
+      // }
 
       return (<VenueCard key={venue.id} venue={venue} tracked={tracked}/>);
     });
@@ -189,13 +184,10 @@ class EventIndex extends React.Component {
 }
 
 const mSP = state => {
-  let trackedItems = state.entities.currentUser.trackedItems;
-
   return {
     events: Object.values(state.entities.events),
     performers: Object.values(state.entities.performers),
     venues: Object.values(state.entities.venues),
-    trackedItems
   };
 };
 

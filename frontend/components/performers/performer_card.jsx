@@ -2,26 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { track, untrack } from '../../actions/tracking_actions';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 class PerformerCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tracked: props.tracked
-    };
+    this.tracked = false;
     this.handleClick = this.handleClick.bind(this);
     this.handleTracking = this.handleTracking.bind(this);
   }
 
   handleTracking (e) {
-    if (this.state.tracked) {
-      this.props.untrack({ trackable_type: "Performer", trackable_id: this.props.performer.id });
-    } else {
-      this.props.track({ trackable_type: "Performer", trackable_id: this.props.performer.id });
-    }
+    if (this.props.loggedIn) {
+      if (this.tracked) {
+        this.props.untrack({ trackable_type: "Performer", trackable_id: this.props.performer.id });
+      } else {
+        this.props.track({ trackable_type: "Performer", trackable_id: this.props.performer.id });
+      }
 
-    e.stopPropagation();
-    this.setState({ tracked: !this.state.tracked })
+      e.stopPropagation();
+      this.tracked = !this.tracked;
+    } else {
+      e.stopPropagation();
+      this.props.openLoginModal();
+    }
   }
 
   handleClick () {
@@ -29,6 +33,8 @@ class PerformerCard extends React.Component {
   }
  
   render() {
+    this.tracked = this.props.trackedPerformers.includes(this.props.performer.id);
+
     let styles = {
       backgroundImage: `url(${this.props.performer.photoUrl})`,
       backgroundSize: 'cover',
@@ -39,7 +45,7 @@ class PerformerCard extends React.Component {
       <div className="item-card">
         <div className="item-card-artwork" style={styles}>
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.state.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
           </div>
         </div>
         <div className="item-card-info" >
@@ -51,11 +57,25 @@ class PerformerCard extends React.Component {
   }   
 }
 
-const mDP = dispatch => {
+const mSP = state => {
+  let trackedPerformers = [];
+
+  if (state.entities.currentUser.trackedItems) {
+    trackedPerformers = state.entities.currentUser.trackedItems.trackedPerformers;
+  }
+
   return {
-    track: item => dispatch(track(item)),
-    untrack: item => dispatch(untrack(item))
+    loggedIn: Boolean(state.entities.currentUser.id),
+    trackedPerformers
   };
 };
 
-export default withRouter(connect(null, mDP)(PerformerCard));
+const mDP = dispatch => {
+  return {
+    track: item => dispatch(track(item)),
+    untrack: item => dispatch(untrack(item)),
+    openLoginModal: () => dispatch(openModal("login"))
+  };
+};
+
+export default withRouter(connect(mSP, mDP)(PerformerCard));

@@ -2,26 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { track, untrack } from '../../actions/tracking_actions';
 import { withRouter } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
 class VenueCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tracked: props.tracked
-    };
+    this.tracked = false;
     this.handleClick = this.handleClick.bind(this);
     this.handleTracking = this.handleTracking.bind(this);
   }
   
   handleTracking (e) {
-    if (this.state.tracked) {
-      this.props.untrack({ trackable_type: "Venue", trackable_id: this.props.venue.id });
-    } else {
-      this.props.track({ trackable_type: "Venue", trackable_id: this.props.venue.id });
-    }
+    if (this.props.loggedIn) {
+      if (this.tracked) {
+        this.props.untrack({ trackable_type: "Venue", trackable_id: this.props.venue.id });
+      } else {
+        this.props.track({ trackable_type: "Venue", trackable_id: this.props.venue.id });
+      }
 
-    e.stopPropagation();
-    this.setState({ tracked: !this.state.tracked })
+      e.stopPropagation();
+      this.tracked = !this.tracked;
+    } else {
+      e.stopPropagation();
+      this.props.openLoginModal();
+    }
   }
 
   handleClick () {
@@ -29,6 +33,8 @@ class VenueCard extends React.Component {
   }
 
   render() {
+    this.tracked = this.props.trackedVenues.includes(this.props.venue.id);
+
     let styles = {
       backgroundImage: `url(${this.props.venue.photoUrl})`,
       backgroundSize: 'cover',
@@ -39,7 +45,7 @@ class VenueCard extends React.Component {
       <div className="item-card" >
         <div className="item-card-artwork" style={styles}>
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.state.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
           </div>
         </div>
         <div className="item-card-info" >
@@ -52,11 +58,25 @@ class VenueCard extends React.Component {
   
 };
 
-const mDP = dispatch => {
+const mSP = state => {
+  let trackedVenues = [];
+
+  if (state.entities.currentUser.trackedItems) {
+    trackedVenues = state.entities.currentUser.trackedItems.trackedVenues;
+  }
+
   return {
-    track: item => dispatch(track(item)),
-    untrack: item => dispatch(untrack(item))
+    loggedIn: Boolean(state.entities.currentUser.id),
+    trackedVenues
   };
 };
 
-export default withRouter(connect(null, mDP)(VenueCard));
+const mDP = dispatch => {
+  return {
+    track: item => dispatch(track(item)),
+    untrack: item => dispatch(untrack(item)),
+    openLoginModal: () => dispatch(openModal("login"))
+  };
+};
+
+export default withRouter(connect(mSP, mDP)(VenueCard));

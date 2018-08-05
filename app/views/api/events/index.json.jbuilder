@@ -13,8 +13,8 @@ json.venues do
   if @venues 
     @venues.each do |venue|
       json.set! venue.id do
-        json.extract! event.venue, :id, :name, :city, :address
-        json.photoUrl url_for(event.venue.photo)
+        json.extract! venue, :id, :name, :city, :address
+        json.photoUrl url_for(venue.photo)
       end
     end
   end
