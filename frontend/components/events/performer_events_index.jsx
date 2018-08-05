@@ -4,9 +4,12 @@ import {
   requestPerformer
 } from '../../actions/performer_actions';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import { track, untrack } from '../../actions/tracking_actions';
 import EventsListItem from './events_list_item';
+import { openModal } from '../../actions/modal_actions';
 
 class PerformerEventsIndex extends React.Component {
+
   componentDidMount() {
     this.props.requestPerformer(this.props.match.params.performerId);
   }
@@ -14,6 +17,19 @@ class PerformerEventsIndex extends React.Component {
   componentDidUpdate(prevParams) {
     if (prevParams.match.params.performerId !== this.props.match.params.performerId) {
       this.props.requestPerformer(this.props.match.params.performerId);
+    }
+  }
+
+  handleTracking() {
+    if (this.props.loggedIn) {
+      if (this.props.tracked) {
+        this.props.untrack({ trackable_type: "Performer", trackable_id: this.props.performer.id });
+      } else {
+        this.props.track({ trackable_type: "Performer", trackable_id: this.props.performer.id });
+      }
+
+    } else {
+      this.props.openLoginModal();
     }
   }
 
@@ -47,7 +63,12 @@ class PerformerEventsIndex extends React.Component {
                 <Link to="/" >Home</Link> / <Link to={`/categories/${this.props.performer.category}`} >{this.props.performer.category}</Link> / {this.props.performer.name}
               </span>
             </h3>
-            <h1 className="main-content-splash-name">{this.props.performer.name} Tickets</h1>
+            <div className="main-content-splash-name">
+              <h1>{this.props.performer.name} Tickets</h1>
+              <h2 className="main-content-track-button">
+                <i className={`fa-heart fa-sm ${ this.props.tracked ? "fas tracked" : "far"}`} onClick={this.handleTracking.bind(this)}></i>
+              </h2>
+            </div>
           </div>
         </header>
         <div className="main-content-content" >
@@ -65,16 +86,35 @@ const mSP = (state, ownProps) => {
   const performerId = Number(ownProps.match.params.performerId);
   const performer = state.entities.performers[performerId];
   const events = Object.values(state.entities.events).filter(event => event.performers.includes(performerId));
+  let trackedPerformers = [];
+
+  let loggedIn = Boolean(state.entities.currentUser.id);
+
+  if (loggedIn) {
+    trackedPerformers = state.entities.currentUser.trackedItems.trackedPerformers;
+  }
+
+
+  let tracked = false;
+  if (performer) {
+    tracked = trackedPerformers.includes(performer.id);
+  }
+
   return {
     performer,
     events,
-    venues: state.entities.venues
+    venues: state.entities.venues,
+    tracked,
+    loggedIn
   };
 };
 
 const mDP = dispatch => {
   return {
-    requestPerformer: performerId => dispatch(requestPerformer(performerId))
+    requestPerformer: performerId => dispatch(requestPerformer(performerId)),
+    track: performer => dispatch(track(performer)),
+    untrack: performer => dispatch(untrack(performer)),
+    openLoginModal: () => dispatch(openModal("login"))
   };
 };
 

@@ -7,21 +7,19 @@ import { openModal } from '../../actions/modal_actions';
 class PerformerCard extends React.Component {
   constructor(props) {
     super(props);
-    this.tracked = false;
     this.handleClick = this.handleClick.bind(this);
     this.handleTracking = this.handleTracking.bind(this);
   }
 
   handleTracking (e) {
     if (this.props.loggedIn) {
-      if (this.tracked) {
+      if (this.props.tracked) {
         this.props.untrack({ trackable_type: "Performer", trackable_id: this.props.performer.id });
       } else {
         this.props.track({ trackable_type: "Performer", trackable_id: this.props.performer.id });
       }
 
       e.stopPropagation();
-      this.tracked = !this.tracked;
     } else {
       e.stopPropagation();
       this.props.openLoginModal();
@@ -33,8 +31,6 @@ class PerformerCard extends React.Component {
   }
  
   render() {
-    this.tracked = this.props.trackedPerformers.includes(this.props.performer.id);
-
     let styles = {
       backgroundImage: `url(${this.props.performer.photoUrl})`,
       backgroundSize: 'cover',
@@ -42,10 +38,10 @@ class PerformerCard extends React.Component {
     };
 
     return (
-      <div className="item-card">
+      <div className="item-card" onClick={this.handleClick}>
         <div className="item-card-artwork" style={styles}>
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.props.tracked ? "fas tracked" : "far"}`}></i>
           </div>
         </div>
         <div className="item-card-info" >
@@ -57,16 +53,18 @@ class PerformerCard extends React.Component {
   }   
 }
 
-const mSP = state => {
+const mSP = (state, ownProps) => {
   let trackedPerformers = [];
 
   if (state.entities.currentUser.trackedItems) {
     trackedPerformers = state.entities.currentUser.trackedItems.trackedPerformers;
   }
 
+  let tracked = trackedPerformers.includes(ownProps.performer.id);
+
   return {
     loggedIn: Boolean(state.entities.currentUser.id),
-    trackedPerformers
+    tracked
   };
 };
 

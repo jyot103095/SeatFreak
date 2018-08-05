@@ -7,7 +7,6 @@ import { openModal } from '../../actions/modal_actions';
 class EventCard extends React.Component {
   constructor(props) {
     super(props);
-    this.tracked = false;
     this.handleTracking = this.handleTracking.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -15,14 +14,13 @@ class EventCard extends React.Component {
 
   handleTracking (e) {
     if (this.props.loggedIn) {
-      if (this.tracked) {
+      if (this.props.tracked) {
         this.props.untrack({ trackable_type: "Event", trackable_id: this.props.event.id });
       } else {
         this.props.track({ trackable_type: "Event", trackable_id: this.props.event.id });
       }
 
       e.stopPropagation();
-      this.tracked = !this.tracked;
     } else {
       e.stopPropagation();
       this.props.openLoginModal();
@@ -30,12 +28,11 @@ class EventCard extends React.Component {
   }
 
   handleClick () {
+    debugger
     this.props.history.push(`/events/${this.props.event.id}`);
   }
 
   render () {
-    this.tracked = this.props.trackedEvents.includes(this.props.event.id);
-
     let title;
     if (this.props.event.title.length > 26) {
       title = this.props.event.title.slice(0, 26) + "...";
@@ -50,12 +47,11 @@ class EventCard extends React.Component {
     //   backgroundSize: 'cover',
     //   overflow: 'hidden'
     // };
-
     return (
       <div className="item-card" onClick={this.handleClick}>
         <div className="item-card-artwork">
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.props.tracked ? "fas tracked" : "far"}`}></i>
           </div>
           <div className="item-card-price">
             See Tickets
@@ -70,16 +66,18 @@ class EventCard extends React.Component {
   } 
 }
 
-const mSP = state => {
+const mSP = (state, ownProps) => {
   let trackedEvents = [];
 
   if (state.entities.currentUser.trackedItems) {
     trackedEvents = state.entities.currentUser.trackedItems.trackedEvents;
   }
 
+  let tracked = trackedEvents.includes(ownProps.event.id);
+
   return {
     loggedIn: Boolean(state.entities.currentUser.id),
-    trackedEvents
+    tracked
   };
 };
 

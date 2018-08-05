@@ -6,6 +6,8 @@ import {
 } from '../../actions/venue_actions';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import EventsListItem from './events_list_item';
+import { track, untrack } from '../../actions/tracking_actions';
+import { openModal } from '../../actions/modal_actions';
 
 class VenueEventsIndex extends React.Component {
   componentDidMount() {
@@ -15,6 +17,19 @@ class VenueEventsIndex extends React.Component {
   componentDidUpdate(prevParams) {
     if (prevParams.match.params.venueId !== this.props.match.params.venueId) {
       this.props.requestVenue(this.props.match.params.venueId);
+    }
+  }
+
+  handleTracking() {
+    if (this.props.loggedIn) {
+      if (this.props.tracked) {
+        this.props.untrack({ trackable_type: "Venue", trackable_id: this.props.venue.id });
+      } else {
+        this.props.track({ trackable_type: "Venue", trackable_id: this.props.venue.id });
+      }
+
+    } else {
+      this.props.openLoginModal();
     }
   }
 
@@ -47,7 +62,12 @@ class VenueEventsIndex extends React.Component {
                 <Link to="/" >Home</Link> / <Link to="/venues" >Venues</Link> / {this.props.venue.name}
               </span>
             </h3>
-            <h1 className="main-content-splash-name">{this.props.venue.name} Tickets</h1>
+            <div className="main-content-splash-name">
+              <h1>{this.props.venue.name} Tickets</h1>
+              <h2 className="main-content-track-button">
+                <i className={`fa-heart fa-sm ${ this.props.tracked ? "fas tracked" : "far"}`} onClick={this.handleTracking.bind(this)}></i>
+              </h2>
+            </div>
           </div>
         </header>
         <div className="main-content-content" >
@@ -65,15 +85,33 @@ const mSP = (state, ownProps) => {
   const venueId = Number(ownProps.match.params.venueId);
   const venue = state.entities.venues[venueId];
   const events = Object.values(state.entities.events).filter(event => event.venueId === venueId);
+
+  let trackedVenues = [];
+  let loggedIn = Boolean(state.entities.currentUser.id);
+
+  if (loggedIn) {
+    trackedVenues = state.entities.currentUser.trackedItems.trackedVenues;
+  }
+
+
+  let tracked = false;
+  if (venue) {
+    tracked = trackedVenues.includes(venue.id);
+  }
   return {
     venue,
-    events
+    events,
+    loggedIn,
+    tracked
   };
 };
 
 const mDP = dispatch => {
   return {
-    requestVenue: venueId => dispatch(requestVenue(venueId))
+    requestVenue: venueId => dispatch(requestVenue(venueId)),
+    track: venue => dispatch(track(venue)),
+    untrack: venue => dispatch(untrack(venue)),
+    openLoginModal: () => dispatch(openModal("login"))
   };
 };
 

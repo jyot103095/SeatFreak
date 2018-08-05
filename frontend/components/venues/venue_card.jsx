@@ -7,21 +7,19 @@ import { openModal } from '../../actions/modal_actions';
 class VenueCard extends React.Component {
   constructor(props) {
     super(props);
-    this.tracked = false;
     this.handleClick = this.handleClick.bind(this);
     this.handleTracking = this.handleTracking.bind(this);
   }
   
   handleTracking (e) {
     if (this.props.loggedIn) {
-      if (this.tracked) {
+      if (this.props.tracked) {
         this.props.untrack({ trackable_type: "Venue", trackable_id: this.props.venue.id });
       } else {
         this.props.track({ trackable_type: "Venue", trackable_id: this.props.venue.id });
       }
 
       e.stopPropagation();
-      this.tracked = !this.tracked;
     } else {
       e.stopPropagation();
       this.props.openLoginModal();
@@ -33,8 +31,6 @@ class VenueCard extends React.Component {
   }
 
   render() {
-    this.tracked = this.props.trackedVenues.includes(this.props.venue.id);
-
     let styles = {
       backgroundImage: `url(${this.props.venue.photoUrl})`,
       backgroundSize: 'cover',
@@ -42,10 +38,10 @@ class VenueCard extends React.Component {
     };
     
     return (
-      <div className="item-card" >
+      <div className="item-card" onClick={this.handleClick}>
         <div className="item-card-artwork" style={styles}>
           <div className="trackButton" onClick={this.handleTracking}>
-            <i className={`fa-heart ${ this.tracked ? "fas tracked" : "far"}`}></i>
+            <i className={`fa-heart ${ this.props.tracked ? "fas tracked" : "far"}`}></i>
           </div>
         </div>
         <div className="item-card-info" >
@@ -58,16 +54,18 @@ class VenueCard extends React.Component {
   
 };
 
-const mSP = state => {
+const mSP = (state, ownProps) => {
   let trackedVenues = [];
 
   if (state.entities.currentUser.trackedItems) {
     trackedVenues = state.entities.currentUser.trackedItems.trackedVenues;
   }
 
+  let tracked = trackedVenues.includes(ownProps.venue.id);
+
   return {
     loggedIn: Boolean(state.entities.currentUser.id),
-    trackedVenues
+    tracked
   };
 };
 

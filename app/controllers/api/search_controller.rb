@@ -8,10 +8,6 @@ class Api::SearchController < ApplicationController
     @performers = @results.where(searchable_type: "Performer").map(&:searchable)
     @venues = @results.where(searchable_type: "Venue").map(&:searchable)
 
-    @eventIds = @events.map(&:id)
-    @performerIds = @performers.map(&:id)
-    @venueIds = @venues.map(&:id)
-
     render '/api/search/index.json.jbuilder'
   end
 end
