@@ -26,18 +26,11 @@ class UserDropdown extends React.Component {
 
   render() {
     if (!this.props.currentUser) return null;
-    let dropdown;
+    let klass;
     if (this.state.isOpen) {
-      dropdown = () => (
-        <ul className="user-links">
-          <li><Link to="/account/tickets"><span>Tickets</span></Link></li>
-          <li><Link to="/account/settings"><span>Account Settings</span></Link></li>
-          <li><Link to="/account/tracker"><span>Tracker</span></Link></li>
-          <li onClick={this.handleLogout}><span>Logout</span></li>
-        </ul>
-      );
+      klass = "user-links open";
     } else {
-      dropdown = () => null;
+      klass = "user-links closed";
     }
 
     return (
@@ -47,7 +40,12 @@ class UserDropdown extends React.Component {
             <h2>{this.props.currentUser.fName}</h2>
           </div>
         </Link>
-        { dropdown() }
+        <ul className={klass}>
+          <li><Link to="/account/tickets"><span>Tickets</span></Link></li>
+          <li><Link to="/account/settings"><span>Account Settings</span></Link></li>
+          <li><Link to="/account/tracker"><span>Tracker</span></Link></li>
+          <li onClick={this.handleLogout}><span>Logout</span></li>
+        </ul>
       </div>
     );
   }

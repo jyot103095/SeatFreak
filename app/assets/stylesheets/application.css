@@ -200,12 +200,23 @@
   position: relative;
   color: white;
   z-index: 1;
+  transition: all .25s ease-in-out;
+  transition-timing-function: linear;
+}
+
+.closed {
+  opacity: 0;
+  top: -350px;
+}
+
+.open {
+  /*opacity: 1;*/
 }
 
 .user-dropdown:hover {
   background-color: white;
-  transition: background-color .25s ease-in-out;
   color: #1673e6;
+  box-shadow: 0 2px 2px rgba(0,0,0,.15);
 }
 
 .user-dropdown a {
@@ -232,6 +243,8 @@
   align-items: center;
   border-radius: 0 0 3px 3px;
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
+  transition: opacity 0.25s ease-in-out;
+  transition-timing-function: linear;
 }
 
 .categories-list {
@@ -243,7 +256,6 @@
   height: 40px;
   text-align: center;
   box-sizing: border-box;
-  transition: 0.25s;
 }
 
 .user-links > li span {
@@ -275,10 +287,11 @@
   justify-content: flex-end;
   height: 200px;
   padding-top: 60px;
+  position: relative;
 }
 
 .main-content-splash-image {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 260px;

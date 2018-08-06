@@ -45,14 +45,14 @@ class UserAccountSettings extends React.Component {
   // TODO: split component into seperate components
     return (
       <div className="user-settings-container">
-        <div className="block-shade"></div>
+        <header className="main-content-splash">
+          <div className="block-shade"></div>
           <div className="main-content-splash-image">
             <div className="upwards-shade"></div>
             <div className="right-shade"></div>
             <div className="left-shade"></div>
             <div className="main-clear-space"></div>
           </div>
-        <header className="main-content-splash">
           <h1 className="main-content-splash-name">Account Settings</h1>
         </header>
         <div className="main-content-content" >
@@ -81,24 +81,6 @@ class UserAccountSettings extends React.Component {
                 <div className="user-settings-submit-container" >
                   <button type="submit">Update</button>
                 </div>
-              </form>
-              <form className="account-settings-form" onSubmit={this.handleUpdatePassword}>
-                <h2 className="user-settings-form-title">Change Your Password</h2>
-                  <div className="user-settings-textfield-container" >
-                    <label className="user-settings-form-label">Old Password</label>
-                    <input onChange={this.handleChange('oldPassword')} type="password" value={this.state.oldPassword} />
-                  </div>
-                  <div className="user-settings-textfield-container" >
-                    <label className="user-settings-form-label">New Password</label>
-                    <input onChange={this.handleChange('newPassword')} type="password" value={this.state.newPassword}/>
-                  </div>
-                  <div className="user-settings-textfield-container" >
-                    <label className="user-settings-form-label">Confirm Password</label>
-                    <input onChange={this.handleChange('confirmPassword')} type="password" value={this.state.confirmPassword} />
-                  </div>
-                  <div className="user-settings-submit-container" >
-                    <button type="submit">Update</button>
-                  </div>
               </form>
             </div>
           </div>
