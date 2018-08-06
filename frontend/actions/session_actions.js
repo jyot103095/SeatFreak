@@ -4,10 +4,13 @@ export const RECEIVE_USER = "RECEIVE_USER";
 export const LOGOUT = "LOGOUT";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-export const receiveUser = user => {
+export const receiveUser = payload => {
   return {
     type: RECEIVE_USER,
-    user
+    user: payload.user,
+    events: payload.events,
+    performers: payload.performers,
+    venues: payload.venues
   }
 };
 
@@ -26,13 +29,13 @@ export const receiveErrors = errors => {
 
 export const loginUser = user => dispatch => {
   return SessionApiUtil.login(user).then(
-    user => dispatch(receiveUser(user)),
+    payload => dispatch(receiveUser(payload)),
     errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const signupUser = user => dispatch => {
   return SessionApiUtil.signup(user).then(
-    user => dispatch(receiveUser(user)),
+    payload => dispatch(receiveUser(payload)),
     errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 

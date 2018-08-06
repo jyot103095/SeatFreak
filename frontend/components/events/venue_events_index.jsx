@@ -56,6 +56,13 @@ class VenueEventsIndex extends React.Component {
     return (
       <div className="venues-index-container" >
         <header className="main-content-splash" style={styles}>
+          <div className="block-shade"></div>
+          <div className="main-content-splash-image">
+            <div className="upwards-shade"></div>
+            <div className="right-shade"></div>
+            <div className="left-shade"></div>
+            <div className="main-clear-space"></div>
+          </div>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span>

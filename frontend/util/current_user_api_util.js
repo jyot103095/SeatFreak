@@ -7,3 +7,10 @@ export const updateUser = user => {
     }
   });
 };
+
+export const fetchCurrentUser = () => {
+	return $.ajax({
+		method: "get",
+		url: `/api/users`,
+	});
+};

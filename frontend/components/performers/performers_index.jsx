@@ -41,6 +41,13 @@ class PerformersIndex extends React.Component {
     return (
       <div className="performers-index-container" >
         <header className="main-content-splash">
+          <div className="block-shade"></div>
+          <div className="main-content-splash-image">
+            <div className="upwards-shade"></div>
+            <div className="right-shade"></div>
+            <div className="left-shade"></div>
+            <div className="main-clear-space"></div>
+          </div>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span><Link to="/" >Home</Link> / {this.props.category}</span>

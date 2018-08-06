@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   patch '/api/tickets/:id/buy', to: 'api/tickets#buy'
   patch '/api/tickets/:id/sell', to: 'api/tickets#sell'
   get '/api/performers/:category/events', to: 'api/performers#show_category'
+  get '/api/users', to: 'api/users#show'
 end

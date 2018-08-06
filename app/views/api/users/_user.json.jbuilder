@@ -4,7 +4,7 @@ json.fName user.f_name
 json.lName user.l_name
 json.ticketIds user.ticket_ids
 json.trackedItems do 
-	json.trackedEvents trackings.where(trackable_type: "Event").map(&:trackable_id)
-	json.trackedPerformers trackings.where(trackable_type: "Performer").map(&:trackable_id)
-	json.trackedVenues trackings.where(trackable_type: "Venue").map(&:trackable_id)
+	json.trackedEvents tracked_events
+	json.trackedPerformers tracked_performers
+	json.trackedVenues tracked_venues
 end

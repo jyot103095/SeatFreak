@@ -11,6 +11,7 @@ import PerformersIndex from './performers/performers_index';
 import PerformerEventsIndex from './events/performer_events_index';
 import VenuesIndex from './venues/venues_index';
 import VenueEventsIndex from './events/venue_events_index';
+import Tracker from './users/tracker';
 import { ProtectedRoute } from '../util/route_util';
 import { Route, Link } from 'react-router-dom';
 
@@ -27,6 +28,7 @@ const App = (props) => {
         <ProtectedRoute path='/checkout' component={TicketCheckout} />
         <ProtectedRoute path='/account/settings' component={UserAccountSettings} />
         <ProtectedRoute path='/account/tickets' component={UserTicketsIndex} />
+        <ProtectedRoute path='/account/tracker' component={Tracker} />
         <Route path='/sell' component={TicketSell} />
         <Route exact path='/categories/:category' component={PerformersIndex} />
         <Route path='/performers/:performerId' component={PerformerEventsIndex} />

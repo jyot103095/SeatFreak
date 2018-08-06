@@ -23,12 +23,6 @@ class EventIndex extends React.Component {
   render() {
 
     const eventItems = this.props.events.map(event => {
-      let tracked = false;
-
-      // if (this.props.trackedItems.trackedEvents.includes(event.id)) {
-      //   tracked = true;
-      // }
-
       return (<EventCard key={event.id} event={event} />);
     });
 
@@ -63,13 +57,7 @@ class EventIndex extends React.Component {
     }
 
     const performerItems = this.props.performers.slice(0, 12).map(performer => {
-      let tracked = false;
-
-      // if (this.props.trackedItems.trackedPerformers.includes(performer.id)) {
-      //   tracked = true;
-      // }
-
-      return (<PerformerCard key={performer.id} performer={performer} tracked={tracked}/>);
+      return (<PerformerCard key={performer.id} performer={performer} />);
     });
 
     const performerStyles = {
@@ -102,13 +90,7 @@ class EventIndex extends React.Component {
     }
 
     const venueItems = this.props.venues.slice(0, 12).map(venue => {
-      let tracked = false;
-
-      // if (this.props.trackedItems.trackedVenues.includes(venue.id)) {
-      //   tracked = true;
-      // }
-
-      return (<VenueCard key={venue.id} venue={venue} tracked={tracked}/>);
+      return (<VenueCard key={venue.id} venue={venue} />);
     });
 
     const venueStyles = {
@@ -144,6 +126,13 @@ class EventIndex extends React.Component {
     return (
       <div className="events-index-container">
         <header className="main-content-splash main-page">
+          <div className="block-shade"></div>
+          <div className="main-content-splash-image main-page-splash-image">
+            <div className="upwards-shade"></div>
+            <div className="right-shade"></div>
+            <div className="left-shade"></div>
+            <div className="main-clear-space"></div>
+          </div>
           <div className="main-content-splash-info">
             <h1 className="main-content-splash-name">Thousands of Tickets in One Place.</h1>
           </div>

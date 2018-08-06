@@ -4,6 +4,12 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login!(@user)
+      trackings = @user.trackings
+
+      @tracked_events = trackings.where(trackable_type: "Event").map(&:trackable)
+      @tracked_performers = trackings.where(trackable_type: "Performer").map(&:trackable)
+      @tracked_venues = trackings.where(trackable_type: "Venue").map(&:trackable)
+
       render '/api/users/show.json.jbuilder'
     else
       render json: ["Invalid username/password"], status: 422

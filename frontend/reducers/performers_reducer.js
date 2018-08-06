@@ -5,6 +5,9 @@ import {
 import {
   RECEIVE_EVENTS
 } from '../actions/event_actions';
+import {
+  RECEIVE_USER
+} from '../actions/session_actions';
 import { merge } from 'lodash';
 
 const PerformerReducer = (state = {}, action) => {
@@ -15,6 +18,7 @@ const PerformerReducer = (state = {}, action) => {
       return merge({}, state, { [action.performer.id]: action.performer });
     case RECEIVE_PERFORMERS:
     case RECEIVE_EVENTS:
+    case RECEIVE_USER:
       return merge({}, state, action.performers);
     default:
       return state;

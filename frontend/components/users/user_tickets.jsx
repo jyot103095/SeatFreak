@@ -82,6 +82,33 @@ class UserTicketsIndex extends React.Component {
       );
     });
 
+    let expiredTickets = this.props.expiredTickets.map(ticket => {
+      let event = this.props.events[ticket.eventId];
+      let eventTitle = event.title;
+      let eventOn = event.eventOn.split(" ");
+      let day = eventOn[0];
+      let date = eventOn.slice(1, 3).join(" ");
+      let time = eventOn.slice(4, 6).join(" ");
+      let venueName = this.props.venues[event.venueId].name;
+
+      return (
+        <div key={ticket.id} className="user-ticket-info">
+          <div className="user-event-item-event-on" >
+            <p className="user-event-date">{date}</p>
+            <p className="user-event-time">{day} · {time}</p>
+          </div>
+          <div className="user-event-info">
+            <p className="user-event-title">{eventTitle}</p>
+            <p className="user-seat-info" >Section {ticket.section} Row {ticket.row} - {venueName}</p>
+          </div>
+          <div className="user-ticket-sell-button">
+            <button onClick={() => this.handleSell(ticket.id)}
+              className="event-show-button">Sell</button>
+          </div>
+        </div>
+      );
+    });
+
     let tab;
     if (this.state.selected === 1) {
       tab = () => (
@@ -114,9 +141,12 @@ class UserTicketsIndex extends React.Component {
     } else if (this.state.selected === 2) {
       tab = () => (
         <div className="expired-tickets-list selected-tab">
-          <div className="empty-tickets-container">
-            <h2>No tickets to display</h2>
-          </div>
+          { expiredTickets.length > 0 ? 
+            expiredTickets :
+            <div className="empty-tickets-container">
+              <h2>No tickets to display</h2>
+            </div>
+          }
         </div>
       );
     }
@@ -125,6 +155,13 @@ class UserTicketsIndex extends React.Component {
     return (
       <div className="user-tickets-container">
         <header className="main-content-splash">
+          <div className="block-shade"></div>
+          <div className="main-content-splash-image">
+            <div className="upwards-shade"></div>
+            <div className="right-shade"></div>
+            <div className="left-shade"></div>
+            <div className="main-clear-space"></div>
+          </div>
           <h1 className="main-content-splash-name">Tickets</h1>
         </header>
         <div className="main-content-content" >
@@ -148,6 +185,7 @@ const mSP = state => {
     return {
       ticketsOnSale: [],
       ticketsNotOnSale: [],
+      expiredTickets: [],
       events: []
     };
   }
@@ -156,7 +194,6 @@ const mSP = state => {
   const ticketsNotOnSale = tickets.filter(ticket => !ticket.onSale && !ticket.expired);
   const expiredTickets = tickets.filter(ticket => ticket.expired);
   const eventIds = tickets.map(ticket => ticket.eventId);
-
   const filteredEvents = eventIds.reduce((eventsObj, eventId) => {
     eventsObj[eventId] = state.entities.events[eventId];
     return eventsObj;
@@ -165,6 +202,7 @@ const mSP = state => {
   return {
     ticketsOnSale,
     ticketsNotOnSale,
+    expiredTickets,
     events: filteredEvents,
     venues: state.entities.venues
   };

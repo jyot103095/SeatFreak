@@ -1,7 +1,11 @@
 <div id="root">
   <% if logged_in %>
     <script type="text/javascript">
-      window.currentUser = <%= render("/api/users/user.json.jbuilder", user: current_user, trackings: current_user.trackings).html_safe %>
+      window.currentUser = <%= render("/api/users/user.json.jbuilder", 
+      	user: current_user, 
+      	tracked_events: current_user.trackings.where(trackable_type: "Event").map(&:trackable_id),
+      	tracked_performers: current_user.trackings.where(trackable_type: "Performer").map(&:trackable_id),
+      	tracked_venues: current_user.trackings.where(trackable_type: "Venue").map(&:trackable_id)).html_safe %>
     </script>
   <% end %>
 </div>

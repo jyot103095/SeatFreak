@@ -32,6 +32,7 @@ class UserDropdown extends React.Component {
         <ul className="user-links">
           <li><Link to="/account/tickets"><span>Tickets</span></Link></li>
           <li><Link to="/account/settings"><span>Account Settings</span></Link></li>
+          <li><Link to="/account/tracker"><span>Tracker</span></Link></li>
           <li onClick={this.handleLogout}><span>Logout</span></li>
         </ul>
       );

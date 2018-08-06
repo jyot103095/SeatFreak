@@ -305,6 +305,10 @@
   margin-left: 50px;
 }
 
+.search-box-container-main-page input[type="submit"]:hover {
+  cursor: pointer;
+}
+
 [class$="-list-navigator-left"] button, [class$="-list-navigator-right"] button {
   width: 50px;
   height: 50px;

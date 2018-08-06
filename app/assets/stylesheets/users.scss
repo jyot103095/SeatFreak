@@ -6,22 +6,25 @@
   width: 100%;
 }
 
-.user-tickets-tabs {
+.user-tickets-tabs, .tracker-tabs {
   display: flex;
   align-items: center;
   color: gray;
   height: 60px;
+  align-items: flex-end;
 }
 
-.user-tickets-tabs h2 {
+.user-tickets-tabs h2, .tracker-tabs h2 {
   text-align: center;
   font-size: 15px;
   font-weight: 600;
-  line-height: 17px;
-  padding: 10px 15px;
+  line-height: 65px;
+  padding: 0 15px;
+  height: 60px;
+  box-sizing: border-box;
 }
 
-.user-tickets-tabs h2:hover {
+.user-tickets-tabs h2:hover, .tracker-tabs h2:hover {
   cursor: pointer;
   color: black;
 }
@@ -41,7 +44,7 @@
 
 .upcoming-tickets-list h1{
   font-size: 20px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .user-tickets-list-onsale h2, .user-tickets-list-not-onsale h2 {
@@ -172,4 +175,48 @@
   height: 250px;
   position: absolute;
   box-sizing: border-box;
+}
+
+.tracker-tab-count {
+  font-size: 20px;
+  line-height: 101px;
+  height: 100px;
+  box-sizing: border-box;
+  margin-left: 10px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tracker-items {
+  margin: 0 auto;
+  width: 750px;
+}
+
+.tracker-tab-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 75px;
+}
+
+.tracker-item-info {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 750px;
+  color: #1673e6;
+  transition: all 0.25s;
+  transition-timing-function: linear;
+}
+
+.tracker-item-info:hover {
+  color: #0f50a0;
+}
+
+.tracker-item-photo {
+  height: 60px;
+  width: 75px;
+  border-radius: 3px;
+  background-position: center;
 }

@@ -277,6 +277,55 @@
   padding-top: 60px;
 }
 
+.main-content-splash-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 260px;
+  width: 100%;
+  background-image: url('https://chairnerd.global.ssl.fastly.net/images/waves/wave_4.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  flex: 1 1 1200px;
+  justify-content: space-between;
+  background-size: cover; 
+}
+
+.main-page-splash-image {
+  height: 375px;
+}
+
+.upwards-shade {
+  background-image: linear-gradient(180deg,rgba(18,28,38,0) 0,#121c26);
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.left-shade {
+  flex: 0 2 200px;
+  background-image: linear-gradient(270deg,rgba(18,28,38,0) 0,#121c26);
+  display: none;
+}
+
+.right-shade {
+  flex: 0 2 200px;
+  background-image: linear-gradient(90deg,rgba(18,28,38,0) 0,#121c26);
+  display: none;
+}
+
+.main-clear-space {
+  flex: 1 0 1000px;
+  background-color: transparent;
+}
+
+.block-shade {
+  flex: 1 6 40px;
+  background-color: #121c26;
+  display: none;
+}
+
 header.main-page {
   justify-content: center;
   box-sizing: border-box;
@@ -306,6 +355,10 @@ header.main-page .main-content-splash-info {
 .main-content-track-button {
   font-size: 30px;
   margin-left: 20px;
+}
+
+.main-content-track-button:hover {
+  cursor: pointer;
 }
 
 .main-content-track-button i {
