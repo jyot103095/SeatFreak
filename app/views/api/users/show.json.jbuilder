@@ -9,6 +9,7 @@ json.user do
 		json.trackedPerformers @tracked_performers.map(&:id)
 		json.trackedVenues @tracked_venues.map(&:id)
 	end
+	json.photoUrl url_for(@user.photo)
 end
 
 json.events ({})
@@ -20,6 +21,7 @@ json.events do
 		  json.ticketIds event.ticket_ids
 		  json.performers event.performer_ids
 		  json.venueId event.venue_id
+		  json.photoUrl url_for(event.photo)
 		end
 	end
 end

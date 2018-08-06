@@ -18,6 +18,7 @@ json.events do
       json.venueId ticket.event.venue.id
       json.eventOn ticket.event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
       json.performers ticket.event.performer_ids
+      json.photoUrl url_for(event.photo)
     end
   end
 end

@@ -28,9 +28,9 @@ class UserDropdown extends React.Component {
     if (!this.props.currentUser) return null;
     let klass;
     if (this.state.isOpen) {
-      klass = "user-links open";
+      klass = null;
     } else {
-      klass = "user-links closed";
+      klass = "closed";
     }
 
     return (
@@ -40,11 +40,11 @@ class UserDropdown extends React.Component {
             <h2>{this.props.currentUser.fName}</h2>
           </div>
         </Link>
-        <ul className={klass}>
-          <li><Link to="/account/tickets"><span>Tickets</span></Link></li>
-          <li><Link to="/account/settings"><span>Account Settings</span></Link></li>
-          <li><Link to="/account/tracker"><span>Tracker</span></Link></li>
-          <li onClick={this.handleLogout}><span>Logout</span></li>
+        <ul className={`user-links ${klass}`}>
+          <li><Link to="/account/tickets"><i className="fas fa-ticket-alt dropdown-icons"></i><span>Tickets</span></Link></li>
+          <li><Link to="/account/tracker"><i className="fa-heart fa-sm far dropdown-icons"></i><span>Tracker</span></Link></li>
+          <li><Link to="/account/settings"><i className="fas fa-user dropdown-icons"></i><span>Settings</span></Link></li>
+          <li onClick={this.handleLogout}><i className="fas fa-sign-out-alt dropdown-icons"></i><span>Logout</span></li>
         </ul>
       </div>
     );

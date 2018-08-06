@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .wider-navbar {
@@ -37,11 +37,16 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
   align-items: center;
 }
 
 .wider-navbar .logo {
   padding-left: 14px;
+}
+
+.wider-navbar .navbar-right {
+  padding-right: 14px;
 }
 
 .navbar-left, .navbar-right {
@@ -77,6 +82,7 @@
   height: 40px;
   margin: 10px 0 10px 5px;
   border-radius: 0.5em;
+  font-size: 14px;
 }
 
 .session-buttons button:first-of-type {
@@ -129,7 +135,6 @@
 .categories > li {
   color: white;
   font-size: 14px;
-  font-weight: 600;
 }
 
 .categories > li:hover {
@@ -183,7 +188,7 @@
 }
 
 .event-info-container h5 {
-  font-size: 12px;
+  font-size: 13px;
   color: hsla(0,0%,100%,.7);
   transition: 0.25s;
 }
@@ -209,10 +214,6 @@
   top: -350px;
 }
 
-.open {
-  /*opacity: 1;*/
-}
-
 .user-dropdown:hover {
   background-color: white;
   color: #1673e6;
@@ -222,6 +223,8 @@
 .user-dropdown a {
   text-decoration: none;
   color: inherit;
+  display: inline-block;
+  width: 100%;
 }
 
 .user-name {
@@ -244,7 +247,7 @@
   border-radius: 0 0 3px 3px;
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
   transition: opacity 0.25s ease-in-out;
-  transition-timing-function: linear;
+  transition-timing-function: ease-in-out;
 }
 
 .categories-list {
@@ -253,14 +256,23 @@
 
 .user-links > li {
   width: 100%;
-  height: 40px;
-  text-align: center;
+  height: 45px;
   box-sizing: border-box;
+  transition: 0.25s;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.dropdown-icons {
+  margin-left: 25px;
 }
 
 .user-links > li span {
   line-height: 40px;
+  font-size: 15px;
   display: inline-block;
+  margin-left: 10px;
 }
 
 .user-links > li:hover, .categories-list > li:hover {

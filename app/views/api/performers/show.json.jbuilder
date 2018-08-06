@@ -12,6 +12,7 @@ json.events do
       json.eventOn event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
       json.performers event.performer_ids
       json.venueId event.venue_id
+      json.photoUrl url_for(event.photo)
     end
   end
 end

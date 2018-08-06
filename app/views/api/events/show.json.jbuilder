@@ -4,6 +4,7 @@ json.event do
   json.ticketIds @event.ticket_ids
   json.performers @event.performer_ids
   json.venueId @event.venue_id
+  json.photoUrl url_for(@event.photo)
 end
 
 json.venues do

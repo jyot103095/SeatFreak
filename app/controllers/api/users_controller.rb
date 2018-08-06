@@ -14,6 +14,8 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      file = File.open('./app/assets/images/user.png')
+      @user.photo.attach(io: file, filename: 'user.png')
       login!(@user)
       trackings = @user.trackings
 

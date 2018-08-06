@@ -8,3 +8,4 @@ json.trackedItems do
 	json.trackedPerformers tracked_performers
 	json.trackedVenues tracked_venues
 end
+json.photoUrl url_for(user.photo)

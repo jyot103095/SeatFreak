@@ -189,14 +189,16 @@
 
 .tracker-items {
   margin: 0 auto;
-  width: 750px;
 }
 
 .tracker-tab-item {
+  width: 100%;
+  padding: 10px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 75px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .tracker-item-info {
@@ -208,6 +210,7 @@
   color: #1673e6;
   transition: all 0.25s;
   transition-timing-function: linear;
+  margin-left: 10px;
 }
 
 .tracker-item-info:hover {
@@ -216,7 +219,7 @@
 
 .tracker-item-photo {
   height: 60px;
-  width: 75px;
+  width: 60px;
   border-radius: 3px;
   background-position: center;
 }

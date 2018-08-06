@@ -210,6 +210,8 @@ venue_ids = Venue.ids
 200.times do |i|
   event = eventTitles.sample
   new_event = Event.create(title: event.first, event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night), venue_id: venue_ids.sample)
+  file = File.open('./app/assets/images/concert.jpg')
+  new_event.photo.attach(io: file, filename: 'concert.jpg')
   new_event.performers = event.last
 end
 
@@ -223,6 +225,8 @@ end
   stadium = soccer_stadiums.sample.id
 
   new_event = Event.create(title: event_title, event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night), venue_id: stadium)
+  file = File.open('./app/assets/images/soccer.jpg')
+  new_event.photo.attach(io: file, filename: 'soccer.jpg')
   new_event.performers = [team1, team2]
 end
 
@@ -236,6 +240,8 @@ end
   stadium = basketball_stadiums.sample.id
 
   new_event = Event.create(title: event_title, event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night), venue_id: stadium)
+  file = File.open('./app/assets/images/basketball.jpg')
+  new_event.photo.attach(io: file, filename: 'basketball.jpg')
   new_event.performers = [team1, team2]
 end
 
@@ -249,13 +255,19 @@ end
   stadium = football_stadiums.sample.id
 
   new_event = Event.create(title: event_title, event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night), venue_id: stadium)
+  file = File.open('./app/assets/images/football.jpg')
+  new_event.photo.attach(io: file, filename: 'football.jpg')
   new_event.performers = [team1, team2]
 end
 
-User.create(email: "hunter2@gmail.com", password: "hunter2", f_name: "Hunter", l_name: "Hunter")
+new_user = User.create(email: "hunter2@gmail.com", password: "hunter2", f_name: "Hunter", l_name: "Hunter")
+file = File.open('./app/assets/images/user.png')
+new_user.photo.attach(io: file, filename: 'user.png')
 
 50.times do |i|
-  User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+  new_user = User.create(email: Faker::Internet.email, password: "hunter2", f_name: Faker::Name.unique.name, l_name: Faker::Name.unique.last_name)
+  file = File.open('./app/assets/images/user.png')
+  new_user.photo.attach(io: file, filename: 'user.png')
 end
 
 

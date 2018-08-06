@@ -15,6 +15,8 @@ class Event < ApplicationRecord
   include PgSearch
   multisearchable :against => [:title]
 
+  has_one_attached :photo
+
   belongs_to :venue
 
   has_many :tickets
