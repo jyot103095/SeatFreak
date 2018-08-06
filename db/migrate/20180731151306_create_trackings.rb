@@ -9,6 +9,6 @@ class CreateTrackings < ActiveRecord::Migration[5.2]
     end
 
     add_index :trackings, :item_id
-    add_index :trackings, :user_i
+    add_index :trackings, :user_id
   end
 end
