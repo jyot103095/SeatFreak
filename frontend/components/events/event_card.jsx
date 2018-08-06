@@ -28,7 +28,6 @@ class EventCard extends React.Component {
   }
 
   handleClick () {
-    debugger
     this.props.history.push(`/events/${this.props.event.id}`);
   }
 
@@ -40,16 +39,15 @@ class EventCard extends React.Component {
       title = this.props.event.title;
     }
 
-    // const performer = performers.sample;
+    let styles = {
+      backgroundImage: `url(${this.props.event.photoUrl})`,
+      backgroundSize: 'cover',
+      overflow: 'hidden'
+    };
 
-    // let styles = {
-    //   backgroundImage: `url(${performer.photoUrl})`,
-    //   backgroundSize: 'cover',
-    //   overflow: 'hidden'
-    // };
     return (
       <div className="item-card" onClick={this.handleClick}>
-        <div className="item-card-artwork">
+        <div className="item-card-artwork" style={styles}>
           <div className="trackButton" onClick={this.handleTracking}>
             <i className={`fa-heart ${ this.props.tracked ? "fas tracked" : "far"}`}></i>
           </div>

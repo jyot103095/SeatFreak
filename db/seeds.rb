@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-
 Ticket.destroy_all
 Event.destroy_all
 Performer.destroy_all
@@ -136,11 +135,11 @@ cowboys = Performer.create(name: "Dallas Cowboys", classification: "Sports", cat
 file = File.open('./app/assets/images/cowboys.jpg')
 cowboys.photo.attach(io: file, filename: 'cowboys.jpg')
 cowboys.save!
-
 madison = Venue.create(name: "Madison Square Garden", address: "4 Pennsylvania Plaza, New York, NY 10001", city: "New York, NY")
 file = File.open('./app/assets/images/madison.jpg')
 madison.photo.attach(io: file, filename: 'madison.jpg')
 madison.save!
+
 wellsfargo = Venue.create(name: "Wells Fargo Center", address: "3601 S Broad St, Philadelphia, PA 19148", city: "Philadelphia, PA")
 file = File.open('./app/assets/images/wellsfargo.jpg')
 wellsfargo.photo.attach(io: file, filename: 'wellsfargo.jpg')
@@ -206,8 +205,7 @@ football_teams = [giants, cowboys, patriots, eagles]
 football_stadiums = [metlife, lincoln, levis, bighouse, beaver]
 
 venue_ids = Venue.ids
-
-200.times do |i|
+50.times do |i|
   event = eventTitles.sample
   new_event = Event.create(title: event.first, event_on: Faker::Time.between(4.weeks.after, 4.weeks.after + 1.year, :night), venue_id: venue_ids.sample)
   file = File.open('./app/assets/images/concert.jpg')
@@ -215,7 +213,7 @@ venue_ids = Venue.ids
   new_event.performers = event.last
 end
 
-112.times do |i|
+25.times do |i|
   team1 = soccer_teams.sample
   team2 = soccer_teams.sample
   unless team2 != team1
@@ -230,7 +228,7 @@ end
   new_event.performers = [team1, team2]
 end
 
-40.times do |i|
+25.times do |i|
   team1 = basketball_teams.sample
   team2 = basketball_teams.sample
   unless team2 != team1
@@ -245,7 +243,7 @@ end
   new_event.performers = [team1, team2]
 end
 
-40.times do |i|
+25.times do |i|
   team1 = football_teams.sample
   team2 = football_teams.sample
   unless team2 != team1

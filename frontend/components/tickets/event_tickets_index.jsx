@@ -16,6 +16,13 @@ class EventTicketsIndex extends React.Component {
         );
       });
 
+      let styles = {
+        backgroundImage: `url(${this.props.event.photoUrl})`,
+        backgroundSize: 'cover',
+        overflow: 'hidden'
+      };
+
+
       return (
         <div className="event-tickets-wrapper">
           <div className="navbar-compensator"></div>
@@ -32,6 +39,7 @@ class EventTicketsIndex extends React.Component {
               </div>
             }
           </div>
+          <div className="event-image" style={styles}></div>
         </div>
       );
     } else {

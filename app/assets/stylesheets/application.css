@@ -205,7 +205,7 @@
   position: relative;
   color: white;
   z-index: 1;
-  transition: all .25s ease-in-out;
+  transition: background-color .25s ease-in-out;
   transition-timing-function: linear;
 }
 
