@@ -33,10 +33,17 @@ class UserDropdown extends React.Component {
       klass = "closed";
     }
 
+    let styles = {
+      backgroundImage: `url(${this.props.currentUser.photoUrl})`,
+      backgroundSize: 'cover',
+      overflow: 'hidden'
+    };
+
     return (
       <div className="user-dropdown" onMouseEnter={this.handleOpen} onMouseLeave={this.handleClose}>
         <Link to='/account/settings' >
           <div className="user-name">
+            <div className="user-dropdown-image" style={styles}></div>
             <h2>{this.props.currentUser.fName}</h2>
           </div>
         </Link>

@@ -237,6 +237,13 @@
   justify-content: center;
 }
 
+.user-dropdown-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
 .user-links, .categories-list {
   width: 151px;
   position: absolute;

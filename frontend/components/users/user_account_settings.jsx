@@ -17,7 +17,6 @@ class UserAccountSettings extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateProfile = this.handleUpdateProfile.bind(this);
-    this.handleUpdatePassword = this.handleUpdatePassword.bind(this);
   }
 
   handleChange(field) {
@@ -37,12 +36,14 @@ class UserAccountSettings extends React.Component {
     this.props.updateCurrentUser(user);
   }
 
-  handleUpdatePassword() {
-
-  }
-
   render() {
-  // TODO: split component into seperate components
+
+    let styles = {
+      backgroundImage: `url(${this.props.currentUser.photoUrl})`,
+      backgroundSize: 'cover',
+      overflow: 'hidden'
+    };
+
     return (
       <div className="user-settings-container">
         <header className="main-content-splash">
@@ -58,9 +59,8 @@ class UserAccountSettings extends React.Component {
         <div className="main-content-content" >
           <div className="account-settings-wrapper">
             <div className="profile-card" >
-              <div className="profile-map-overlay"></div>
               <div className="profile-map" >
-
+                <div className="profile-image" style={styles}></div>
               </div>
             </div>
             <div className="profile-forms" >
