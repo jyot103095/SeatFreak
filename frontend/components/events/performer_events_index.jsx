@@ -10,6 +10,21 @@ import { openModal } from '../../actions/modal_actions';
 
 class PerformerEventsIndex extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageView: false
+    };
+    this.handleTracking = this.handleTracking.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  handleLoad() {
+    this.setState({
+      imageView: true
+    });
+  }
+
   componentDidMount() {
     this.props.requestPerformer(this.props.match.params.performerId);
   }
@@ -34,7 +49,9 @@ class PerformerEventsIndex extends React.Component {
   }
 
   render() {
-    if (!this.props.performer) return null;
+    if (!this.props.performer) return (
+      <div className="loading-div"></div>
+    );
 
     const eventLinks = this.props.events.map(event => {
       let venue = this.props.venues[event.venueId];
@@ -47,16 +64,11 @@ class PerformerEventsIndex extends React.Component {
       );
     });
 
-    let styles = {
-      backgroundImage: `url(${this.props.performer.photoUrl})`,
-      backgroundSize: 'auto',
-      overflow: 'hidden',
-      backgroundPosition: 'center'
-    };
-
     return (
       <div className="performers-index-container" >
-        <header className="main-content-splash" style={styles}>
+        <header className="item-show-main-content-splash loading-gif">
+          <img src={this.props.performer.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
+          <div className="main-content-splash-overlay"></div>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span>

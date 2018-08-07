@@ -5,6 +5,19 @@ import TicketIndexItem from './ticket_index_item';
 import TicketView from './ticket_view';
 
 class EventTicketsIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageView: false
+    };
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  handleLoad() {
+    this.setState({
+      imageView: true
+    });
+  }
 
   render() {
     if (!this.props.event) return null;
@@ -15,13 +28,6 @@ class EventTicketsIndex extends React.Component {
           <TicketIndexItem key={ticket.id} ticket={ticket} />
         );
       });
-
-      let styles = {
-        backgroundImage: `url(${this.props.event.photoUrl})`,
-        backgroundSize: 'cover',
-        overflow: 'hidden'
-      };
-
 
       return (
         <div className="event-tickets-wrapper">
@@ -39,7 +45,9 @@ class EventTicketsIndex extends React.Component {
               </div>
             }
           </div>
-          <div className="event-image" style={styles}></div>
+          <div className="event-image-loading">
+            <img src={this.props.event.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
+          </div>
         </div>
       );
     } else {

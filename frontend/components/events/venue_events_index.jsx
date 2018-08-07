@@ -10,6 +10,22 @@ import { track, untrack } from '../../actions/tracking_actions';
 import { openModal } from '../../actions/modal_actions';
 
 class VenueEventsIndex extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageView: false
+    };
+    this.handleTracking = this.handleTracking.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  handleLoad() {
+    this.setState({
+      imageView: true
+    });
+  }
+
   componentDidMount() {
     this.props.requestVenue(this.props.match.params.venueId);
   }
@@ -36,13 +52,6 @@ class VenueEventsIndex extends React.Component {
   render() {
     if (!this.props.venue) return null;
 
-    let styles = {
-      backgroundImage: `url(${this.props.venue.photoUrl})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      overflow: 'hidden'
-    };
-
     const eventLinks = this.props.events.map(event => {
       return (
         <li className="venue-event-list-item" key={event.id}>
@@ -55,14 +64,9 @@ class VenueEventsIndex extends React.Component {
 
     return (
       <div className="venues-index-container" >
-        <header className="main-content-splash" style={styles}>
-          <div className="block-shade"></div>
-          <div className="main-content-splash-image">
-            <div className="upwards-shade"></div>
-            <div className="right-shade"></div>
-            <div className="left-shade"></div>
-            <div className="main-clear-space"></div>
-          </div>
+        <header className="item-show-main-content-splash loading-gif">
+          <img src={this.props.venue.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
+          <div className="main-content-splash-overlay"></div>
           <div className="main-content-splash-info">
             <h3 className="main-content-route-info">
               <span>

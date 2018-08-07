@@ -7,7 +7,8 @@ class UserTicketsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 1
+      selected: 1,
+      fetched: false
     }
     this.handleSell = this.handleSell.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
@@ -26,7 +27,9 @@ class UserTicketsIndex extends React.Component {
   }
 
   render() {
-    if (Object.values(this.props.events).includes(undefined)) return null;
+    if (!this.state.fetched) return (
+      <div className="loading-div"></div>
+    );
 
     let ticketsOnSale = this.props.ticketsOnSale.map(ticket => {
       let event = this.props.events[ticket.eventId];

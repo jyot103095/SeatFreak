@@ -507,3 +507,41 @@ header.main-page .main-content-splash-info {
   color: white;
   font-size: 25px;
 }
+
+.loading-div {
+  width: 100%;
+  height: 500px;
+  background-image: url("loading-gif.gif");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.item-show-main-content-splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 200px;
+  padding-top: 60px;
+  position: relative;
+}
+
+.item-show-main-content-splash img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s linear;
+  position: absolute;
+  top: 0;
+  background-position: center;
+}
+
+.main-content-splash-overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20,30,43,0.62);
+}
