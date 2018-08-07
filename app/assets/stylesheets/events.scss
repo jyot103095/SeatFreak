@@ -85,9 +85,30 @@
   height: 10rem;
   height: 160px;
   border-radius: 0.375rem;
-  background-size: cover;
-  background-position: center center;
   position: relative;
+}
+
+.loading-gif {
+  background-image: url("loading-gif.gif");
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden
+}
+
+.item-card-artwork img {
+  height: 160px;
+  width: 230px;
+  object-fit: cover;
+  transition: opacity 0.5s linear;
+}
+
+.image-hidden {
+  opacity: 0;
+}
+
+.image-shown {
+  opacity: 1;
 }
 
 .trackButton {

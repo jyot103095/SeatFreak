@@ -7,8 +7,18 @@ import { openModal } from '../../actions/modal_actions';
 class PerformerCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      imageView: false
+    }
     this.handleClick = this.handleClick.bind(this);
     this.handleTracking = this.handleTracking.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+   handleLoad() {
+    this.setState({
+      imageView: true
+    });
   }
 
   handleTracking (e) {
@@ -31,15 +41,11 @@ class PerformerCard extends React.Component {
   }
  
   render() {
-    let styles = {
-      backgroundImage: `url(${this.props.performer.photoUrl})`,
-      backgroundSize: 'cover',
-      overflow: 'hidden'
-    };
 
     return (
       <div className="item-card" onClick={this.handleClick}>
-        <div className="item-card-artwork" style={styles}>
+        <div className="item-card-artwork loading-gif">
+          <img src={this.props.performer.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
           <div className="trackButton" onClick={this.handleTracking}>
             <i className={`fa-heart ${ this.props.tracked ? "fas tracked" : "far"}`}></i>
           </div>
