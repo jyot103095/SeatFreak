@@ -512,7 +512,7 @@ header.main-page .main-content-splash-info {
   width: 100%;
   height: 500px;
   background-image: url("loading-gif.gif");
-  background-size: 100px;
+  background-size: 75px;
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
