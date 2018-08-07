@@ -89,7 +89,7 @@
 }
 
 .loading-gif {
-  background-image: url("loading-gif.gif");
+  background-image: image_url("loading-gif.gif");
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -415,7 +415,7 @@
   position: absolute;
   top: 60px;
   right: 0;
-  background-image: url("loading-gif.gif");
+  background-image: image_url("loading-gif.gif");
   background-size: 75px;
   background-repeat: no-repeat;
   background-position: center center;
