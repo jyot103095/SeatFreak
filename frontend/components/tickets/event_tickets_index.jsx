@@ -58,10 +58,11 @@ class EventTicketsIndex extends React.Component {
 
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
-  const tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
 
+  let tickets = [];
   let venue;
-  if (event !== undefined) {
+  if (event) {
+    tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
     venue = state.entities.venues[event.venueId];
   }
   
@@ -73,4 +74,10 @@ const mSP = (state, ownProps) => {
   };
 };
 
-export default connect(mSP)(EventTicketsIndex);
+const mDP = dispatch => {
+  return {
+    requestEvent: eventId => dispatch(requestEvent(eventId))
+  };
+};
+
+export default connect(mSP, mDP)(EventTicketsIndex);
