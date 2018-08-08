@@ -100,7 +100,7 @@ const mSP = (state, ownProps) => {
   const events = Object.values(state.entities.events).filter(event => event.performers.includes(performerId));
   let trackedPerformers = [];
 
-  let loggedIn = Boolean(state.entities.currentUser.id);
+  let loggedIn = Boolean(state.session.id);
 
   if (loggedIn) {
     trackedPerformers = state.entities.currentUser.trackedItems.trackedPerformers;

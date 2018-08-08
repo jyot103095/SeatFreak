@@ -25,7 +25,7 @@ const TicketSell = ({ loggedIn, openModal,  history }) => {
 
 const mSP = state => {
   return {
-    loggedIn: Boolean(state.entities.currentUser.id)
+    loggedIn: Boolean(state.session.id)
   };
 };
 

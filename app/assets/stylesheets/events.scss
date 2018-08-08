@@ -209,7 +209,7 @@
   align-items: center;
 }
 
-.checkout-link a {
+.checkout-link button {
   text-decoration: none;
   background-color: #1673E6;
   font-size: 14px;
@@ -221,7 +221,7 @@
   border-radius: 0.625rem;
   font-weight: bold;
   display: block;
-  width: 65px;
+  width: 75px;
   text-align: center;
 }
 
@@ -273,7 +273,7 @@
   font-size: 0.9375rem;
 }
 
-.bigger-checkout-link a {
+.bigger-checkout-link button {
   text-decoration: none;
   background-color: #1673E6;
   padding: 0.80rem 1.25rem;

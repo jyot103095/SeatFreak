@@ -2,13 +2,22 @@ import React from 'react';
 import { showAllTickets } from '../../actions/event_tickets_actions';
 import { openModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const TicketView = ({ticket, showAllTickets, loggedIn, openModal}) => {
+const TicketView = ({ticket, showAllTickets, loggedIn, openModal, history}) => {
+
+  function handleClick (e) {
+    e.stopPropagation();
+
+    if (!loggedIn) {
+      openModal();
+    } else {
+      history.push(`/checkout/${ticket.id}`)
+    }
+  }
 
   return (
     <div className="event-tickets-wrapper">
-      <div className="navbar-compensator"></div>
       <div className="ticket-view-container">
         <div className="ticket-view-header" onClick={showAllTickets}>
           <h4>Back to all deals</h4>
@@ -21,7 +30,7 @@ const TicketView = ({ticket, showAllTickets, loggedIn, openModal}) => {
             <span>${ticket.price}<span className="ticket-price-per-each">/ea</span></span>
           </div>
           <div className="bigger-checkout-link">
-            { loggedIn ? <Link to="/checkout" ticket={ticket} >Checkout</Link> : <button onClick={() => openModal()}>Checkout</button>}
+            <button onClick={handleClick}>Checkout</button>
           </div>
         </div>
       </div>
@@ -41,4 +50,4 @@ const mDP = dispatch => ({
   openModal: () => dispatch(openModal('login'))
 });
 
-export default connect(mSP, mDP)(TicketView);
+export default withRouter(connect(mSP, mDP)(TicketView));

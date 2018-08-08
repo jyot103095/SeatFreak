@@ -215,13 +215,34 @@
   margin-left: 10px;
 }
 
+.tracker-item-info i {
+  color: lightgray;
+  transition: color 0.25s ease-in-out;
+}
+
+.tracker-item-info i:hover {
+  color: red;
+  cursor: pointer;
+}
+
 .tracker-item-info:hover {
   color: #0f50a0;
 }
 
 .tracker-item-photo {
   height: 60px;
-  width: 60px;
+  width: 80px;
   border-radius: 3px;
-  background-position: center;
+  background-image: url(asset_path("loading-gif.gif"));
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.tracker-item-photo img {
+  height: 60px;
+  width: 80px;  
+  object-fit: cover;
+  transition: opacity 0.25s linear;
 }

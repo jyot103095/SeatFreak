@@ -98,7 +98,7 @@ const mSP = (state, ownProps) => {
   const events = Object.values(state.entities.events).filter(event => event.venueId === venueId);
 
   let trackedVenues = [];
-  let loggedIn = Boolean(state.entities.currentUser.id);
+  let loggedIn = Boolean(state.session.id);
 
   if (loggedIn) {
     trackedVenues = state.entities.currentUser.trackedItems.trackedVenues;

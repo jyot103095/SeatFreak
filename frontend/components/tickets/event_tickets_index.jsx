@@ -23,9 +23,8 @@ class EventTicketsIndex extends React.Component {
     if (!this.props.event) return (<div className="loading-div"></div>);
 
     if (!this.props.content) {
-
       const ticketIndex = () => {
-        if (!this.props.tickets) {
+        if (this.props.tickets.includes(undefined)) {
           return (<div className="event-tickets-loading"></div>);
         } else if (this.props.tickets.length > 0) {
           let ticketItems = this.props.tickets.map(ticket => {
@@ -62,7 +61,15 @@ class EventTicketsIndex extends React.Component {
         </div>
       );
     } else {
-      return (<TicketView />);
+      return (
+        <div className="event-tickets-wrapper">
+          <div className="navbar-compensator"></div>
+          <TicketView />
+          <div className="event-image-loading">
+            <img src={this.props.event.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
+          </div>
+        </div>
+      );
     }
   }
 }

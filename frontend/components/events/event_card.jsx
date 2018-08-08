@@ -78,7 +78,7 @@ const mSP = (state, ownProps) => {
   let tracked = trackedEvents.includes(ownProps.event.id);
 
   return {
-    loggedIn: Boolean(state.entities.currentUser.id),
+    loggedIn: Boolean(state.session.id),
     tracked
   };
 };

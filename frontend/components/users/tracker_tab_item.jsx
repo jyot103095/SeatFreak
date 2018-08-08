@@ -3,6 +3,23 @@ import { untrack } from '../../actions/tracking_actions';
 import { connect } from 'react-redux';
 
 class TrackerTabItem extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			imageView: false
+		};
+
+		this.handleTracking = this.handleTracking.bind(this);
+		this.handleLoad = this.handleLoad.bind(this);
+	}
+
+	handleLoad() {
+		this.setState({
+			imageView: true
+		});
+	}
+
 	handleTracking() {
 		this.props.untrack({ trackable_type: this.props.type, trackable_id: this.props.item.id });
 	}
@@ -15,21 +32,14 @@ class TrackerTabItem extends React.Component {
 			name = this.props.item.name;
 		}
 
-		let styles = {
-      backgroundImage: `url(${this.props.item.photoUrl})`,
-      backgroundSize: 'cover',
-      overflow: 'hidden'
-   	};
-
 		return (
 			<div className="tracker-tab-item">
-				{ this.props.type !== "Event" ? 
-					<div className="tracker-item-photo" style={styles}></div> 
-					: null
-				}
+				<div className="tracker-item-photo">
+					<img src={this.props.item.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
+				</div>
 				<div className="tracker-item-info">
 					<h2>{name}</h2>
-					<h2><i className={`fa-heart fa-sm fas tracked`} onClick={this.handleTracking.bind(this)}></i></h2>
+					<h2><i class="fas fa-times fa-lg" onClick={this.handleTracking}></i></h2>
 				</div>
 			</div>
 		);
