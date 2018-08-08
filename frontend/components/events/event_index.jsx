@@ -140,9 +140,9 @@ class EventIndex extends React.Component {
           <MainPageSearchBox />
         </header>
         <div className="main-content-content">
-          <h1 className="list-title">Popular Events</h1>
           { this.state.fetched ? 
             <div>
+              <h1 className="list-title">Popular Events</h1>
               <div className="events-list-wrapper" >
               { eventButtons() }
               <div className="horizontal-list-wrapper">
