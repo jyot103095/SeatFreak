@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 320px;
+  height: calc(100vh - 100px);
+  margin-bottom: 100px;
   width: 100%;
   background-image: linear-gradient(0deg,#034fad 0%,#1673e6 100%);
 }
@@ -11,37 +12,31 @@
   color: white;
   width: 520px;
   font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-sell-icons {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .ticket-sell-splash-info h1 {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 10px;
+  // font-weight: 600;
 }
 
 .ticket-sell-splash-info h2 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 22px;
-}
-
-.ticket-sell-splash-info a {
-  text-decoration: none;
-  color: white;
-  display: block;
-  padding: 5px;
-  background: #1673e6;
-  height: 44px;
-  width: 159px;
-  border-radius: 3px;
   text-align: center;
-  line-height: 45px;
-  border: 1px solid #1673e6;
-  transition: .25s;
 }
 
-.ticket-sell-splash-info a:hover {
-  background: #0b62cd;
-  border: 1px solid #0b62cd;
-}
+
 
 .checkout-container {
   width: 970px;

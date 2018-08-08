@@ -579,3 +579,22 @@ header.main-page .main-content-splash-info {
 .main-page-search-results {
   transition: height 0.5s linear;
 }
+
+.ticket-sell-sell-button {
+  width: 159px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 45px;
+  display: block;
+  padding: 0;
+  background: #1673e6;
+  border-radius: 3px;
+  color: #fff;
+  transition: .25s;
+  text-align: center;
+}
+
+.ticket-sell-sell-button:hover {
+  background: #0b62cd;
+  color: #fff;
+}

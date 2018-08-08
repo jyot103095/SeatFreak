@@ -16,9 +16,18 @@ const TicketSell = ({ loggedIn, openModal,  history }) => {
   return (
     <div className="ticket-sell-splash" >
       <div className="ticket-sell-splash-info">
+        <div className="ticket-sell-icons">
+          <i className="fas fa-ticket-alt fa-3x"></i>
+          <i className="fas fa-arrow-right fa-3x"></i>
+          <div className="money-icons">
+            <i className="fas fa-dollar-sign fa-3x"></i>
+            <i className="fas fa-dollar-sign fa-3x"></i>
+            <i className="fas fa-dollar-sign fa-3x"></i>
+          </div>
+        </div>
         <h1>Sell Tickets on SeatFreak</h1>
         <h2>Sell your tickets and get paid. Our transparent pricing means more money in your pocket.</h2>
-        <button onClick={handleClick}>Start Selling</button>
+        <button className="ticket-sell-sell-button" onClick={handleClick}>Start Selling</button>
       </div>
       <Footer />
     </div>
