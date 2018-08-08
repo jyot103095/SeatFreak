@@ -15,7 +15,11 @@ class UserTicketsIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestTickets(this.props.userId);
+    this.props.requestTickets(this.props.userId).then( () => {
+      this.setState({
+        fetched: true
+      });
+    });
   }
 
   handleSell(ticketId) {
@@ -27,9 +31,7 @@ class UserTicketsIndex extends React.Component {
   }
 
   render() {
-    if (!this.state.fetched) return (
-      <div className="loading-div"></div>
-    );
+    if (Object.values(this.props.events).includes(undefined)) return (<div className="loading-div"></div>);
 
     let ticketsOnSale = this.props.ticketsOnSale.map(ticket => {
       let event = this.props.events[ticket.eventId];
@@ -174,7 +176,7 @@ class UserTicketsIndex extends React.Component {
             <h2 className={this.state.selected === 2 ? "active-tab" : null}
               onClick={() => this.setState({ selected: 2 })}>History</h2>
           </div>
-          { tab() }
+          { this.state.fetched ? tab() : <div className="loading-div"></div> }
         </div>
       </div>
     );

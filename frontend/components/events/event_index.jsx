@@ -12,12 +12,13 @@ class EventIndex extends React.Component {
     this.state = {
       events: 0,
       performers: 0,
-      venues: 0
+      venues: 0,
+      fetched: false
     };
   }
 
   componentDidMount () {
-    this.props.requestEvents();
+    this.props.requestEvents().then(() => this.setState({fetched: true}));
   }
 
   render() {
@@ -140,32 +141,36 @@ class EventIndex extends React.Component {
         </header>
         <div className="main-content-content">
           <h1 className="list-title">Popular Events</h1>
-          <div className="events-list-wrapper" >
-            { eventButtons() }
-            <div className="horizontal-list-wrapper">
-              <div className="events-list" style={eventStyles}>
-                {eventItems}
+          { this.state.fetched ? 
+            <div>
+              <div className="events-list-wrapper" >
+              { eventButtons() }
+              <div className="horizontal-list-wrapper">
+                <div className="events-list" style={eventStyles}>
+                  {eventItems}
+                </div>
               </div>
             </div>
-          </div>
-          <h1 className="list-title">Popular Performers</h1>
-          <div className="performers-list-wrapper" >
-            { performerButtons() }
-            <div className="horizontal-list-wrapper">
-              <div className="performers-list" style={performerStyles}>
-                {performerItems}
+            <h1 className="list-title">Popular Performers</h1>
+            <div className="performers-list-wrapper" >
+              { performerButtons() }
+              <div className="horizontal-list-wrapper">
+                <div className="performers-list" style={performerStyles}>
+                  {performerItems}
+                </div>
               </div>
             </div>
-          </div>
-          <h1 className="list-title">Popular Venues</h1>
-          <div className="venues-list-wrapper" >
-            { venueButtons() }
-            <div className="horizontal-list-wrapper" >
-              <div className="venues-list" style={venueStyles}>
-                {venueItems}
+            <h1 className="list-title">Popular Venues</h1>
+            <div className="venues-list-wrapper" >
+              { venueButtons() }
+              <div className="horizontal-list-wrapper" >
+                <div className="venues-list" style={venueStyles}>
+                  {venueItems}
+                </div>
               </div>
-            </div>
-          </div>
+            </div> 
+          </div> : <div className="loading-div"></div>
+          }
         </div>
       </div>
     );

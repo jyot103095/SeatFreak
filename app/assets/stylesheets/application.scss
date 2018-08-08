@@ -22,6 +22,10 @@
   background: transparent;
 }
 
+.navbar, .wider-navbar {
+  transition: width 0.25s linear;
+}
+
 .navbar {
   width: 1000px;
   height: 60px;
@@ -33,12 +37,14 @@
 }
 
 .wider-navbar {
+  width: 100%;
   height: 60px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   font-size: 15px;
   align-items: center;
+  background-color: #1673e6;
 }
 
 .wider-navbar .logo {
@@ -180,6 +186,7 @@
 .event-info-container {
   color: white;
   margin-left: 10px;
+  transition: margin 0.5s linear;
 }
 
 .event-info-container h3 {
@@ -191,10 +198,6 @@
   font-size: 13px;
   color: hsla(0,0%,100%,.7);
   transition: 0.25s;
-}
-
-.event-info-container:hover {
-  cursor: pointer;
 }
 
 .event-info-container:hover h5 {

@@ -14,7 +14,7 @@ class EventInfo extends React.Component {
   }
 
   render() {
-    if (!this.props.event) return null;
+    if (!this.props.event) return (<div className="loading-div"></div>);
     return (
       <div className="event-info-container">
         <h3>{this.props.event.title}</h3>

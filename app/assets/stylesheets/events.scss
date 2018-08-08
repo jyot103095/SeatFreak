@@ -428,3 +428,13 @@
   object-fit: cover;
   transition: opacity 0.5s linear;
 }
+
+.event-tickets-loading {
+  width: 100%;
+  height: 100px;
+  background-image: url(asset_path("loading-gif.gif"));
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}

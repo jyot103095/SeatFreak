@@ -20,14 +20,32 @@ class EventTicketsIndex extends React.Component {
   }
 
   render() {
-    if (!this.props.event) return null;
+    if (!this.props.event) return (<div className="loading-div"></div>);
 
     if (!this.props.content) {
-      const ticketItems = this.props.tickets.map(ticket => {
-        return (
-          <TicketIndexItem key={ticket.id} ticket={ticket} />
-        );
-      });
+
+      const ticketIndex = () => {
+        if (!this.props.tickets) {
+          return (<div className="event-tickets-loading"></div>);
+        } else if (this.props.tickets.length > 0) {
+          let ticketItems = this.props.tickets.map(ticket => {
+            return (
+              <TicketIndexItem key={ticket.id} ticket={ticket} />
+            );
+          });
+          return (
+            <ul className="tickets-list">
+              {ticketItems}
+            </ul>
+          );
+        } else {
+          return (
+            <div className="empty-tickets-container">
+              <h2>No tickets currently on sale for this event</h2>
+            </div>
+          );
+        }
+      };
 
       return (
         <div className="event-tickets-wrapper">
@@ -36,14 +54,7 @@ class EventTicketsIndex extends React.Component {
             <div className="event-tickets-header">
               <h4>Amazing Deals</h4>
             </div>
-            { ticketItems.length > 0 ?
-              <ul className="tickets-list">
-                {ticketItems}
-              </ul> :
-              <div className="empty-tickets-container">
-                <h2>No tickets currently on sale for this event</h2>
-              </div>
-            }
+            { ticketIndex() }
           </div>
           <div className="event-image-loading">
             <img src={this.props.event.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
@@ -59,7 +70,7 @@ class EventTicketsIndex extends React.Component {
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
 
-  let tickets = [];
+  let tickets;
   let venue;
   if (event) {
     tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
