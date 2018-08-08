@@ -1,5 +1,8 @@
 .venues-index-container {
   width: 100%;
+  height: 100%;
+  padding-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .venue-category-title {
@@ -14,6 +17,7 @@
 .venue-event-list-item {
   padding: 0 20px;
   border-radius: 0.75rem;
+  transition: all 0.25s ease-in-out;
 }
 
 .venue-event-list-item:hover {

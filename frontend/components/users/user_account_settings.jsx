@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../footer';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { updateCurrentUser } from '../../actions/current_user_actions';
@@ -85,6 +86,7 @@ class UserAccountSettings extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

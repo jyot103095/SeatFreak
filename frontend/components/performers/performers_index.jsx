@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   requestPerformers
 } from '../../actions/performer_actions';
+import Footer from '../footer';
 import { withRouter, Link } from 'react-router-dom';
 
 class PerformersIndex extends React.Component {
@@ -63,6 +64,7 @@ class PerformersIndex extends React.Component {
             </tbody>
           </table>
         </div>
+        <Footer />
       </div>
     );
   }

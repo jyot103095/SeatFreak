@@ -6,6 +6,7 @@ import {
 } from '../../actions/venue_actions';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import EventsListItem from './events_list_item';
+import Footer from '../footer';
 import { track, untrack } from '../../actions/tracking_actions';
 import { openModal } from '../../actions/modal_actions';
 
@@ -87,6 +88,7 @@ class VenueEventsIndex extends React.Component {
             {eventLinks}
           </ul>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import {
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { track, untrack } from '../../actions/tracking_actions';
 import EventsListItem from './events_list_item';
+import Footer from '../footer';
 import { openModal } from '../../actions/modal_actions';
 
 class PerformerEventsIndex extends React.Component {
@@ -18,6 +19,7 @@ class PerformerEventsIndex extends React.Component {
     this.handleTracking = this.handleTracking.bind(this);
     this.handleLoad = this.handleLoad.bind(this);
   }
+
 
   handleLoad() {
     this.setState({
@@ -89,6 +91,7 @@ class PerformerEventsIndex extends React.Component {
             {eventLinks}
           </ul>
         </div>
+        <Footer />
       </div>
     );
   }

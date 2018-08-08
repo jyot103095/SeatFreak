@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { requestEvents } from '../../actions/event_actions';
 import MainPageSearchBox from '../search/main_page_search_box';
+import Footer from '../footer';
 import EventCard from './event_card';
 import VenueCard from '../venues/venue_card';
 import PerformerCard from '../performers/performer_card';
@@ -172,6 +173,7 @@ class EventIndex extends React.Component {
           </div> : <div className="loading-div"></div>
           }
         </div>
+        <Footer />
       </div>
     );
   }

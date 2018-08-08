@@ -1,6 +1,7 @@
 import React from 'react';
 import { requestCurrentUser } from '../../actions/current_user_actions'; 
 import TrackerTab from './tracker_tab';
+import Footer from '../footer';
 import { connect } from 'react-redux';
 
 class Tracker extends React.Component {
@@ -30,7 +31,7 @@ class Tracker extends React.Component {
 		} 
 
 		return (
-			<div className="performers-index-container" >
+			<div className="tracker-container" >
         <header className="main-content-splash">
         	<div className="block-shade"></div>
         	<div className="main-content-splash-image">
@@ -56,6 +57,7 @@ class Tracker extends React.Component {
           </div>
           { tab() }
         </div>
+        <Footer />
       </div>
     );
 	}

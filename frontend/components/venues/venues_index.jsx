@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   requestVenues
 } from '../../actions/venue_actions';
+import Footer from '../footer';
 import { withRouter, Link } from 'react-router-dom';
 
 class VenuesIndex extends React.Component {
@@ -44,6 +45,7 @@ class VenuesIndex extends React.Component {
             </tbody>
           </table>
         </div>
+        <Footer />
       </div>
     );
   }

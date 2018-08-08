@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../footer';
 import { connect } from 'react-redux';
 import { openTicketModal } from '../../actions/modal_actions';
 import { requestTickets, sellTicket } from '../../actions/ticket_actions';
@@ -178,6 +179,7 @@ class UserTicketsIndex extends React.Component {
           </div>
           { this.state.fetched ? tab() : <div className="loading-div"></div> }
         </div>
+        <Footer />
       </div>
     );
   }

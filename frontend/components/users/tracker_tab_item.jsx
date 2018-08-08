@@ -39,7 +39,7 @@ class TrackerTabItem extends React.Component {
 				</div>
 				<div className="tracker-item-info">
 					<h2>{name}</h2>
-					<h2><i class="fas fa-times fa-lg" onClick={this.handleTracking}></i></h2>
+					<h2><i className="fas fa-times fa-lg" onClick={this.handleTracking}></i></h2>
 				</div>
 			</div>
 		);

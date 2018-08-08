@@ -299,6 +299,7 @@
   align-items: center;
   width: 100%;
   z-index: -1;
+  min-height: 100vh;
 }
 
 .main-content-splash {
@@ -423,6 +424,7 @@ header.main-page .main-content-splash-info {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 1;
 }
 
 .main-content-content {
@@ -547,4 +549,33 @@ header.main-page .main-content-splash-info {
   width: 100%;
   height: 100%;
   background-color: rgba(20,30,43,0.62);
+}
+
+.footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  border-top: 1px solid lightgray;
+  margin-top: 10px;
+  color: #0c89e7;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  margin-top: 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 500px;
+}
+
+.footer-links a {
+  display: block;
+}
+
+.main-page-search-results {
+  transition: height 0.5s linear;
 }
