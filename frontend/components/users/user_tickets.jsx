@@ -198,7 +198,6 @@ const mSP = state => {
     };
   }
 
-  debugger
   const ticketsOnSale = tickets.filter(ticket => ticket.onSale && !ticket.expired);
   const ticketsNotOnSale = tickets.filter(ticket => !ticket.onSale && !ticket.expired);
   const expiredTickets = tickets.filter(ticket => ticket.expired);
