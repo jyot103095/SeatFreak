@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, navbar }) => {
 
   let eventResults = Object.values(results.events);
   if (eventResults.length > 3) {
@@ -21,7 +21,12 @@ const SearchResults = ({ results }) => {
 
   const eventResultLis = eventResults.map(event => {
     return (
-      <li key={event.id}><Link to={`/events/${event.id}`}>{event.title}</Link></li>
+      <li key={event.id}>
+        <Link to={`/events/${event.id}`}>
+          <h2>{event.title}</h2>
+          <h3>{event.eventOn}</h3>
+        </Link>
+      </li>
     );
   });
 
@@ -37,22 +42,30 @@ const SearchResults = ({ results }) => {
     );
   });
 
-  return (
-    <ul className="main-page-search-results" >
-      { performerResultLis.length > 0 ?
-        <h3>PERFORMERS</h3> : null
-      }
-      {performerResultLis}
-      { eventResultLis.length > 0 ?
-        <h3>EVENTS</h3> : null
-      }
-      {eventResultLis}
-      { venueResultLis.length > 0 ?
-        <h3>VENUES</h3> : null
-      }
-      {venueResultLis}
-    </ul>
-  )
+  if (eventResultLis.length > 0 || performerResultLis.length > 0 || venueResultLis.length > 0) {
+    return (
+      <ul className={navbar ? "navbar-search-results" : "main-page-search-results"}>
+        { performerResultLis.length > 0 ?
+          <h3>PERFORMERS</h3> : null
+        }
+        {performerResultLis}
+        { eventResultLis.length > 0 ?
+          <h3>EVENTS</h3> : null
+        }
+        {eventResultLis}
+        { venueResultLis.length > 0 ?
+          <h3>VENUES</h3> : null
+        }
+        {venueResultLis}
+      </ul>
+    );
+  } else {
+    return (
+      <div className={navbar ? "navbar-search-results" : "main-page-search-results"} >
+        <h2>No results found</h2>
+      </div>
+    );
+  }
 };
 
 const mSP = state => {

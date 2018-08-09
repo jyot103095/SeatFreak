@@ -389,7 +389,8 @@
 
 .main-page-search-results a {
   cursor: pointer;
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 8px 10px;
   width: 100%;
   font-size: 15px;
@@ -404,11 +405,24 @@
   border-radius: 3px;
 }
 
+.main-page-search-results h2 {
+  font-size: 14px;
+}
+
+.main-page-search-results > li h3 {
+  color: gray;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+
 .main-page-search-results h3 {
   color: gray;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 5px;
+  margin-left: 10px;
+  padding: 5px 0;
 }
 
 .event-image-loading {

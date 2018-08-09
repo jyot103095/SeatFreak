@@ -9,7 +9,7 @@ const SearchVenuesReducer = (state = {}, action) => {
     case RECEIVE_RESULTS:
       return action.venues;
     default:
-      return state;
+      return {};
   }
 };
 

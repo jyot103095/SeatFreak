@@ -9,7 +9,7 @@ const SearchPerformersReducer = (state = {}, action) => {
     case RECEIVE_RESULTS:
       return action.performers;
     default:
-      return state;
+      return {};
   }
 };
 

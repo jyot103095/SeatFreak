@@ -9,7 +9,7 @@ const SearchEventsReducer = (state = {}, action) => {
     case RECEIVE_RESULTS:
       return action.events;
     default:
-      return state;
+      return {};
   }
 };
 

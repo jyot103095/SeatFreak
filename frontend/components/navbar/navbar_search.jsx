@@ -2,6 +2,7 @@ import React from 'react';
 import { search } from '../../actions/search_actions';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
+import { withRouter } from 'react-router-dom';
 import SearchResults from '../search/search_results';
 
 class NavbarSearchBox extends React.Component {
@@ -11,6 +12,12 @@ class NavbarSearchBox extends React.Component {
       query: ""
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location !== this.props.location) {
+      this.setState({query: ""});
+    }
   }
 
   handleChange(e) {
@@ -28,10 +35,12 @@ class NavbarSearchBox extends React.Component {
           <DebounceInput
             minLength={2}
             debounceTimeout={500}
-            onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" />
+            onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" 
+            value={this.state.query}
+          />
         </form>
         <div className="search-results-container-navbar">
-          { this.state.query.length >= 2 ? <SearchResults /> : null}
+          { this.state.query.length >= 2 ? <SearchResults navbar={true} /> : null}
         </div>
       </div>
     );
@@ -50,4 +59,4 @@ const mDP = dispatch => {
   };
 };
 
-export default connect(mSP, mDP)(NavbarSearchBox);
+export default withRouter(connect(mSP, mDP)(NavbarSearchBox));
