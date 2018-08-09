@@ -15,6 +15,13 @@ const TicketSell = ({ loggedIn, openModal,  history }) => {
 
   return (
     <div className="ticket-sell-splash" >
+      <div className="block-shade"></div>
+      <div className="ticket-sell-splash-image">
+        <div className="upwards-shade"></div>
+        <div className="right-shade"></div>
+        <div className="left-shade"></div>
+        <div className="main-clear-space"></div>
+      </div>
       <div className="ticket-sell-splash-info">
         <div className="ticket-sell-icons">
           <i className="fas fa-ticket-alt fa-3x"></i>
