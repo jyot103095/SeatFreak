@@ -8,6 +8,7 @@ end
 json.event do
   json.extract! @ticket.event, :id, :title
   json.eventOn @ticket.event.event_on.localtime.strftime("%a %b %d at %I:%M %p")
+  json.performers @ticket.event.performer_ids
   json.venueId @ticket.event.venue_id
   json.photoUrl url_for(@ticket.event.photo)
 end
