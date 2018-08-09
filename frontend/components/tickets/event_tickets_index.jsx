@@ -8,9 +8,22 @@ class EventTicketsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageView: false
+      imageView: false,
+      loading: true
     };
     this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.requestEvent(this.props.match.params.eventId).then(
+      success => this.setState({ loading: false })
+    );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.eventId !== this.props.match.params.eventId) {
+      this.props.requestEvent(this.props.match.params.eventId);
+    }
   }
 
   handleLoad() {
@@ -20,13 +33,11 @@ class EventTicketsIndex extends React.Component {
   }
 
   render() {
-    if (!this.props.event) return (<div className="loading-div"></div>);
+    if (this.state.loading) return <div className="loading-div"></div>
 
     if (!this.props.content) {
       const ticketIndex = () => {
-        if (this.props.tickets.includes(undefined)) {
-          return (<div className="event-tickets-loading"></div>);
-        } else if (this.props.tickets.length > 0) {
+        if (this.props.tickets.length > 0) {
           let ticketItems = this.props.tickets.map(ticket => {
             return (
               <TicketIndexItem key={ticket.id} ticket={ticket} />
@@ -76,7 +87,6 @@ class EventTicketsIndex extends React.Component {
 
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
-
   let tickets;
   let venue;
   if (event) {

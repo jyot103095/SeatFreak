@@ -3,18 +3,9 @@ import { connect } from 'react-redux';
 import { requestEvent } from '../../actions/event_actions';
 
 class EventInfo extends React.Component {
-  componentDidMount() {
-    this.props.requestEvent(this.props.match.params.eventId);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.eventId !== this.props.match.params.eventId) {
-      this.props.requestEvent(this.props.match.params.eventId);
-    }
-  }
 
   render() {
-    if (!this.props.venue) return (<div className="loading-div"></div>);
+    if (!this.props.venue) return null;
     return (
       <div className="event-info-container">
         <h3>{this.props.event.title}</h3>
@@ -27,7 +18,7 @@ class EventInfo extends React.Component {
 const mSP = (state, ownProps) => {
   const event = state.entities.events[ownProps.match.params.eventId];
   let venue;
-  if (event !== undefined) {
+  if (event) {
     venue = state.entities.venues[event.venueId];
   }
 
@@ -37,10 +28,4 @@ const mSP = (state, ownProps) => {
   };
 };
 
-const mDP = dispatch => {
-  return {
-    requestEvent: eventId => dispatch(requestEvent(eventId))
-  };
-};
-
-export default connect(mSP, mDP)(EventInfo);
+export default connect(mSP)(EventInfo);
