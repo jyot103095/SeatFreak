@@ -186,6 +186,7 @@ class UserTicketsIndex extends React.Component {
 }
 
 const mSP = state => {
+
   const currentUserTickets = state.entities.currentUser.ticketIds;
   const tickets = currentUserTickets.map(ticketId => state.entities.tickets[ticketId]);
   if (tickets.includes(undefined)) {
@@ -193,10 +194,11 @@ const mSP = state => {
       ticketsOnSale: [],
       ticketsNotOnSale: [],
       expiredTickets: [],
-      events: []
+      events: {}
     };
   }
 
+  debugger
   const ticketsOnSale = tickets.filter(ticket => ticket.onSale && !ticket.expired);
   const ticketsNotOnSale = tickets.filter(ticket => !ticket.onSale && !ticket.expired);
   const expiredTickets = tickets.filter(ticket => ticket.expired);

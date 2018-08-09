@@ -25,7 +25,7 @@ const App = (props) => {
       <div className="main-content-container">
         <Route exact path='/' component={EventIndex} />
         <Route path='/events/:eventId' component={EventTicketsIndex} />
-        <ProtectedRoute path='/checkout' component={TicketCheckout} />
+        <ProtectedRoute path='/checkout/:ticketId' component={TicketCheckout} />
         <ProtectedRoute path='/account/settings' component={UserAccountSettings} />
         <ProtectedRoute path='/account/tickets' component={UserTicketsIndex} />
         <ProtectedRoute path='/account/tracker' component={Tracker} />

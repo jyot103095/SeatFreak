@@ -36,11 +36,21 @@
   text-align: center;
 }
 
-
+.ticket-checkout-wrapper {
+  width: 100%;
+  height: calc(100vh - 220px);
+  padding: 100px 0;
+  margin-bottom: 20px;
+  background-image: linear-gradient(0deg,#034fad 0%,#1673e6 100%);
+}
 
 .checkout-container {
   width: 970px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
 }
 
 .empty-tickets-container {
@@ -58,4 +68,78 @@
   font-size: 16px;
   font-weight: bold;
   color: darkgray;
+}
+
+.checkout-info-container {
+  width: 600px;
+  padding-top: 10px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-info-container h1 {
+  font-size: 22px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.ticket-checkout-button {
+  width: 159px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 45px;
+  display: block;
+  padding: 0;
+  background: #1673e6;
+  border-radius: 3px;
+  color: #fff;
+  transition: .25s;
+  text-align: center;
+}
+
+.ticket-checkout-button:hover {
+  background: #0b62cd;
+  color: #fff;
+}
+
+.ticket-checkout-loading {
+  width: 450px;
+  height: 350px;
+  background-image: url(asset_path("loading-gif.gif"));
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.ticket-checkout-loading img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s linear;
+}
+
+.checkout-price {
+  border-top: 1px solid lightgray;
+  padding: 10px 0;
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-price .checkout-ticket-price {
+  margin-top: 0;
+  font-size: 30px;
+  color: green;
+  margin-right: 30px;
 }

@@ -8,7 +8,8 @@ export const receiveTicket = payload => {
   return {
     type: RECEIVE_TICKET,
     ticket: payload.ticket,
-    event: payload.event
+    event: payload.event,
+    venue: payload.venue
   }
 };
 
@@ -27,6 +28,13 @@ export const receiveTicketErrors = errors => {
     errors
   }
 };
+
+export const requestTicket = ticketId => dispatch => {
+  return TicketApiUtil.fetchTicket(ticketId).then(
+    payload => dispatch(receiveTicket(payload)),
+    errors => dispatch(receiveTicketErrors(errors.responseJSON))
+  );
+}
 
 export const buyTicket = ticketId => dispatch => {
   return TicketApiUtil.buy(ticketId).then(

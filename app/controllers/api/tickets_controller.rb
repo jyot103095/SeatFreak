@@ -6,6 +6,12 @@ class Api::TicketsController < ApplicationController
     render '/api/tickets/index.json.jbuilder'
   end
 
+  def show
+    @ticket = Ticket.find(params[:id])
+
+    render '/api/tickets/show.json.jbuilder'
+  end
+
   def buy
     @ticket = Ticket.find(params[:id])
 

@@ -1,12 +1,29 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { buyTicket } from '../../actions/ticket_actions';
+import { requestTicket, buyTicket } from '../../actions/ticket_actions';
+import Footer from '../footer';
 
 class TicketCheckout extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      imageView: false
+    };
     this.handleBuy = this.handleBuy.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.props.ticket) {
+      this.props.requestTicket(this.props.match.params.ticketId);
+    }
+  }
+
+  handleLoad() {
+    this.setState({
+      imageView: true
+    });
   }
 
   handleBuy() {
@@ -17,27 +34,41 @@ class TicketCheckout extends React.Component {
 
   render() {
     return (
-      <div className="event-tickets-wrapper">
-        <div className="navbar-compensator"></div>
-        <div className="checkout-container">
-          <div className="checkout-info-container">
-            <h1>{this.props.event.title}</h1>
-            <h2>{this.props.event.eventOn}</h2>
-            <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
-          </div>
-          <div className="checkout-sidebar-container">
-          </div>
-          <button onClick={this.handleBuy}>Buy Ticket</button>
-        </div>
+      <div className="ticket-checkout-wrapper">
+        { this.props.ticket ?
+          <div className="checkout-container">
+            <div className="checkout-info-container">
+              <div className="ticket-checkout-loading">
+                <img src={this.props.event.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden" } />
+              </div>
+              <h1>{this.props.event.title}</h1>
+              <h1>{this.props.event.eventOn}</h1>
+              <h1>{this.props.event.venue}</h1>
+              <h1>Section {this.props.ticket.section} Row {this.props.ticket.row}</h1>
+              <div className="checkout-price">
+                <h1 className="checkout-ticket-price">${this.props.ticket.price}</h1>
+                <button className="ticket-checkout-button" onClick={this.handleBuy}>Buy Ticket</button>
+              </div>
+            </div>
+          </div> :
+          <div className="loading-div"></div>
+        }
+        <Footer />
       </div>
     );
   }
 };
 
-const mSP = state => {
-  const ticketId = state.ui.showingTicket;
-  const ticket = state.entities.tickets[ticketId];
-  const event = state.entities.events[ticket.eventId];
+const mSP = (state, ownProps) => {
+  const ticket = state.entities.tickets[ownProps.match.params.ticketId];
+  let event;
+  let venue;
+
+  if (ticket) {
+    event = state.entities.events[ticket.eventId];
+    venue = state.entities.venues[event.venueId];
+  }
+
   return {
     ticket,
     event
@@ -46,6 +77,7 @@ const mSP = state => {
 
 const mDP = dispatch => {
   return {
+    requestTicket: ticketId => dispatch(requestTicket(ticketId)),
     buyTicket: ticketId => dispatch(buyTicket(ticketId))
   }
 };

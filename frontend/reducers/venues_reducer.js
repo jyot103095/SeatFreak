@@ -3,7 +3,8 @@ import {
   RECEIVE_VENUES
 } from '../actions/venue_actions';
 import {
-  RECEIVE_TICKETS
+  RECEIVE_TICKETS,
+  RECEIVE_TICKET
 } from '../actions/ticket_actions';
 import {
   RECEIVE_EVENTS,
@@ -31,6 +32,7 @@ const VenuesReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, action.venues);
     case RECEIVE_VENUE:
+    case RECEIVE_TICKET:
       return merge({}, state, { [action.venue.id]: action.venue });
     default:
       return state;

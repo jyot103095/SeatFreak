@@ -31,3 +31,10 @@ export const fetchTickets = () => {
     url: '/api/tickets'
   });
 };
+
+export const fetchTicket = ticketId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/tickets/${ticketId}`
+  });
+};
