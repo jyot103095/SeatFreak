@@ -33,7 +33,12 @@ class Api::UsersController < ApplicationController
     @user = User.with_attached_photo.find(params[:id])
 
     if @user.update(user_params)
-      @trackings = @user.trackings
+
+      trackings = @user.trackings
+
+      @tracked_events = trackings.where(trackable_type: "Event").map(&:trackable)
+      @tracked_performers = trackings.where(trackable_type: "Performer").map(&:trackable)
+      @tracked_venues = trackings.where(trackable_type: "Venue").map(&:trackable)
       render '/api/users/show.json.jbuilder'
     else
       render json: @user.errors.full_messages, status: 422

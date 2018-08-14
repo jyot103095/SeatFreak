@@ -29,8 +29,8 @@ class UserAccountSettings extends React.Component {
   handleUpdateProfile() {
     const user = {
       id: this.props.currentUser.id,
-      fName: this.state.fName,
-      lName: this.state.lName,
+      f_name: this.state.fName,
+      l_name: this.state.lName,
       email: this.state.email
     };
 
