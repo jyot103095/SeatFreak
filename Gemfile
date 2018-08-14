@@ -28,6 +28,9 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'pg_search'
 gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
