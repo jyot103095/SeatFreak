@@ -388,6 +388,10 @@ header.main-page .main-content-splash-info {
   align-items: center;
 }
 
+.main-page .main-content-splash-info h1 {
+  justify-content: center;
+}
+
 .main-content-track-button {
   font-size: 30px;
   margin-left: 20px;
@@ -649,4 +653,15 @@ header.main-page .main-content-splash-info {
   font-weight: 600;
   margin-left: 10px;
   padding: 5px 0;
+}
+
+.errors li {
+  color: white;
+  background-color: #e74c3c;
+  width: 312px;
+  text-align: center;
+  margin: 10px 0;
+  box-sizing: border-box;
+  padding: 7px;
+  border-radius: 3px;
 }

@@ -26,7 +26,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -63,11 +63,12 @@ class SessionForm extends React.Component {
           {this.renderErrors()}
           <div className="login-form">
             <div className="regular-inputs">
-              <input type="text"
+              <input type="email"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
                 placeholder="Email"
+                required
               />
             </div>
 
