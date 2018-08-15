@@ -1,5 +1,7 @@
 import React from 'react';
 import { requestEvent } from '../../actions/event_actions';
+import { track, untrack } from '../../actions/tracking_actions';
+import { openModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import TicketIndexItem from './ticket_index_item';
 import TicketView from './ticket_view';
@@ -12,6 +14,7 @@ class EventTicketsIndex extends React.Component {
       loading: true
     };
     this.handleLoad = this.handleLoad.bind(this);
+    this.handleTracking = this.handleTracking.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +26,19 @@ class EventTicketsIndex extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.eventId !== this.props.match.params.eventId) {
       this.props.requestEvent(this.props.match.params.eventId);
+    }
+  }
+
+  handleTracking() {
+    if (this.props.loggedIn) {
+      if (this.props.tracked) {
+        this.props.untrack({ trackable_type: "Event", trackable_id: this.props.event.id });
+      } else {
+        this.props.track({ trackable_type: "Event", trackable_id: this.props.event.id });
+      }
+
+    } else {
+      this.props.openLoginModal();
     }
   }
 
@@ -63,6 +79,7 @@ class EventTicketsIndex extends React.Component {
           <div className="event-tickets-container">
             <div className="event-tickets-header">
               <h4>Amazing Deals</h4>
+              <h4><i className={`fa-heart fa-lg ${ this.props.tracked ? "fas tracked" : "far"}`} onClick={this.handleTracking}></i></h4>
             </div>
             { ticketIndex() }
           </div>
@@ -93,18 +110,29 @@ const mSP = (state, ownProps) => {
     tickets = Object.values(state.entities.tickets).filter(ticket => (ticket.eventId === event.id) && (ticket.onSale));
     venue = state.entities.venues[event.venueId];
   }
+
+  let loggedIn = Boolean(state.session.id);
+  let tracked = false;
+  if (loggedIn && event) {
+    tracked = state.entities.currentUser.trackedItems.trackedEvents.includes(event.id);
+  }
   
   return {
     event,
     tickets,
     venue,
-    content: state.ui.showingTicket
+    content: state.ui.showingTicket,
+    loggedIn,
+    tracked
   };
 };
 
 const mDP = dispatch => {
   return {
-    requestEvent: eventId => dispatch(requestEvent(eventId))
+    requestEvent: eventId => dispatch(requestEvent(eventId)),
+    track: event => dispatch(track(event)),
+    untrack: event => dispatch(untrack(event)),
+    openLoginModal: () => dispatch(openModal('login'))
   };
 };
 

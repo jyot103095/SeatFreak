@@ -72,12 +72,13 @@
 .empty-tickets-container {
   margin-top: 10px;
   height: 75px;
-  width: 100%;
   background-color: lightgray;
   border-radius: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  align-self: center;
 }
 
 .empty-tickets-container h2 {

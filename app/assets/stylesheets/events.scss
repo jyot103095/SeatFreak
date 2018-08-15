@@ -157,6 +157,14 @@
   margin-left: 20px;
 }
 
+.event-tickets-header i:hover {
+  cursor: pointer;
+}
+
+.fa-heart {
+  transition: all 0.25s linear; 
+}
+
 .event-tickets-container, .ticket-view-container {
   // padding: 0 20px;
   width: 430px;
@@ -164,6 +172,8 @@
   background-color: white;
   z-index: 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-tickets-container {
