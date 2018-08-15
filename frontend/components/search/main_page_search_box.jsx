@@ -33,7 +33,7 @@ class MainPageSearchBox extends React.Component {
               minLength={2}
               debounceTimeout={500}
               onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" />
-            <input type="submit" value="Search"></input>
+            <input type="submit" onClick={(e) => e.preventDefault()} value="Search"></input>
           </div>
         </form>
         <div className="search-results-container-main-page">
@@ -41,12 +41,6 @@ class MainPageSearchBox extends React.Component {
         </div>
       </div>
     );
-  }
-}
-
-const mSP = state => {
-  return {
-    results: state.ui.search
   }
 }
 
