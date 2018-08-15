@@ -392,7 +392,7 @@
   top: 75px;
   width: 624px;
   padding: 5px 5px;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.1);
   border-radius: 5px;
 }
@@ -433,6 +433,11 @@
   font-weight: 600;
   margin-left: 10px;
   padding: 5px 0;
+}
+
+.main-page-search-results i {
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .event-image-loading {

@@ -8,7 +8,8 @@ class MainPageSearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ""
+      query: "",
+      fetched: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -17,7 +18,9 @@ class MainPageSearchBox extends React.Component {
     this.setState({
       query: e.target.value
     });
-    this.props.search(this.state.query);
+    this.props.search(this.state.query).then(
+      () => this.setState({fetched: true})
+    );
   }
 
   render() {
@@ -34,7 +37,7 @@ class MainPageSearchBox extends React.Component {
           </div>
         </form>
         <div className="search-results-container-main-page">
-          { this.state.query.length >= 2 ? <SearchResults /> : null}
+          { this.state.query.length >= 2 && this.state.fetched ? <SearchResults /> : null}
         </div>
       </div>
     );
