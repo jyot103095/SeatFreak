@@ -37,7 +37,7 @@ class SellForm extends React.Component {
             </div>
             <div className="sell-price-input-wrapper">
               <p>Price: $</p>
-              <input type="text" onChange={this.handleChange} value={this.state.price}></input>
+              <input type="number" onChange={this.handleChange} value={this.state.price}></input>
             </div>
             <input type="submit" value={this.props.formType} />
           </div>
