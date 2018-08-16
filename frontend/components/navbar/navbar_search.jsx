@@ -33,14 +33,14 @@ class NavbarSearchBox extends React.Component {
         <form className="search-form-navbar">
           <i className="fas fa-search fa-lg"></i>
           <DebounceInput
-            minLength={2}
+            minLength={3}
             debounceTimeout={500}
             onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" 
             value={this.state.query}
           />
         </form>
         <div className="search-results-container-navbar">
-          { this.state.query.length >= 2 ? <SearchResults navbar={true} /> : null}
+          { this.state.query.length >= 3 ? <SearchResults navbar={true} /> : null}
         </div>
       </div>
     );

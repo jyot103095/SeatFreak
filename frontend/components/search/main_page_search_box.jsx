@@ -30,14 +30,14 @@ class MainPageSearchBox extends React.Component {
           <div className="search-box-container-main-page">
             <i className="fas fa-search fa-lg"></i>
             <DebounceInput
-              minLength={2}
+              minLength={3}
               debounceTimeout={500}
               onChange={this.handleChange} placeholder="Search by team, artist, event, or venue" />
             <input type="submit" onClick={(e) => e.preventDefault()} value="Search"></input>
           </div>
         </form>
         <div className="search-results-container-main-page">
-          { this.state.query.length >= 2 && this.state.fetched ? <SearchResults /> : null}
+          { this.state.query.length >= 3 && this.state.fetched ? <SearchResults /> : null}
         </div>
       </div>
     );
