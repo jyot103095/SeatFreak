@@ -49,7 +49,7 @@ class EventTicketsIndex extends React.Component {
   }
 
   render() {
-    if (this.state.loading) return <div className="loading-div"></div>
+    if (this.state.loading || !this.props.event) return <div className="loading-div"></div>
 
     if (!this.props.content) {
       const ticketIndex = () => {
