@@ -12,12 +12,15 @@ class UserAccountSettings extends React.Component {
       fName: this.props.currentUser.fName,
       lName: this.props.currentUser.lName,
       email: this.props.currentUser.email,
-      oldPassword: "",
-      newPassword: "",
-      confirmPassword: ""
+      clicked: false      
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateProfile = this.handleUpdateProfile.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  handleUpload() {
+    this.setState({clicked: !this.state.clicked});
   }
 
   handleChange(field) {
@@ -61,7 +64,18 @@ class UserAccountSettings extends React.Component {
           <div className="account-settings-wrapper">
             <div className="profile-card" >
               <div className="profile-map" >
-                <div className="profile-image" style={styles}></div>
+                <div className="profile-image" style={styles}>
+                  <input type="file" accept="image"/>
+                </div>
+                <div className="image-upload-container">
+                  <button className="image-edit-button" onClick={this.handleUpload}>Edit Image</button>
+                  { this.state.clicked ?
+                    <ul className="image-upload-dropdown">
+                      <li className="image-upload-dropdown-option">Upload Photo</li>
+                      <li className="image-upload-dropdown-option">Delete Photo</li>
+                    </ul> : null
+                  }
+                </div>
               </div>
             </div>
             <div className="profile-forms" >
