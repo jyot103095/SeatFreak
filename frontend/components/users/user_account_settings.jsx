@@ -12,14 +12,16 @@ class UserAccountSettings extends React.Component {
       fName: this.props.currentUser.fName,
       lName: this.props.currentUser.lName,
       email: this.props.currentUser.email,
-      clicked: false      
+      clicked: false,
+      photoFile: null    
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateProfile = this.handleUpdateProfile.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
   }
 
-  handleUpload() {
+  handleClick() {
     this.setState({clicked: !this.state.clicked});
   }
 
@@ -29,13 +31,22 @@ class UserAccountSettings extends React.Component {
     });
   }
 
-  handleUpdateProfile() {
-    const user = {
-      id: this.props.currentUser.id,
-      f_name: this.state.fName,
-      l_name: this.state.lName,
-      email: this.state.email
-    };
+  handleUpload(e) {
+    this.props.uploadPhoto(formData);
+  }
+
+  handleUpdateProfile(e) {
+    e.preventDefault();
+
+    const user = new FormData();
+    if (e.currentTarget.files[0]) {
+      user.append("user[photo]", e.currentTarget.files[0]);
+    }
+
+    user.append("user[id]", this.props.currentUser.id);
+    user.append("user[f_name]", this.props.currentUser.fName);
+    user.append("user[l_name]", this.props.currentUser.lName);
+    user.append("user[email]", this.props.currentUser.email);
 
     this.props.updateCurrentUser(user);
   }
@@ -65,10 +76,10 @@ class UserAccountSettings extends React.Component {
             <div className="profile-card" >
               <div className="profile-map" >
                 <div className="profile-image" style={styles}>
-                  <input type="file" accept="image"/>
+                  <input type="file" accept="image" onChange={this.handleUpload}/>
                 </div>
                 <div className="image-upload-container">
-                  <button className="image-edit-button" onClick={this.handleUpload}>Edit Image</button>
+                  <button className="image-edit-button" onClick={this.handleClick}>Edit Image</button>
                   { this.state.clicked ?
                     <ul className="image-upload-dropdown">
                       <li className="image-upload-dropdown-option">Upload Photo</li>

@@ -4,7 +4,9 @@ export const updateUser = user => {
     url: `/api/users/${user.id}`,
     data: {
       user
-    }
+    },
+    contentType: false,
+    processData: false
   });
 };
 

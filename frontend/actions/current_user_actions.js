@@ -23,10 +23,3 @@ export const updateCurrentUser = user => dispatch => {
     errors => dispatch(receiveUserErrors(errors.responseJSON))
   );
 };
-
-export const updateUserPassword = passwords => dispatch => {
-  return CurrentUserApiUtil.updatePassword(passwords).then(
-    user => dispatch(receiveUser(user)),
-    errors => dispatch(receiveUserErrors(errors.responseJSON))
-  );
-}
