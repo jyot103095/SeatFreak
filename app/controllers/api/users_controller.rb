@@ -32,6 +32,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.with_attached_photo.find(params[:id])
 
+
     if @user.update(user_params)
 
       trackings = @user.trackings

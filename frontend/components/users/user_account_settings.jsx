@@ -18,7 +18,6 @@ class UserAccountSettings extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateProfile = this.handleUpdateProfile.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleUpload = this.handleUpload.bind(this);
   }
 
   handleClick() {
@@ -31,19 +30,15 @@ class UserAccountSettings extends React.Component {
     });
   }
 
-  handleUpload(e) {
-    this.props.uploadPhoto(formData);
-  }
-
   handleUpdateProfile(e) {
     e.preventDefault();
 
     const user = new FormData();
-    if (e.currentTarget.files[0]) {
+    if (e.currentTarget.files) {
       user.append("user[photo]", e.currentTarget.files[0]);
     }
 
-    user.append("user[id]", this.props.currentUser.id);
+    user.append("id", this.props.currentUser.id);
     user.append("user[f_name]", this.props.currentUser.fName);
     user.append("user[l_name]", this.props.currentUser.lName);
     user.append("user[email]", this.props.currentUser.email);
@@ -76,7 +71,7 @@ class UserAccountSettings extends React.Component {
             <div className="profile-card" >
               <div className="profile-map" >
                 <div className="profile-image" style={styles}>
-                  <input type="file" accept="image" onChange={this.handleUpload}/>
+                  <input type="file" accept="image" onChange={this.handleUpdateProfile}/>
                 </div>
                 <div className="image-upload-container">
                   <button className="image-edit-button" onClick={this.handleClick}>Edit Image</button>
