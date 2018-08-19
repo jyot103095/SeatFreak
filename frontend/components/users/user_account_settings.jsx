@@ -71,7 +71,7 @@ class UserAccountSettings extends React.Component {
             <div className="profile-card" >
               <div className="profile-map" >
                 <div className="profile-image" style={styles}>
-                  <input type="file" accept="image" onChange={this.handleUpdateProfile}/>
+                  <input type="file" accept="image/*" onChange={this.handleUpdateProfile}/>
                 </div>
                 <div className="image-upload-container">
                   <button className="image-edit-button" onClick={this.handleClick}>Edit Image</button>
