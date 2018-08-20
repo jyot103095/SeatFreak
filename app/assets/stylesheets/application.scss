@@ -243,8 +243,9 @@
 .user-dropdown-image {
   width: 30px;
   height: 30px;
-  border-radius: 15px;
+  border-radius: 100%;
   margin-right: 10px;
+  background-position: center center;
 }
 
 .user-links, .categories-list {

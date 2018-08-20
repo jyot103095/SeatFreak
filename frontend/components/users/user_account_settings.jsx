@@ -13,8 +13,8 @@ class UserAccountSettings extends React.Component {
       lName: this.props.currentUser.lName,
       email: this.props.currentUser.email,
       clicked: false,
-      photoFile: null    
     }
+    this.photoInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateProfile = this.handleUpdateProfile.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -71,14 +71,15 @@ class UserAccountSettings extends React.Component {
             <div className="profile-card" >
               <div className="profile-map" >
                 <div className="profile-image" style={styles}>
-                  <input type="file" accept="image/*" onChange={this.handleUpdateProfile}/>
                 </div>
                 <div className="image-upload-container">
                   <button className="image-edit-button" onClick={this.handleClick}>Edit Image</button>
                   { this.state.clicked ?
                     <ul className="image-upload-dropdown">
-                      <li className="image-upload-dropdown-option">Upload Photo</li>
-                      <li className="image-upload-dropdown-option">Delete Photo</li>
+                      <li className="image-upload-dropdown-option">
+                        <input type="file" accept="image/*" onChange={this.handleUpdateProfile} id="photo-upload"/>
+                        <label htmlFor="photo-upload">Upload Photo</label>
+                      </li>
                     </ul> : null
                   }
                 </div>

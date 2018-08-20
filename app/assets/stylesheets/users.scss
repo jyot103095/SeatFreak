@@ -180,6 +180,8 @@
 .profile-image {
   width: 175px;
   height: 175px;
+  border-radius: 100%;
+  background-position: center center;
 }
 
 .tracker-tab-count {
@@ -292,5 +294,18 @@
 .image-upload-dropdown-option:hover {
   background-color: #f2f9fc;
   color: #333;
+  cursor: pointer;
+}
+
+#photo-upload {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.image-upload-dropdown-option label:hover {
   cursor: pointer;
 }
