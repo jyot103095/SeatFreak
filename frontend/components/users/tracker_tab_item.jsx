@@ -38,7 +38,7 @@ class TrackerTabItem extends React.Component {
 					<img src={this.props.item.photoUrl} onLoad={this.handleLoad} className={this.state.imageView ? "image-shown" : "image-hidden"}/>
 				</div>
 				<div className="tracker-item-info">
-					<h2>{name} <span>{ this.props.type === "Event" ? this.props.item.eventOn : null }</span></h2>
+					<h2>{name} { this.props.type === "Event" ? <span>{this.props.item.eventOn}</span> : null }</h2>
 					<h2><i className="fas fa-times fa-lg" onClick={this.handleTracking}></i></h2>
 				</div>
 			</div>
